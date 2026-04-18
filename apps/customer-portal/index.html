@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Naaval Customer Portal</title>
+    <meta name="theme-color" content="#129a79" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg" />
+    <link rel="shortcut icon" href="/assets/logo-mark.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo-mark.svg" />
+    <link rel="stylesheet" href="/portal/styles.css" />
+    <script src="/ops-config.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <div class="portal-login" id="portal-login">
+      <div class="portal-login__card">
+        <section class="portal-login__brand">
+          <img class="portal-login__logo" src="/assets/logo-mark.svg" alt="Naaval" />
+          <p class="eyebrow portal-eyebrow">Naaval Customer Portal</p>
+          <h1>Book deliveries from a dedicated client workspace.</h1>
+          <p class="portal-login__subtitle">Create single-stop or multi-drop orders, then track them from the same portal your ops team uses.</p>
+
+          <div class="portal-login__bullets">
+            <article>
+              <span class="mini-chip">Orders</span>
+              <strong>Create a course in seconds with pickup and multi-drop support.</strong>
+            </article>
+            <article>
+              <span class="mini-chip">Visibility</span>
+              <strong>See your latest requests and their operational status in one place.</strong>
+            </article>
+            <article>
+              <span class="mini-chip">Connected</span>
+              <strong>Every order goes straight into Naaval ops `My Orders`.</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="portal-login__form">
+          <p class="eyebrow">Customer Access</p>
+          <h2>Sign in to your portal</h2>
+          <p class="portal-login__helper">Use the company email or contact email configured in the customer account.</p>
+
+          <form id="portal-login-form" class="stack">
+            <label class="field">
+              <span>Email</span>
+              <input name="email" type="email" placeholder="client@company.com" required />
+            </label>
+
+            <div class="portal-login__actions">
+              <button class="solid-button" type="submit">Open Portal</button>
+            </div>
+          </form>
+
+          <div class="portal-login__divider"><span>or</span></div>
+          <div class="portal-google-slot" id="portal-google-slot"></div>
+          <button class="ghost-button hidden" id="portal-google-button" type="button">Continue with Google</button>
+
+          <div class="portal-login__hint">
+            <strong>Access rule</strong>
+            <p>Your email must already exist in the customer account created from the ops interface.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="portal-shell hidden" id="portal-shell">
+      <header class="portal-header">
+        <div class="portal-header__copy">
+          <p class="eyebrow portal-eyebrow">Naaval Customer Portal</p>
+          <h1 id="portal-title">Welcome</h1>
+          <p id="portal-subtitle">Create new delivery requests and review your latest orders.</p>
+        </div>
+
+        <div class="portal-header__actions">
+          <button class="ghost-button" id="portal-refresh-button" type="button">Refresh</button>
+          <button class="ghost-button" id="portal-logout-button" type="button">Logout</button>
+        </div>
+      </header>
+
+      <section class="portal-metrics" aria-label="Customer portal summary">
+        <article class="metric-card">
+          <span class="metric-card__label">Orders</span>
+          <strong class="metric-card__value" id="metric-orders">0</strong>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__label">Live</span>
+          <strong class="metric-card__value" id="metric-live">0</strong>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__label">Delivered</span>
+          <strong class="metric-card__value" id="metric-delivered">0</strong>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__label">Default Algo</span>
+          <strong class="metric-card__value" id="metric-algo">Basic</strong>
+        </article>
+      </section>
+
+      <section class="portal-tabs" aria-label="Portal navigation">
+        <button class="portal-tab portal-tab--active" type="button" data-portal-tab="new-order">New Order</button>
+        <button class="portal-tab" type="button" data-portal-tab="past-orders">Past Orders</button>
+        <button class="portal-tab" type="button" data-portal-tab="recurring-delivery">Recurring Delivery</button>
+      </section>
+
+      <main class="portal-main">
+        <section class="portal-card portal-panel portal-panel--active" data-portal-panel="new-order">
+          <div class="portal-card__header">
+            <div>
+              <p class="eyebrow">New Order</p>
+              <h2>Create a delivery</h2>
+              <p class="portal-panel__subtitle">Open a booking modal, create a single stop or multi-drop request, and track the assigned courier.</p>
+            </div>
+            <button class="solid-button" type="button" data-open-modal="portal-order">New Order</button>
+          </div>
+
+          <div class="portal-orders" id="portal-live-orders"></div>
+        </section>
+
+        <section class="portal-card portal-panel" data-portal-panel="past-orders">
+          <div class="portal-card__header">
+            <div>
+              <p class="eyebrow">Past Orders</p>
+              <h2>Delivery history</h2>
+              <p class="portal-panel__subtitle">Review delivered, cancelled, and closed jobs synced from Naaval ops.</p>
+            </div>
+          </div>
+
+          <div class="portal-orders" id="portal-past-orders"></div>
+        </section>
+
+        <section class="portal-card portal-panel" data-portal-panel="recurring-delivery">
+          <div class="portal-card__header">
+            <div>
+              <p class="eyebrow">Recurring Delivery</p>
+              <h2>Scheduled routes</h2>
+              <p class="portal-panel__subtitle">Create recurring delivery templates that appear directly in the ops recurring routes workspace.</p>
+            </div>
+            <button class="solid-button" type="button" data-open-modal="portal-recurring">Create Recurring Delivery</button>
+          </div>
+
+          <div class="portal-orders" id="portal-recurring-routes"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal hidden" id="portal-order-modal">
+      <div class="modal__backdrop" data-close-modal="portal-order"></div>
+      <div class="modal__dialog">
+        <button class="modal__close" type="button" data-close-modal="portal-order">Close</button>
+        <p class="eyebrow">Customer Portal</p>
+        <h3 class="modal__title">Create Delivery</h3>
+        <p class="modal__subtitle">Create a delivery request and push it directly into Naaval ops.</p>
+
+        <form id="portal-order-form" class="stack">
+          <div class="form-grid">
+            <label class="field">
+              <span>Reference</span>
+              <input name="reference" placeholder="Auto-generate if empty" />
+            </label>
+
+            <label class="field">
+              <span>Flow</span>
+              <select name="kind">
+                <option value="delivery">Delivery</option>
+                <option value="pickup_delivery">Pickup + Delivery</option>
+                <option value="return">Return</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Pricing Algo</span>
+              <select name="pricingAlgorithmId">
+                <option value="basic">Basic Algo</option>
+                <option value="pallet">Palette</option>
+                <option value="hours">By Hours</option>
+                <option value="drops">By Drop</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Pickup Window Start</span>
+              <input name="timeWindowStart" type="datetime-local" />
+            </label>
+
+            <label class="field">
+              <span>Pickup Window End</span>
+              <input name="timeWindowEnd" type="datetime-local" />
+            </label>
+
+            <label class="field field--wide">
+              <span>Operational Notes</span>
+              <textarea name="notes" rows="2" placeholder="Access code, floor, contact note, urgency..."></textarea>
+            </label>
+          </div>
+
+          <section class="form-section">
+            <div class="form-section__header">
+              <div>
+                <p class="eyebrow">Pickup</p>
+                <h3>Pickup Information</h3>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <label class="field">
+                <span>First Name</span>
+                <input name="pickupFirstName" placeholder="Pierre" />
+              </label>
+
+              <label class="field">
+                <span>Last Name</span>
+                <input name="pickupLastName" placeholder="Morcrette" />
+              </label>
+
+              <label class="field field--wide">
+                <span>Pickup / Site</span>
+                <input name="pickupLabel" placeholder="Warehouse, office, store..." required />
+              </label>
+
+              <label class="field field--wide">
+                <span>Address</span>
+                <input name="pickupStreet1" placeholder="15 Rue Example" required />
+              </label>
+
+              <label class="field">
+                <span>City</span>
+                <input name="pickupCity" placeholder="Paris" />
+              </label>
+
+              <label class="field">
+                <span>Postal Code</span>
+                <input name="pickupPostalCode" placeholder="75011" />
+              </label>
+
+              <label class="field">
+                <span>Country</span>
+                <input name="pickupCountryCode" value="FR" />
+              </label>
+
+              <label class="field">
+                <span>Phone</span>
+                <input name="pickupPhone" placeholder="+33600000000" />
+              </label>
+
+              <label class="field">
+                <span>Email</span>
+                <input name="pickupEmail" type="email" placeholder="pickup@company.com" />
+              </label>
+
+              <label class="field">
+                <span>Parcel Size</span>
+                <select name="pickupParcelSize">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="XXL">XXL</option>
+                  <option value="Palette">Palette</option>
+                </select>
+              </label>
+
+              <label class="field field--wide">
+                <span>Comments</span>
+                <textarea name="pickupComment" rows="2" placeholder="Dock, gate code, reception note..."></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section__header">
+              <div>
+                <p class="eyebrow">Drop Off</p>
+                <h3>Dropoff Information</h3>
+              </div>
+              <button class="mini-button" id="portal-add-drop" type="button">Add Drop</button>
+            </div>
+
+            <div class="dropoff-list" id="portal-dropoff-list"></div>
+          </section>
+
+          <div class="form-actions">
+            <button class="ghost-button" type="button" data-close-modal="portal-order">Cancel</button>
+            <button class="solid-button" type="submit">Create Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="portal-recurring-modal">
+      <div class="modal__backdrop" data-close-modal="portal-recurring"></div>
+      <div class="modal__dialog">
+        <button class="modal__close" type="button" data-close-modal="portal-recurring">Close</button>
+        <p class="eyebrow">Customer Portal</p>
+        <h3 class="modal__title">Create Recurring Delivery</h3>
+        <p class="modal__subtitle">Create a recurring delivery template that appears directly in the ops recurring routes view.</p>
+
+        <form id="portal-recurring-form" class="stack">
+          <input name="recurringDays" type="hidden" />
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Recurring Name</span>
+              <input name="recurringLabel" placeholder="Morning retail wave" />
+            </label>
+
+            <label class="field">
+              <span>Reference</span>
+              <input name="reference" placeholder="RR-0001" />
+            </label>
+
+            <label class="field">
+              <span>Flow</span>
+              <select name="kind">
+                <option value="delivery">Delivery</option>
+                <option value="pickup_delivery">Pickup + Delivery</option>
+                <option value="return">Return</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Pricing Algo</span>
+              <select name="pricingAlgorithmId">
+                <option value="basic">Basic Algo</option>
+                <option value="pallet">Palette</option>
+                <option value="hours">By Hours</option>
+                <option value="drops">By Drop</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Pickup Time</span>
+              <input name="recurringPickupTime" type="time" value="08:00" />
+            </label>
+
+            <label class="field field--wide">
+              <span>Days</span>
+              <div class="weekday-group" id="portal-recurring-days">
+                <button class="weekday-pill" type="button" data-action="toggle-recurring-day" data-day="mon">M</button>
+                <button class="weekday-pill" type="button" data-action="toggle-recurring-day" data-day="tue">T</button>
+                <button class="weekday-pill" type="button" data-action="toggle-recurring-day" data-day="wed">W</button>
+                <button class="weekday-pill" type="button" data-action="toggle-recurring-day" data-day="thu">T</button>
+                <button class="weekday-pill" type="button" data-action="toggle-recurring-day" data-day="fri">F</button>
+                <button class="weekday-pill" type="button" data-action="toggle-recurring-day" data-day="sat">S</button>
+                <button class="weekday-pill" type="button" data-action="toggle-recurring-day" data-day="sun">S</button>
+              </div>
+            </label>
+
+            <label class="field field--wide">
+              <span>Operational Notes</span>
+              <textarea name="notes" rows="2" placeholder="Access code, floor, contact note, urgency..."></textarea>
+            </label>
+          </div>
+
+          <section class="form-section">
+            <div class="form-section__header">
+              <div>
+                <p class="eyebrow">Pickup</p>
+                <h3>Pickup Information</h3>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <label class="field">
+                <span>First Name</span>
+                <input name="recurringPickupFirstName" placeholder="Pierre" />
+              </label>
+
+              <label class="field">
+                <span>Last Name</span>
+                <input name="recurringPickupLastName" placeholder="Morcrette" />
+              </label>
+
+              <label class="field field--wide">
+                <span>Pickup / Site</span>
+                <input name="recurringPickupLabel" placeholder="Warehouse, office, store..." required />
+              </label>
+
+              <label class="field field--wide">
+                <span>Address</span>
+                <input name="recurringPickupStreet1" placeholder="15 Rue Example" required />
+              </label>
+
+              <label class="field">
+                <span>City</span>
+                <input name="recurringPickupCity" placeholder="Paris" />
+              </label>
+
+              <label class="field">
+                <span>Postal Code</span>
+                <input name="recurringPickupPostalCode" placeholder="75011" />
+              </label>
+
+              <label class="field">
+                <span>Country</span>
+                <input name="recurringPickupCountryCode" value="FR" />
+              </label>
+
+              <label class="field">
+                <span>Phone</span>
+                <input name="recurringPickupPhone" placeholder="+33600000000" />
+              </label>
+
+              <label class="field">
+                <span>Email</span>
+                <input name="recurringPickupEmail" type="email" placeholder="pickup@company.com" />
+              </label>
+
+              <label class="field">
+                <span>Parcel Size</span>
+                <select name="recurringPickupParcelSize">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="XXL">XXL</option>
+                  <option value="Palette">Palette</option>
+                </select>
+              </label>
+
+              <label class="field field--wide">
+                <span>Comments</span>
+                <textarea name="recurringPickupComment" rows="2" placeholder="Dock, gate code, reception note..."></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section__header">
+              <div>
+                <p class="eyebrow">Drop Off</p>
+                <h3>Dropoff Information</h3>
+              </div>
+              <button class="mini-button" id="portal-recurring-add-drop" type="button">Add Drop</button>
+            </div>
+
+            <div class="dropoff-list" id="portal-recurring-dropoff-list"></div>
+          </section>
+
+          <div class="form-actions">
+            <button class="ghost-button" type="button" data-close-modal="portal-recurring">Cancel</button>
+            <button class="solid-button" type="submit">Create Recurring Delivery</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="portal-order-detail-modal">
+      <div class="modal__backdrop" data-close-modal="portal-order-detail"></div>
+      <div class="modal__dialog">
+        <button class="modal__close" type="button" data-close-modal="portal-order-detail">Close</button>
+        <div id="portal-order-detail-modal-content"></div>
+      </div>
+    </div>
+
+    <div class="toast hidden" id="portal-toast" role="status" aria-live="polite"></div>
+
+    <script src="/portal/app.js"></script>
+  </body>
+</html>

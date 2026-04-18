@@ -1,0 +1,20 @@
+{
+  "name": "lmd-control-tower",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Starter architecture for a last-mile delivery platform with GraphHopper VRP.",
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "node services/core-api/src/server.js",
+    "dev": "echo \"Install Node.js and pnpm first, then wire the apps.\"",
+    "lint": "echo \"Lint pipeline not wired yet.\"",
+    "test": "echo \"Test pipeline not wired yet.\"",
+    "typecheck": "echo \"Typecheck pipeline not wired yet.\""
+  }
+}
+

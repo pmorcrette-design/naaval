@@ -1,0 +1,381 @@
+openapi: 3.1.0
+info:
+  title: LMD Control Tower API
+  version: 0.1.0
+  description: >
+    Initial API contract for a last-mile delivery platform with planning,
+    dispatch, execution, and carrier mobile flows.
+servers:
+  - url: https://api.example.com
+tags:
+  - name: Orders
+  - name: Planning
+  - name: Dispatch
+  - name: Carrier
+paths:
+  /orders:
+    get:
+      tags: [Orders]
+      summary: List delivery orders
+      responses:
+        '200':
+          description: Orders list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DeliveryOrder'
+    post:
+      tags: [Orders]
+      summary: Create a delivery order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDeliveryOrderRequest'
+      responses:
+        '201':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryOrder'
+  /orders/import:
+    post:
+      tags: [Orders]
+      summary: Import a batch of delivery orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                merchantId:
+                  type: string
+                orders:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CreateDeliveryOrderRequest'
+              required: [merchantId, orders]
+      responses:
+        '202':
+          description: Import accepted
+  /plans/optimize:
+    post:
+      tags: [Planning]
+      summary: Launch a VRP optimization job
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptimizePlanRequest'
+      responses:
+        '202':
+          description: Optimization job queued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  planningJobId:
+                    type: string
+                  externalJobId:
+                    type: string
+                required: [planningJobId]
+  /plans/{planId}:
+    get:
+      tags: [Planning]
+      summary: Get a persisted plan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutePlan'
+  /routes/{routeId}/dispatch:
+    post:
+      tags: [Dispatch]
+      summary: Dispatch a route to a driver
+      parameters:
+        - in: path
+          name: routeId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                driverId:
+                  type: string
+              required: [driverId]
+      responses:
+        '200':
+          description: Route dispatched
+  /carrier/routes/{routeId}:
+    get:
+      tags: [Carrier]
+      summary: Get route payload for the carrier app
+      parameters:
+        - in: path
+          name: routeId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Carrier route view
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutePlan'
+  /carrier/check-ins:
+    post:
+      tags: [Carrier]
+      summary: Push live position or device heartbeat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                driverId:
+                  type: string
+                routeId:
+                  type: string
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+                occurredAt:
+                  type: string
+                  format: date-time
+              required: [driverId, routeId, latitude, longitude, occurredAt]
+      responses:
+        '202':
+          description: Heartbeat accepted
+  /carrier/stops/{stopId}/proof:
+    post:
+      tags: [Carrier]
+      summary: Submit proof of delivery
+      parameters:
+        - in: path
+          name: stopId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitProofRequest'
+      responses:
+        '201':
+          description: Proof stored
+components:
+  schemas:
+    Coordinates:
+      type: object
+      properties:
+        lat:
+          type: number
+        lon:
+          type: number
+      required: [lat, lon]
+    TimeWindow:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+      required: [start, end]
+    DeliveryAddress:
+      type: object
+      properties:
+        label:
+          type: string
+        street1:
+          type: string
+        city:
+          type: string
+        postalCode:
+          type: string
+        countryCode:
+          type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+      required: [label, street1, city, postalCode, countryCode]
+    DeliveryOrder:
+      type: object
+      properties:
+        id:
+          type: string
+        merchantId:
+          type: string
+        kind:
+          type: string
+          enum: [delivery, pickup_delivery, return]
+        reference:
+          type: string
+        pickupAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        dropoffAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        serviceDurationSeconds:
+          type: integer
+        parcelCount:
+          type: integer
+        weightKg:
+          type: number
+        volumeDm3:
+          type: number
+        requiredSkills:
+          type: array
+          items:
+            type: string
+        timeWindows:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeWindow'
+        status:
+          type: string
+          enum: [draft, ready, planned, dispatched, in_progress, completed, failed, cancelled]
+      required:
+        [id, merchantId, kind, reference, dropoffAddress, serviceDurationSeconds, status]
+    CreateDeliveryOrderRequest:
+      type: object
+      properties:
+        merchantId:
+          type: string
+        kind:
+          type: string
+          enum: [delivery, pickup_delivery, return]
+        reference:
+          type: string
+        pickupAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        dropoffAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        serviceDurationSeconds:
+          type: integer
+        parcelCount:
+          type: integer
+        weightKg:
+          type: number
+        volumeDm3:
+          type: number
+        requiredSkills:
+          type: array
+          items:
+            type: string
+        timeWindows:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeWindow'
+      required:
+        [merchantId, kind, reference, dropoffAddress, serviceDurationSeconds]
+    OptimizePlanRequest:
+      type: object
+      properties:
+        planDate:
+          type: string
+          format: date
+        hubId:
+          type: string
+        orderIds:
+          type: array
+          items:
+            type: string
+        driverShiftIds:
+          type: array
+          items:
+            type: string
+        objectivePreset:
+          type: string
+          enum: [balanced, fleet_min, speed]
+      required: [planDate, hubId, orderIds, driverShiftIds]
+    RouteStop:
+      type: object
+      properties:
+        id:
+          type: string
+        orderId:
+          type: string
+        sequence:
+          type: integer
+        kind:
+          type: string
+          enum: [pickup, delivery, break]
+        address:
+          $ref: '#/components/schemas/DeliveryAddress'
+        plannedArrivalAt:
+          type: string
+          format: date-time
+        plannedDepartureAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [pending, arrived, served, failed, skipped]
+      required: [id, sequence, kind, address, status]
+    RoutePlan:
+      type: object
+      properties:
+        id:
+          type: string
+        driverId:
+          type: string
+        vehicleId:
+          type: string
+        status:
+          type: string
+          enum: [draft, ready, dispatched, in_progress, completed, cancelled]
+        stops:
+          type: array
+          items:
+            $ref: '#/components/schemas/RouteStop'
+      required: [id, status, stops]
+    SubmitProofRequest:
+      type: object
+      properties:
+        deliveredAt:
+          type: string
+          format: date-time
+        recipientName:
+          type: string
+        otpCode:
+          type: string
+        signatureImageUrl:
+          type: string
+        photoUrls:
+          type: array
+          items:
+            type: string
+        failureReasonCode:
+          type: string
+        note:
+          type: string
+      required: [deliveredAt]
+

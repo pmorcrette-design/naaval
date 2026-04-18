@@ -1,0 +1,4456 @@
+{
+  "hubs": [
+    {
+      "id": "hub_paris_central",
+      "label": "Paris Central Hub",
+      "city": "Paris",
+      "address": "12 Rue du Depot, 75011 Paris",
+      "coordinates": {
+        "lat": 48.8619,
+        "lon": 2.3765
+      },
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    }
+  ],
+  "vehicleTypes": [
+    {
+      "id": "vehicletype_van",
+      "label": "Van",
+      "vehicleClass": "van",
+      "routingProfile": "car",
+      "capacity": {
+        "parcels": 120,
+        "weightKg": 600,
+        "volumeDm3": 6000
+      },
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    },
+    {
+      "id": "vehicletype_bike",
+      "label": "Cargo Bike",
+      "vehicleClass": "bike",
+      "routingProfile": "bike",
+      "capacity": {
+        "parcels": 25,
+        "weightKg": 80,
+        "volumeDm3": 900
+      },
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "vehicle_van_1",
+      "label": "Van 1",
+      "hubId": "hub_paris_central",
+      "vehicleTypeId": "vehicletype_van",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    },
+    {
+      "id": "vehicle_bike_1",
+      "label": "Bike 1",
+      "hubId": "hub_paris_central",
+      "vehicleTypeId": "vehicletype_bike",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    }
+  ],
+  "drivers": [
+    {
+      "name": "Pierre Pierre",
+      "firstName": "Pierre",
+      "lastName": "Pierre",
+      "email": "p.morcrette@gmail.com",
+      "phone": "0698989489",
+      "skills": [],
+      "vehicleType": "van_3m3",
+      "vehiclePhotoUrls": [],
+      "carrierCompanyId": "carrier_company_20260412172404_5d5d35",
+      "status": "active",
+      "id": "driver_20260411175155_dd9077",
+      "createdAt": "2026-04-11T15:51:55.502069+00:00",
+      "updatedAt": "2026-04-12T15:24:41.406499+00:00"
+    },
+    {
+      "name": "Smoke Driver 1775826249",
+      "phone": "+33699990000",
+      "skills": [
+        "fragile"
+      ],
+      "id": "driver_20260410150409_cd85e9",
+      "createdAt": "2026-04-10T13:04:09.943118+00:00",
+      "updatedAt": "2026-04-10T13:04:09.943118+00:00",
+      "status": "active"
+    },
+    {
+      "id": "driver_amina",
+      "name": "Amina Laurent",
+      "phone": "+33600000001",
+      "skills": [
+        "fragile"
+      ],
+      "status": "active",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    },
+    {
+      "id": "driver_noah",
+      "name": "Noah Bernard",
+      "phone": "+33600000002",
+      "skills": [
+        "cold_chain",
+        "bike"
+      ],
+      "status": "active",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    }
+  ],
+  "shifts": [
+    {
+      "id": "shift_amina_am",
+      "driverId": "driver_amina",
+      "vehicleId": "vehicle_van_1",
+      "vehicleTypeId": "vehicletype_van",
+      "startAt": "2026-04-10T08:00:00+02:00",
+      "endAt": "2026-04-10T16:00:00+02:00",
+      "startCoordinates": {
+        "lat": 48.8619,
+        "lon": 2.3765
+      },
+      "endCoordinates": {
+        "lat": 48.8619,
+        "lon": 2.3765
+      },
+      "skills": [
+        "fragile"
+      ],
+      "status": "planned",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    },
+    {
+      "id": "shift_noah_am",
+      "driverId": "driver_noah",
+      "vehicleId": "vehicle_bike_1",
+      "vehicleTypeId": "vehicletype_bike",
+      "startAt": "2026-04-10T08:30:00+02:00",
+      "endAt": "2026-04-10T15:30:00+02:00",
+      "startCoordinates": {
+        "lat": 48.8619,
+        "lon": 2.3765
+      },
+      "endCoordinates": {
+        "lat": 48.8619,
+        "lon": 2.3765
+      },
+      "skills": [
+        "cold_chain",
+        "bike"
+      ],
+      "status": "planned",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord_20260412172125_9c3af8",
+      "merchantId": "Naaval.io - Test",
+      "customerId": "customer_20260411164239_0cfb11",
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "PORTAL-284915-D2",
+      "pickupAddress": {
+        "label": "Naaval.io - Test",
+        "street1": "88 rue de la justice 78100 saint germain en laye",
+        "city": "",
+        "postalCode": "",
+        "countryCode": "FR",
+        "contactName": "Pierre Morcrette",
+        "phone": "0909898949",
+        "email": "p.morcrette@gmail.com",
+        "parcelSize": "M",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.890986,
+          "lon": 2.072063
+        }
+      },
+      "dropoffAddress": {
+        "label": "Chez les parents",
+        "street1": "88 rue de la justice",
+        "city": "Saint germain en laye",
+        "postalCode": "78100",
+        "countryCode": "FR",
+        "contactName": "Pierre Morcrette",
+        "phone": "0909490934",
+        "email": "pierre@naaval.io",
+        "parcelSize": "S",
+        "comment": "t moche",
+        "coordinates": {
+          "lat": 48.890986,
+          "lon": 2.072063
+        }
+      },
+      "parcelSize": "S",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 0.0,
+      "volumeDm3": 0.0,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-22T08:00:00.000Z",
+          "end": "2026-04-22T10:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "T nul",
+      "source": "customer_portal",
+      "sourceLabel": "Customer Portal",
+      "status": "dispatched",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": {
+        "lat": 48.890986,
+        "lon": 2.072063
+      },
+      "lastKnownPositionAt": "2026-04-17T11:50:10.383Z",
+      "lastKnownPositionLabel": "Live position 48.89099 / 2.07206",
+      "createdAt": "2026-04-12T15:21:25.436544+00:00",
+      "updatedAt": "2026-04-17T11:50:10.430471+00:00"
+    },
+    {
+      "id": "ord_20260412172125_3a476c",
+      "merchantId": "Naaval.io - Test",
+      "customerId": "customer_20260411164239_0cfb11",
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "PORTAL-284915-D1",
+      "pickupAddress": {
+        "label": "Naaval.io - Test",
+        "street1": "88 rue de la justice 78100 saint germain en laye",
+        "city": "",
+        "postalCode": "",
+        "countryCode": "FR",
+        "contactName": "Pierre Morcrette",
+        "phone": "0909898949",
+        "email": "p.morcrette@gmail.com",
+        "parcelSize": "M",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.890986,
+          "lon": 2.072063
+        }
+      },
+      "dropoffAddress": {
+        "label": "Music Lab",
+        "street1": "3 rue jean claude mary",
+        "city": "Poissy",
+        "postalCode": "78300",
+        "countryCode": "FR",
+        "contactName": "Sylvain Valette",
+        "phone": "0689454323",
+        "email": "sylvain@naaval.io",
+        "parcelSize": "L",
+        "comment": "T vraiment naze",
+        "coordinates": {
+          "lat": 48.931026,
+          "lon": 2.0403477
+        }
+      },
+      "parcelSize": "L",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 0.0,
+      "volumeDm3": 0.0,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-22T08:00:00.000Z",
+          "end": "2026-04-22T10:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "T nul",
+      "source": "customer_portal",
+      "sourceLabel": "Customer Portal",
+      "status": "dispatched",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T15:21:25.186339+00:00",
+      "updatedAt": "2026-04-12T15:25:11.248945+00:00"
+    },
+    {
+      "id": "ord_20260411093917_352f2d",
+      "merchantId": "TEST Naval 1",
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-7579",
+      "pickupAddress": {
+        "label": "Paris Central Hub",
+        "street1": "12 Rue du Depot",
+        "city": "Paris",
+        "postalCode": "75011",
+        "countryCode": "FR",
+        "contactName": "Pierre Morcrette",
+        "phone": "",
+        "email": "p.morcrette@gmail.com",
+        "parcelSize": "M",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.8579444,
+          "lon": 2.3717706
+        }
+      },
+      "dropoffAddress": {
+        "label": "Music lab",
+        "street1": "15 rue de la justice",
+        "city": "Saint germain en laye",
+        "postalCode": "78100",
+        "countryCode": "FR",
+        "contactName": "Sylvain Valette",
+        "phone": "0909483909",
+        "email": "",
+        "parcelSize": "M",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.891157,
+          "lon": 2.075815
+        }
+      },
+      "parcelSize": "M",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 0.0,
+      "volumeDm3": 0.0,
+      "requiredSkills": [],
+      "timeWindows": [],
+      "priority": 0,
+      "notes": "",
+      "status": "delivery_failed",
+      "createdAt": "2026-04-11T07:39:17.583785+00:00",
+      "updatedAt": "2026-04-12T15:28:38.275320+00:00",
+      "lastKnownPosition": {
+        "lat": 50.8381,
+        "lon": 4.3558
+      },
+      "lastKnownPositionAt": "2026-04-12T15:04:50.061Z",
+      "lastKnownPositionLabel": "Live position 50.83810 / 4.35580",
+      "statusMessage": "Failed",
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": "Skipped from carrier app"
+    },
+    {
+      "id": "ord_20260410150409_092ebf",
+      "merchantId": "merchant_demo",
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-SMOKE-1775826249",
+      "pickupAddress": null,
+      "dropoffAddress": {
+        "label": "Smoke Customer",
+        "street1": "25 Rue du Test",
+        "city": "Paris",
+        "postalCode": "75011",
+        "countryCode": "FR",
+        "coordinates": {
+          "lat": 48.8671,
+          "lon": 2.3831
+        }
+      },
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 4.0,
+      "volumeDm3": 15.0,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-10T15:00:00+02:00",
+          "end": "2026-04-10T17:00:00+02:00"
+        }
+      ],
+      "priority": 0,
+      "notes": "Created during automated smoke test",
+      "status": "dispatched",
+      "createdAt": "2026-04-10T13:04:09.944973+00:00",
+      "updatedAt": "2026-04-10T13:04:09.949100+00:00"
+    },
+    {
+      "id": "order_demo_1",
+      "merchantId": "merchant_demo",
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-001",
+      "pickupAddress": {
+        "label": "Paris Central Hub",
+        "street1": "12 Rue du Depot",
+        "city": "Paris",
+        "postalCode": "75011",
+        "countryCode": "FR",
+        "coordinates": {
+          "lat": 48.8619,
+          "lon": 2.3765
+        }
+      },
+      "dropoffAddress": {
+        "label": "Avenue Louise 231, 1050 Ixelles",
+        "street1": "Avenue Louise 231",
+        "city": "Ixelles",
+        "postalCode": "1050",
+        "countryCode": "BE",
+        "coordinates": {
+          "lat": 50.8247,
+          "lon": 4.3654
+        }
+      },
+      "serviceDurationSeconds": 240,
+      "parcelCount": 3,
+      "weightKg": 12,
+      "volumeDm3": 60,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-10T08:45:00+02:00",
+          "end": "2026-04-10T10:00:00+02:00"
+        }
+      ],
+      "priority": 1,
+      "notes": "Left with concierge after signature",
+      "status": "completed",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+    },
+    {
+      "id": "order_demo_2",
+      "merchantId": "merchant_demo",
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-002",
+      "pickupAddress": {
+        "label": "Rue du Bailli 19, 1050 Ixelles",
+        "street1": "Rue du Bailli 19",
+        "city": "Ixelles",
+        "postalCode": "1050",
+        "countryCode": "BE",
+        "coordinates": {
+          "lat": 50.8241,
+          "lon": 4.3577
+        }
+      },
+      "dropoffAddress": {
+        "label": "Rue Defacqz 34, 1060 Saint-Gilles",
+        "street1": "Rue Defacqz 34",
+        "city": "Saint-Gilles",
+        "postalCode": "1060",
+        "countryCode": "BE",
+        "coordinates": {
+          "lat": 50.8261,
+          "lon": 4.3525
+        }
+      },
+      "serviceDurationSeconds": 300,
+      "parcelCount": 2,
+      "weightKg": 8,
+      "volumeDm3": 35,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-10T09:30:00+02:00",
+          "end": "2026-04-10T11:00:00+02:00"
+        }
+      ],
+      "priority": 2,
+      "notes": "Courier is 4 minutes ahead of ETA",
+      "status": "delivery_refused_by_customer",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-12T13:07:57.929235+00:00",
+      "lastKnownPosition": {
+        "lat": 50.82631,
+        "lon": 4.35271
+      },
+      "lastKnownPositionAt": "2026-04-12T10:35:00+02:00",
+      "lastKnownPositionLabel": "Customer doorstep",
+      "statusMessage": "Refused by Customer",
+      "statusReasonCode": "customer_refusal",
+      "statusReasonLabel": "Customer refused",
+      "statusReason": "Customer refused the parcel at the door because the slot was missed.",
+      "lastProofId": "pod_20260412150757_90532f",
+      "lastProofOutcomeCode": "delivery_refused_by_customer",
+      "lastProofOutcomeLabel": "Refused by Customer",
+      "lastProofPhotoUrls": [
+        "data:image/png;base64,TESTPHOTO"
+      ],
+      "lastProofNote": "Customer refused the parcel at the door because the slot was missed.",
+      "lastProofDeliveredAt": "2026-04-12T10:35:00+02:00"
+    },
+    {
+      "id": "order_demo_3",
+      "merchantId": "merchant_demo",
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-003",
+      "pickupAddress": {
+        "label": "Paris Central Hub",
+        "street1": "12 Rue du Depot",
+        "city": "Paris",
+        "postalCode": "75011",
+        "countryCode": "FR",
+        "coordinates": {
+          "lat": 48.8619,
+          "lon": 2.3765
+        }
+      },
+      "dropoffAddress": {
+        "label": "Chaussee d'Alsemberg 81, 1190 Forest",
+        "street1": "Chaussee d'Alsemberg 81",
+        "city": "Forest",
+        "postalCode": "1190",
+        "countryCode": "BE",
+        "coordinates": {
+          "lat": 50.8178,
+          "lon": 4.3345
+        }
+      },
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 5,
+      "volumeDm3": 18,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-10T09:50:00+02:00",
+          "end": "2026-04-10T11:15:00+02:00"
+        }
+      ],
+      "priority": 3,
+      "notes": "High-priority customer reroute requested",
+      "status": "dispatched",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T13:04:09.949095+00:00"
+    },
+    {
+      "id": "order_demo_4",
+      "merchantId": "merchant_demo",
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-004",
+      "pickupAddress": {
+        "label": "Rue de Namur 45, 1000 Bruxelles",
+        "street1": "Rue de Namur 45",
+        "city": "Bruxelles",
+        "postalCode": "1000",
+        "countryCode": "BE",
+        "coordinates": {
+          "lat": 50.8388,
+          "lon": 4.3602
+        }
+      },
+      "dropoffAddress": {
+        "label": "Boulevard de Waterloo 12, 1000 Bruxelles",
+        "street1": "Boulevard de Waterloo 12",
+        "city": "Bruxelles",
+        "postalCode": "1000",
+        "countryCode": "BE",
+        "coordinates": {
+          "lat": 50.8381,
+          "lon": 4.3558
+        }
+      },
+      "serviceDurationSeconds": 240,
+      "parcelCount": 4,
+      "weightKg": 18,
+      "volumeDm3": 90,
+      "requiredSkills": [
+        "fragile"
+      ],
+      "timeWindows": [
+        {
+          "start": "2026-04-10T11:15:00+02:00",
+          "end": "2026-04-10T13:00:00+02:00"
+        }
+      ],
+      "priority": 1,
+      "notes": "Fragile skincare products",
+      "status": "delivery_failed",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-12T15:34:02.874583+00:00",
+      "lastKnownPosition": {
+        "lat": 48.883,
+        "lon": 2.3232
+      },
+      "lastKnownPositionAt": "2026-04-12T15:34:02.797Z",
+      "lastKnownPositionLabel": "Live position 48.88300 / 2.32320",
+      "statusMessage": "Failed",
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": "Skipped from carrier app"
+    },
+    {
+      "id": "order_demo_5",
+      "merchantId": "merchant_demo",
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-005",
+      "pickupAddress": {
+        "label": "Rue du Trone 64, 1050 Ixelles",
+        "street1": "Rue du Trone 64",
+        "city": "Ixelles",
+        "postalCode": "1050",
+        "countryCode": "BE",
+        "coordinates": {
+          "lat": 50.8384,
+          "lon": 4.3724
+        }
+      },
+      "dropoffAddress": {
+        "label": "Place Flagey 7, 1050 Ixelles",
+        "street1": "Place Flagey 7",
+        "city": "Ixelles",
+        "postalCode": "1050",
+        "countryCode": "BE",
+        "coordinates": {
+          "lat": 50.8275,
+          "lon": 4.3722
+        }
+      },
+      "serviceDurationSeconds": 180,
+      "parcelCount": 2,
+      "weightKg": 7,
+      "volumeDm3": 28,
+      "requiredSkills": [
+        "cold_chain"
+      ],
+      "timeWindows": [
+        {
+          "start": "2026-04-10T12:20:00+02:00",
+          "end": "2026-04-10T14:00:00+02:00"
+        }
+      ],
+      "priority": 2,
+      "notes": "Cargo bike eligible",
+      "status": "dispatched",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-10T13:04:09.949098+00:00"
+    },
+    {
+      "id": "order_demo_6",
+      "merchantId": "merchant_demo",
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-006",
+      "pickupAddress": {
+        "label": "Rue Oberkampf 9, Paris 11",
+        "street1": "Rue Oberkampf 9",
+        "city": "Paris",
+        "postalCode": "75011",
+        "countryCode": "FR",
+        "coordinates": {
+          "lat": 48.8654,
+          "lon": 2.3781
+        }
+      },
+      "dropoffAddress": {
+        "label": "Rue des Dames 12, Paris 17",
+        "street1": "Rue des Dames 12",
+        "city": "Paris",
+        "postalCode": "75017",
+        "countryCode": "FR",
+        "coordinates": {
+          "lat": 48.883,
+          "lon": 2.3232
+        }
+      },
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 5,
+      "volumeDm3": 18,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-10T14:00:00+02:00",
+          "end": "2026-04-10T16:30:00+02:00"
+        }
+      ],
+      "priority": 2,
+      "notes": "Pickup then direct drop",
+      "status": "delivery_failed",
+      "createdAt": "2026-04-10T11:18:38.680346+00:00",
+      "updatedAt": "2026-04-12T15:34:02.874588+00:00",
+      "statusMessage": "Failed",
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": "Skipped from carrier app",
+      "lastKnownPosition": {
+        "lat": 48.883,
+        "lon": 2.3232
+      },
+      "lastKnownPositionAt": "2026-04-12T15:34:02.797Z",
+      "lastKnownPositionLabel": "Live position 48.88300 / 2.32320"
+    },
+    {
+      "id": "ord_20260412163553_39c5e0",
+      "merchantId": "Naaval Test",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-CSV-001",
+      "pickupAddress": {
+        "label": "88 rue de la justice",
+        "street1": "88 rue de la justice",
+        "city": "Saint germain en laye",
+        "postalCode": "78100",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "625105668",
+        "email": "p.morcrette@gmail.com",
+        "parcelSize": "XL",
+        "comment": "Code porte 4543",
+        "coordinates": {
+          "lat": 48.890986,
+          "lon": 2.072063
+        }
+      },
+      "dropoffAddress": {
+        "label": "Client Bastille",
+        "street1": "7 Rue de la Roquette",
+        "city": "Paris",
+        "postalCode": "75011",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "33611111111",
+        "email": "client1@example.com",
+        "parcelSize": "XL",
+        "comment": "Call before arrival",
+        "coordinates": {
+          "lat": 48.8532,
+          "lon": 2.3714
+        }
+      },
+      "parcelSize": "XL",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 2,
+      "weightKg": 8.0,
+      "volumeDm3": 35.0,
+      "requiredSkills": [
+        "fragile"
+      ],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T08:00:00.000Z",
+          "end": "2026-04-13T10:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "Call before arrival",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "delivery_failed",
+      "statusMessage": "Failed",
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": "Skipped from carrier app",
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": {
+        "lat": 48.8532,
+        "lon": 2.3714
+      },
+      "lastKnownPositionAt": "2026-04-12T15:08:54.610Z",
+      "lastKnownPositionLabel": "Live position 48.85320 / 2.37140",
+      "createdAt": "2026-04-12T14:35:53.316204+00:00",
+      "updatedAt": "2026-04-12T15:09:17.403289+00:00"
+    },
+    {
+      "id": "ord_20260412163553_2ee168",
+      "merchantId": "Sylvain",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-CSV-002",
+      "pickupAddress": {
+        "label": "88 rue de la justice",
+        "street1": "88 rue de la justice",
+        "city": "Saint germain en laye",
+        "postalCode": "78100",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "33122222222",
+        "email": "pickup2@example.com",
+        "parcelSize": "L",
+        "comment": "Pickup at front desk",
+        "coordinates": {
+          "lat": 48.890986,
+          "lon": 2.072063
+        }
+      },
+      "dropoffAddress": {
+        "label": "Customer Batignolles",
+        "street1": "12 Rue des Dames",
+        "city": "Paris",
+        "postalCode": "75017",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "33622222222",
+        "email": "client2@example.com",
+        "parcelSize": "L",
+        "comment": "Pickup then direct drop",
+        "coordinates": {
+          "lat": 48.883,
+          "lon": 2.3232
+        }
+      },
+      "parcelSize": "L",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 5.0,
+      "volumeDm3": 18.0,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T08:00:00.000Z",
+          "end": "2026-04-13T10:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "Pickup then direct drop",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "delivery_failed",
+      "statusMessage": "Failed",
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": "Skipped from carrier app",
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": {
+        "lat": 48.883,
+        "lon": 2.3232
+      },
+      "lastKnownPositionAt": "2026-04-12T15:12:20.133Z",
+      "lastKnownPositionLabel": "Live position 48.88300 / 2.32320",
+      "createdAt": "2026-04-12T14:35:53.445985+00:00",
+      "updatedAt": "2026-04-12T15:12:58.926815+00:00"
+    },
+    {
+      "id": "ord_20260412163553_057536",
+      "merchantId": "TEST",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-CSV-1",
+      "pickupAddress": {
+        "label": "3 all\u00e9e jean de joinville",
+        "street1": "3 all\u00e9e jean de joinville",
+        "city": "Acheres",
+        "postalCode": "78260",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "S",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.956143,
+          "lon": 2.0633216
+        }
+      },
+      "dropoffAddress": {
+        "label": "Ikea plasir",
+        "street1": "202 rue Henri barbus",
+        "city": "Plaisir",
+        "postalCode": "78490",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "S",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.8293765,
+          "lon": 1.967871
+        }
+      },
+      "parcelSize": "S",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 10.0,
+      "volumeDm3": 0.0,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T09:00:00.000Z",
+          "end": "2026-04-13T12:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "ready",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T14:35:53.912329+00:00",
+      "updatedAt": "2026-04-12T14:35:53.912329+00:00"
+    },
+    {
+      "id": "ord_20260412163554_1c774f",
+      "merchantId": "Vans",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-CSV0",
+      "pickupAddress": {
+        "label": "57 Rue de Rennes,",
+        "street1": "57 Rue de Rennes,",
+        "city": "Paris",
+        "postalCode": "75006",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "XXL",
+        "comment": "Demandez Zo\u00e9",
+        "coordinates": {
+          "lat": 48.8520765,
+          "lon": 2.3317438
+        }
+      },
+      "dropoffAddress": {
+        "label": "WD Studio",
+        "street1": "1 place de l\u2019\u00e9glise",
+        "city": "Le plessi belleville",
+        "postalCode": "60330",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "XXL",
+        "comment": "",
+        "coordinates": {
+          "lat": 49.094695,
+          "lon": 2.757156
+        }
+      },
+      "parcelSize": "XXL",
+      "serviceDurationSeconds": 400,
+      "parcelCount": 1,
+      "weightKg": 10.0,
+      "volumeDm3": 0.0,
+      "requiredSkills": [
+        "fragile"
+      ],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T12:00:00.000Z",
+          "end": "2026-04-13T16:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "planned",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T14:35:54.194345+00:00",
+      "updatedAt": "2026-04-12T15:04:43.357068+00:00"
+    },
+    {
+      "id": "ord_20260412164610_1eed8b",
+      "merchantId": "Naaval Test",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-CSV-001",
+      "pickupAddress": {
+        "label": "88 rue de la justice",
+        "street1": "88 rue de la justice",
+        "city": "Saint germain en laye",
+        "postalCode": "78100",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "625105668",
+        "email": "p.morcrette@gmail.com",
+        "parcelSize": "XL",
+        "comment": "Code porte 4543",
+        "coordinates": {
+          "lat": 48.890986,
+          "lon": 2.072063
+        }
+      },
+      "dropoffAddress": {
+        "label": "Client Bastille",
+        "street1": "7 Rue de la Roquette",
+        "city": "Paris",
+        "postalCode": "75011",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "33611111111",
+        "email": "client1@example.com",
+        "parcelSize": "XL",
+        "comment": "Call before arrival",
+        "coordinates": {
+          "lat": 48.8532,
+          "lon": 2.3714
+        }
+      },
+      "parcelSize": "XL",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 2,
+      "weightKg": 8.0,
+      "volumeDm3": 35.0,
+      "requiredSkills": [
+        "fragile"
+      ],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T08:00:00.000Z",
+          "end": "2026-04-13T10:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "Call before arrival",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "pickup_failed",
+      "statusMessage": "Failed Pickup",
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": "Skipped from carrier app",
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": {
+        "lat": 48.890986,
+        "lon": 2.072063
+      },
+      "lastKnownPositionAt": "2026-04-13T18:51:39.585Z",
+      "lastKnownPositionLabel": "Live position 48.89099 / 2.07206",
+      "createdAt": "2026-04-12T14:46:10.648870+00:00",
+      "updatedAt": "2026-04-17T11:45:41.360439+00:00"
+    },
+    {
+      "id": "ord_20260412164610_599346",
+      "merchantId": "Sylvain",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-CSV-002",
+      "pickupAddress": {
+        "label": "88 rue de la justice",
+        "street1": "88 rue de la justice",
+        "city": "Saint germain en laye",
+        "postalCode": "78100",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "33122222222",
+        "email": "pickup2@example.com",
+        "parcelSize": "L",
+        "comment": "Pickup at front desk",
+        "coordinates": {
+          "lat": 48.890986,
+          "lon": 2.072063
+        }
+      },
+      "dropoffAddress": {
+        "label": "Customer Batignolles",
+        "street1": "12 Rue des Dames",
+        "city": "Paris",
+        "postalCode": "75017",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "33622222222",
+        "email": "client2@example.com",
+        "parcelSize": "L",
+        "comment": "Pickup then direct drop",
+        "coordinates": {
+          "lat": 48.883,
+          "lon": 2.3232
+        }
+      },
+      "parcelSize": "L",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 5.0,
+      "volumeDm3": 18.0,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T08:00:00.000Z",
+          "end": "2026-04-13T10:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "Pickup then direct drop",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "planned",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T14:46:10.771891+00:00",
+      "updatedAt": "2026-04-12T15:01:01.915571+00:00"
+    },
+    {
+      "id": "ord_20260412164611_1e6eef",
+      "merchantId": "TEST",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-CSV-1",
+      "pickupAddress": {
+        "label": "3 all\u00e9e jean de joinville",
+        "street1": "3 all\u00e9e jean de joinville",
+        "city": "Acheres",
+        "postalCode": "78260",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "S",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.956143,
+          "lon": 2.0633216
+        }
+      },
+      "dropoffAddress": {
+        "label": "Ikea plasir",
+        "street1": "202 rue Henri barbus",
+        "city": "Plaisir",
+        "postalCode": "78490",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "S",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.8293765,
+          "lon": 1.967871
+        }
+      },
+      "parcelSize": "S",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 10.0,
+      "volumeDm3": 0.0,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T09:00:00.000Z",
+          "end": "2026-04-13T12:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "ready",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T14:46:11.048375+00:00",
+      "updatedAt": "2026-04-12T14:46:11.048375+00:00"
+    },
+    {
+      "id": "ord_20260412164611_478692",
+      "merchantId": "Vans",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-CSV0",
+      "pickupAddress": {
+        "label": "57 Rue de Rennes,",
+        "street1": "57 Rue de Rennes,",
+        "city": "Paris",
+        "postalCode": "75006",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "XXL",
+        "comment": "Demandez Zo\u00e9",
+        "coordinates": {
+          "lat": 48.8520765,
+          "lon": 2.3317438
+        }
+      },
+      "dropoffAddress": {
+        "label": "WD Studio",
+        "street1": "1 place de l\u2019\u00e9glise",
+        "city": "Le plessi belleville",
+        "postalCode": "60330",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "XXL",
+        "comment": "",
+        "coordinates": {
+          "lat": 49.094695,
+          "lon": 2.757156
+        }
+      },
+      "parcelSize": "XXL",
+      "serviceDurationSeconds": 400,
+      "parcelCount": 1,
+      "weightKg": 10.0,
+      "volumeDm3": 0.0,
+      "requiredSkills": [
+        "fragile"
+      ],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T12:00:00.000Z",
+          "end": "2026-04-13T16:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "ready",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T14:46:11.317910+00:00",
+      "updatedAt": "2026-04-12T14:46:11.317910+00:00"
+    },
+    {
+      "id": "ord_20260412165956_76af5c",
+      "merchantId": "Naaval Test",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "NAAV-CSV-001",
+      "pickupAddress": {
+        "label": "88 rue de la justice",
+        "street1": "88 rue de la justice",
+        "city": "Saint germain en laye",
+        "postalCode": "78100",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "625105668",
+        "email": "p.morcrette@gmail.com",
+        "parcelSize": "XL",
+        "comment": "Code porte 4543",
+        "coordinates": {
+          "lat": 48.890986,
+          "lon": 2.072063
+        }
+      },
+      "dropoffAddress": {
+        "label": "Client Bastille",
+        "street1": "7 Rue de la Roquette",
+        "city": "Paris",
+        "postalCode": "75011",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "33611111111",
+        "email": "client1@example.com",
+        "parcelSize": "XL",
+        "comment": "Call before arrival",
+        "coordinates": {
+          "lat": 48.8532,
+          "lon": 2.3714
+        }
+      },
+      "parcelSize": "XL",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 2,
+      "weightKg": 8.0,
+      "volumeDm3": 35.0,
+      "requiredSkills": [
+        "fragile"
+      ],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T08:00:00.000Z",
+          "end": "2026-04-13T10:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "Call before arrival",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "planned",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T14:59:56.393127+00:00",
+      "updatedAt": "2026-04-17T12:22:40.489959+00:00"
+    },
+    {
+      "id": "ord_20260412165956_a43676",
+      "merchantId": "Sylvain",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-CSV-001",
+      "pickupAddress": {
+        "label": "88 rue de la justice",
+        "street1": "88 rue de la justice",
+        "city": "Saint germain en laye",
+        "postalCode": "78100",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "33122222222",
+        "email": "pickup2@example.com",
+        "parcelSize": "L",
+        "comment": "Pickup at front desk",
+        "coordinates": {
+          "lat": 48.890986,
+          "lon": 2.072063
+        }
+      },
+      "dropoffAddress": {
+        "label": "Customer Batignolles",
+        "street1": "12 Rue des Dames",
+        "city": "Paris",
+        "postalCode": "75017",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "33622222222",
+        "email": "client2@example.com",
+        "parcelSize": "L",
+        "comment": "Pickup then direct drop",
+        "coordinates": {
+          "lat": 48.883,
+          "lon": 2.3232
+        }
+      },
+      "parcelSize": "L",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 5.0,
+      "volumeDm3": 18.0,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T08:00:00.000Z",
+          "end": "2026-04-13T10:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "Pickup then direct drop",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "planned",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T14:59:56.515779+00:00",
+      "updatedAt": "2026-04-17T12:22:40.489963+00:00"
+    },
+    {
+      "id": "ord_20260412165956_b87a06",
+      "merchantId": "TEST",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-CSV-001",
+      "pickupAddress": {
+        "label": "3 all\u00e9e jean de joinville",
+        "street1": "3 all\u00e9e jean de joinville",
+        "city": "Acheres",
+        "postalCode": "78260",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "S",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.956143,
+          "lon": 2.0633216
+        }
+      },
+      "dropoffAddress": {
+        "label": "Ikea plasir",
+        "street1": "202 rue Henri barbus",
+        "city": "Plaisir",
+        "postalCode": "78490",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "S",
+        "comment": "",
+        "coordinates": {
+          "lat": 48.8293765,
+          "lon": 1.967871
+        }
+      },
+      "parcelSize": "S",
+      "serviceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 10.0,
+      "volumeDm3": 0.0,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T09:00:00.000Z",
+          "end": "2026-04-13T12:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "ready",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T14:59:56.793879+00:00",
+      "updatedAt": "2026-04-12T14:59:56.793879+00:00"
+    },
+    {
+      "id": "ord_20260412165957_8250e2",
+      "merchantId": "Vans",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "delivery",
+      "reference": "NAAV-CSV-001",
+      "pickupAddress": {
+        "label": "57 Rue de Rennes,",
+        "street1": "57 Rue de Rennes,",
+        "city": "Paris",
+        "postalCode": "75006",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "XXL",
+        "comment": "Demandez Zo\u00e9",
+        "coordinates": {
+          "lat": 48.8520765,
+          "lon": 2.3317438
+        }
+      },
+      "dropoffAddress": {
+        "label": "WD Studio",
+        "street1": "1 place de l\u2019\u00e9glise",
+        "city": "Le plessi belleville",
+        "postalCode": "60330",
+        "countryCode": "FR",
+        "contactName": "",
+        "phone": "",
+        "email": "",
+        "parcelSize": "XXL",
+        "comment": "",
+        "coordinates": {
+          "lat": 49.094695,
+          "lon": 2.757156
+        }
+      },
+      "parcelSize": "XXL",
+      "serviceDurationSeconds": 400,
+      "parcelCount": 1,
+      "weightKg": 10.0,
+      "volumeDm3": 0.0,
+      "requiredSkills": [
+        "fragile"
+      ],
+      "timeWindows": [
+        {
+          "start": "2026-04-13T12:00:00.000Z",
+          "end": "2026-04-13T16:00:00.000Z"
+        }
+      ],
+      "priority": 0,
+      "notes": "",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "ready",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-04-12T14:59:57.065567+00:00",
+      "updatedAt": "2026-04-12T14:59:57.065567+00:00"
+    }
+  ],
+  "planningJobs": [
+    {
+      "id": "plan_20260417142240_27cb49",
+      "hubId": "hub_paris_central",
+      "planDate": "2026-04-13",
+      "orderIds": [
+        "ord_20260412165956_76af5c",
+        "ord_20260412165956_a43676"
+      ],
+      "driverShiftIds": [
+        "shift_amina_am"
+      ],
+      "objectivePreset": "speed",
+      "solver": "graphhopper",
+      "solverNote": null,
+      "status": "finished",
+      "routeIds": [
+        "route_20260417142240_180220"
+      ],
+      "createdAt": "2026-04-17T12:22:40.489934+00:00",
+      "updatedAt": "2026-04-17T12:22:40.489938+00:00",
+      "completedAt": "2026-04-17T12:22:40.489941+00:00"
+    },
+    {
+      "id": "plan_20260411104846_9b6a4d",
+      "hubId": "hub_paris_central",
+      "planDate": "2026-04-11",
+      "orderIds": [
+        "ord_20260411093917_352f2d",
+        "order_demo_4",
+        "order_demo_6"
+      ],
+      "driverShiftIds": [
+        "shift_amina_am",
+        "shift_noah_am"
+      ],
+      "objectivePreset": "speed",
+      "solver": "python_mock",
+      "solverNote": "GraphHopper allows 1 vehicle on the current plan. Naaval local planner was used instead.",
+      "status": "finished",
+      "routeIds": [
+        "route_20260411104846_1ca0dc",
+        "route_20260411104846_4fcf0b"
+      ],
+      "createdAt": "2026-04-11T08:48:46.570936+00:00",
+      "updatedAt": "2026-04-11T08:48:46.570938+00:00",
+      "completedAt": "2026-04-11T08:48:46.570939+00:00"
+    },
+    {
+      "id": "plan_20260410150409_fd1fa3",
+      "hubId": "hub_paris_central",
+      "planDate": "2026-04-10",
+      "orderIds": [
+        "ord_20260410150409_092ebf",
+        "order_demo_3",
+        "order_demo_4",
+        "order_demo_5",
+        "order_demo_6"
+      ],
+      "driverShiftIds": [
+        "shift_amina_am",
+        "shift_noah_am"
+      ],
+      "objectivePreset": "balanced",
+      "solver": "python_mock",
+      "status": "finished",
+      "routeIds": [
+        "route_20260410150409_e79d4e",
+        "route_20260410150409_7067eb"
+      ],
+      "createdAt": "2026-04-10T13:04:09.946982+00:00",
+      "updatedAt": "2026-04-10T13:04:09.946983+00:00",
+      "completedAt": "2026-04-10T13:04:09.946984+00:00"
+    }
+  ],
+  "routes": [
+    {
+      "id": "route_20260412172508_abf11e",
+      "planId": "manual_plan_20260412172508_ba033d",
+      "shiftId": null,
+      "driverId": "driver_20260411175155_dd9077",
+      "vehicleId": null,
+      "status": "dispatched",
+      "source": "manual_assignment",
+      "totalDistanceMeters": 3800,
+      "totalDurationSeconds": 1200,
+      "stops": [
+        {
+          "id": "route_20260412172508_abf11e_stop_1",
+          "orderId": "ord_20260412172125_3a476c",
+          "sequence": 1,
+          "kind": "delivery",
+          "address": {
+            "label": "Music Lab",
+            "street1": "3 rue jean claude mary",
+            "city": "Poissy",
+            "postalCode": "78300",
+            "countryCode": "FR",
+            "contactName": "Sylvain Valette",
+            "phone": "0689454323",
+            "email": "sylvain@naaval.io",
+            "parcelSize": "L",
+            "comment": "T vraiment naze",
+            "coordinates": {
+              "lat": 48.931026,
+              "lon": 2.0403477
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:40:08.410614+02:00",
+          "plannedDepartureAt": "2026-04-12T17:45:08.410614+02:00",
+          "status": "pending"
+        }
+      ],
+      "createdAt": "2026-04-12T15:25:08.410686+00:00",
+      "updatedAt": "2026-04-12T15:25:11.248907+00:00",
+      "dispatchedAt": "2026-04-12T15:25:11.248867+00:00"
+    },
+    {
+      "id": "route_20260412172457_f91573",
+      "planId": "manual_plan_20260412172457_fb32ab",
+      "shiftId": null,
+      "driverId": "driver_20260411175155_dd9077",
+      "vehicleId": null,
+      "status": "dispatched",
+      "source": "manual_assignment",
+      "totalDistanceMeters": 3800,
+      "totalDurationSeconds": 1200,
+      "stops": [
+        {
+          "id": "route_20260412172457_f91573_stop_1",
+          "orderId": "ord_20260412172125_9c3af8",
+          "sequence": 1,
+          "kind": "delivery",
+          "address": {
+            "label": "Chez les parents",
+            "street1": "88 rue de la justice",
+            "city": "Saint germain en laye",
+            "postalCode": "78100",
+            "countryCode": "FR",
+            "contactName": "Pierre Morcrette",
+            "phone": "0909490934",
+            "email": "pierre@naaval.io",
+            "parcelSize": "S",
+            "comment": "t moche",
+            "coordinates": {
+              "lat": 48.890986,
+              "lon": 2.072063
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:39:57.705406+02:00",
+          "plannedDepartureAt": "2026-04-12T17:44:57.705406+02:00",
+          "status": "pending"
+        }
+      ],
+      "createdAt": "2026-04-12T15:24:57.705539+00:00",
+      "updatedAt": "2026-04-12T15:26:06.838429+00:00",
+      "dispatchedAt": "2026-04-12T15:26:06.838399+00:00",
+      "lastKnownPosition": {
+        "lat": 48.890986,
+        "lon": 2.072063
+      },
+      "lastHeartbeatAt": "2026-04-17T11:50:10.383Z",
+      "lastKnownPositionLabel": "Live position 48.89099 / 2.07206"
+    },
+    {
+      "id": "route_20260412170443_28ff88",
+      "planId": "manual_plan_20260412170443_78dbec",
+      "shiftId": null,
+      "driverId": "driver_20260411175155_dd9077",
+      "vehicleId": null,
+      "status": "ready",
+      "source": "manual_assignment",
+      "totalDistanceMeters": 7600,
+      "totalDurationSeconds": 2300,
+      "stops": [
+        {
+          "id": "route_20260412170443_28ff88_stop_1",
+          "orderId": "ord_20260412163554_1c774f",
+          "sequence": 1,
+          "kind": "pickup",
+          "address": {
+            "label": "57 Rue de Rennes,",
+            "street1": "57 Rue de Rennes,",
+            "city": "Paris",
+            "postalCode": "75006",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "",
+            "email": "",
+            "parcelSize": "XXL",
+            "comment": "Demandez Zo\u00e9",
+            "coordinates": {
+              "lat": 48.8520765,
+              "lon": 2.3317438
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:14:43.356905+02:00",
+          "plannedDepartureAt": "2026-04-12T17:21:23.356905+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260412170443_28ff88_stop_2",
+          "orderId": "ord_20260412163554_1c774f",
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "WD Studio",
+            "street1": "1 place de l\u2019\u00e9glise",
+            "city": "Le plessi belleville",
+            "postalCode": "60330",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "",
+            "email": "",
+            "parcelSize": "XXL",
+            "comment": "",
+            "coordinates": {
+              "lat": 49.094695,
+              "lon": 2.757156
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:36:23.356905+02:00",
+          "plannedDepartureAt": "2026-04-12T17:43:03.356905+02:00",
+          "status": "pending"
+        }
+      ],
+      "createdAt": "2026-04-12T15:04:43.357053+00:00",
+      "updatedAt": "2026-04-12T15:04:43.357058+00:00"
+    },
+    {
+      "id": "route_20260412170101_aeb714",
+      "planId": "manual_plan_20260412170101_cdad80",
+      "shiftId": null,
+      "driverId": "driver_20260411175155_dd9077",
+      "vehicleId": null,
+      "status": "ready",
+      "source": "manual_assignment",
+      "totalDistanceMeters": 7600,
+      "totalDurationSeconds": 2100,
+      "stops": [
+        {
+          "id": "route_20260412170101_aeb714_stop_1",
+          "orderId": "ord_20260412164610_599346",
+          "sequence": 1,
+          "kind": "pickup",
+          "address": {
+            "label": "88 rue de la justice",
+            "street1": "88 rue de la justice",
+            "city": "Saint germain en laye",
+            "postalCode": "78100",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "33122222222",
+            "email": "pickup2@example.com",
+            "parcelSize": "L",
+            "comment": "Pickup at front desk",
+            "coordinates": {
+              "lat": 48.890986,
+              "lon": 2.072063
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:11:01.915437+02:00",
+          "plannedDepartureAt": "2026-04-12T17:16:01.915437+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260412170101_aeb714_stop_2",
+          "orderId": "ord_20260412164610_599346",
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "Customer Batignolles",
+            "street1": "12 Rue des Dames",
+            "city": "Paris",
+            "postalCode": "75017",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "33622222222",
+            "email": "client2@example.com",
+            "parcelSize": "L",
+            "comment": "Pickup then direct drop",
+            "coordinates": {
+              "lat": 48.883,
+              "lon": 2.3232
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:31:01.915437+02:00",
+          "plannedDepartureAt": "2026-04-12T17:36:01.915437+02:00",
+          "status": "pending"
+        }
+      ],
+      "createdAt": "2026-04-12T15:01:01.915542+00:00",
+      "updatedAt": "2026-04-12T15:01:01.915551+00:00"
+    },
+    {
+      "id": "route_20260412170057_dafd33",
+      "planId": "manual_plan_20260412170057_7ccc97",
+      "shiftId": null,
+      "driverId": "driver_20260411175155_dd9077",
+      "vehicleId": null,
+      "status": "completed",
+      "source": "manual_assignment",
+      "totalDistanceMeters": 7600,
+      "totalDurationSeconds": 2100,
+      "stops": [
+        {
+          "id": "route_20260412170057_dafd33_stop_1",
+          "orderId": "ord_20260412164610_1eed8b",
+          "sequence": 1,
+          "kind": "pickup",
+          "address": {
+            "label": "88 rue de la justice",
+            "street1": "88 rue de la justice",
+            "city": "Saint germain en laye",
+            "postalCode": "78100",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "625105668",
+            "email": "p.morcrette@gmail.com",
+            "parcelSize": "XL",
+            "comment": "Code porte 4543",
+            "coordinates": {
+              "lat": 48.890986,
+              "lon": 2.072063
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:10:57.216847+02:00",
+          "plannedDepartureAt": "2026-04-12T17:15:57.216847+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-17T11:45:41.360425+00:00"
+        },
+        {
+          "id": "route_20260412170057_dafd33_stop_2",
+          "orderId": "ord_20260412164610_1eed8b",
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "Client Bastille",
+            "street1": "7 Rue de la Roquette",
+            "city": "Paris",
+            "postalCode": "75011",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "33611111111",
+            "email": "client1@example.com",
+            "parcelSize": "XL",
+            "comment": "Call before arrival",
+            "coordinates": {
+              "lat": 48.8532,
+              "lon": 2.3714
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:30:57.216847+02:00",
+          "plannedDepartureAt": "2026-04-12T17:35:57.216847+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-17T11:45:38.820703+00:00"
+        }
+      ],
+      "createdAt": "2026-04-12T15:00:57.216942+00:00",
+      "updatedAt": "2026-04-12T15:13:19.343505+00:00",
+      "lastKnownPosition": {
+        "lat": 48.890986,
+        "lon": 2.072063
+      },
+      "lastHeartbeatAt": "2026-04-13T18:51:39.585Z",
+      "lastKnownPositionLabel": "Live position 48.89099 / 2.07206",
+      "startedAt": "2026-04-12T15:13:19.331Z",
+      "completedAt": "2026-04-17T11:45:41.360443+00:00"
+    },
+    {
+      "id": "route_20260412170052_4912c7",
+      "planId": "manual_plan_20260412170052_4ec0f6",
+      "shiftId": null,
+      "driverId": "driver_20260411175155_dd9077",
+      "vehicleId": null,
+      "status": "completed",
+      "source": "manual_assignment",
+      "totalDistanceMeters": 7600,
+      "totalDurationSeconds": 2100,
+      "stops": [
+        {
+          "id": "route_20260412170052_4912c7_stop_1",
+          "orderId": "ord_20260412163553_2ee168",
+          "sequence": 1,
+          "kind": "pickup",
+          "address": {
+            "label": "88 rue de la justice",
+            "street1": "88 rue de la justice",
+            "city": "Saint germain en laye",
+            "postalCode": "78100",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "33122222222",
+            "email": "pickup2@example.com",
+            "parcelSize": "L",
+            "comment": "Pickup at front desk",
+            "coordinates": {
+              "lat": 48.890986,
+              "lon": 2.072063
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:10:52.744812+02:00",
+          "plannedDepartureAt": "2026-04-12T17:15:52.744812+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-12T15:12:13.114357+00:00"
+        },
+        {
+          "id": "route_20260412170052_4912c7_stop_2",
+          "orderId": "ord_20260412163553_2ee168",
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "Customer Batignolles",
+            "street1": "12 Rue des Dames",
+            "city": "Paris",
+            "postalCode": "75017",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "33622222222",
+            "email": "client2@example.com",
+            "parcelSize": "L",
+            "comment": "Pickup then direct drop",
+            "coordinates": {
+              "lat": 48.883,
+              "lon": 2.3232
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:30:52.744812+02:00",
+          "plannedDepartureAt": "2026-04-12T17:35:52.744812+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-12T15:12:58.926741+00:00"
+        }
+      ],
+      "createdAt": "2026-04-12T15:00:52.744919+00:00",
+      "updatedAt": "2026-04-12T15:10:07.824554+00:00",
+      "lastKnownPosition": {
+        "lat": 48.883,
+        "lon": 2.3232
+      },
+      "lastHeartbeatAt": "2026-04-12T15:12:20.133Z",
+      "lastKnownPositionLabel": "Live position 48.88300 / 2.32320",
+      "startedAt": "2026-04-12T15:10:07.814Z",
+      "completedAt": "2026-04-12T15:12:58.926847+00:00"
+    },
+    {
+      "id": "route_20260412170043_45cbdd",
+      "planId": "manual_plan_20260412170043_f5afb2",
+      "shiftId": null,
+      "driverId": "driver_20260411175155_dd9077",
+      "vehicleId": null,
+      "status": "completed",
+      "source": "manual_assignment",
+      "totalDistanceMeters": 7600,
+      "totalDurationSeconds": 2100,
+      "stops": [
+        {
+          "id": "route_20260412170043_45cbdd_stop_1",
+          "orderId": "ord_20260412163553_39c5e0",
+          "sequence": 1,
+          "kind": "pickup",
+          "address": {
+            "label": "88 rue de la justice",
+            "street1": "88 rue de la justice",
+            "city": "Saint germain en laye",
+            "postalCode": "78100",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "625105668",
+            "email": "p.morcrette@gmail.com",
+            "parcelSize": "XL",
+            "comment": "Code porte 4543",
+            "coordinates": {
+              "lat": 48.890986,
+              "lon": 2.072063
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:10:43.676917+02:00",
+          "plannedDepartureAt": "2026-04-12T17:15:43.676917+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-12T15:08:46.909098+00:00"
+        },
+        {
+          "id": "route_20260412170043_45cbdd_stop_2",
+          "orderId": "ord_20260412163553_39c5e0",
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "Client Bastille",
+            "street1": "7 Rue de la Roquette",
+            "city": "Paris",
+            "postalCode": "75011",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "33611111111",
+            "email": "client1@example.com",
+            "parcelSize": "XL",
+            "comment": "Call before arrival",
+            "coordinates": {
+              "lat": 48.8532,
+              "lon": 2.3714
+            }
+          },
+          "plannedArrivalAt": "2026-04-12T17:30:43.676917+02:00",
+          "plannedDepartureAt": "2026-04-12T17:35:43.676917+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-12T15:09:17.403228+00:00"
+        }
+      ],
+      "createdAt": "2026-04-12T15:00:43.677080+00:00",
+      "updatedAt": "2026-04-12T15:05:28.217547+00:00",
+      "lastKnownPosition": {
+        "lat": 48.8532,
+        "lon": 2.3714
+      },
+      "lastHeartbeatAt": "2026-04-12T15:08:54.610Z",
+      "lastKnownPositionLabel": "Live position 48.85320 / 2.37140",
+      "startedAt": "2026-04-12T15:05:28.211Z",
+      "completedAt": "2026-04-12T15:09:17.403308+00:00"
+    },
+    {
+      "id": "route_demo_1",
+      "planId": "plan_demo_a",
+      "shiftId": "shift_amina_am",
+      "driverId": "driver_amina",
+      "vehicleId": "vehicle_van_1",
+      "status": "completed",
+      "totalDistanceMeters": 16400,
+      "totalDurationSeconds": 2800,
+      "stops": [
+        {
+          "id": "route_demo_1_stop_1",
+          "orderId": "order_demo_1",
+          "sequence": 1,
+          "kind": "delivery",
+          "address": {
+            "label": "Avenue Louise 231, 1050 Ixelles",
+            "street1": "Avenue Louise 231",
+            "city": "Ixelles",
+            "postalCode": "1050",
+            "countryCode": "BE",
+            "coordinates": {
+              "lat": 50.8247,
+              "lon": 4.3654
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T08:45:00+02:00",
+          "plannedDepartureAt": "2026-04-10T09:05:00+02:00",
+          "status": "served"
+        }
+      ]
+    },
+    {
+      "id": "route_demo_2",
+      "planId": "plan_demo_b",
+      "shiftId": "shift_amina_am",
+      "driverId": "driver_amina",
+      "vehicleId": "vehicle_van_1",
+      "status": "completed",
+      "totalDistanceMeters": 11200,
+      "totalDurationSeconds": 2100,
+      "stops": [
+        {
+          "id": "route_demo_2_stop_1",
+          "orderId": "order_demo_2",
+          "sequence": 1,
+          "kind": "delivery",
+          "address": {
+            "label": "Rue Defacqz 34, 1060 Saint-Gilles",
+            "street1": "Rue Defacqz 34",
+            "city": "Saint-Gilles",
+            "postalCode": "1060",
+            "countryCode": "BE",
+            "coordinates": {
+              "lat": 50.8261,
+              "lon": 4.3525
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T09:30:00+02:00",
+          "plannedDepartureAt": "2026-04-10T09:55:00+02:00",
+          "status": "failed",
+          "proofId": "pod_20260412150757_90532f",
+          "proofOutcomeCode": "delivery_refused_by_customer",
+          "proofOutcomeLabel": "Refused by Customer",
+          "reasonCode": "customer_refusal",
+          "reasonLabel": "Customer refused",
+          "note": "Customer refused the parcel at the door because the slot was missed.",
+          "updatedAt": "2026-04-12T13:07:57.929183+00:00"
+        }
+      ],
+      "lastKnownPosition": {
+        "lat": 50.82631,
+        "lon": 4.35271
+      },
+      "lastHeartbeatAt": "2026-04-12T10:35:00+02:00",
+      "lastKnownPositionLabel": "Customer doorstep",
+      "completedAt": "2026-04-12T13:07:57.929269+00:00"
+    },
+    {
+      "id": "route_20260410150409_e79d4e",
+      "planId": "plan_20260410150409_fd1fa3",
+      "shiftId": "shift_amina_am",
+      "driverId": "driver_amina",
+      "vehicleId": "vehicle_van_1",
+      "status": "dispatched",
+      "source": "python_mock",
+      "totalDistanceMeters": 12900,
+      "totalDurationSeconds": 3480,
+      "stops": [
+        {
+          "id": "route_20260410150409_e79d4e_stop_1",
+          "orderId": "order_demo_3",
+          "sequence": 1,
+          "kind": "delivery",
+          "address": {
+            "label": "Chaussee d'Alsemberg 81, 1190 Forest",
+            "street1": "Chaussee d'Alsemberg 81",
+            "city": "Forest",
+            "postalCode": "1190",
+            "countryCode": "BE",
+            "coordinates": {
+              "lat": 50.8178,
+              "lon": 4.3345
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T08:15:00+02:00",
+          "plannedDepartureAt": "2026-04-10T08:20:00+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260410150409_e79d4e_stop_2",
+          "orderId": "order_demo_5",
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "Place Flagey 7, 1050 Ixelles",
+            "street1": "Place Flagey 7",
+            "city": "Ixelles",
+            "postalCode": "1050",
+            "countryCode": "BE",
+            "coordinates": {
+              "lat": 50.8275,
+              "lon": 4.3722
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T08:35:00+02:00",
+          "plannedDepartureAt": "2026-04-10T08:38:00+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260410150409_e79d4e_stop_3",
+          "orderId": "ord_20260410150409_092ebf",
+          "sequence": 3,
+          "kind": "delivery",
+          "address": {
+            "label": "Smoke Customer",
+            "street1": "25 Rue du Test",
+            "city": "Paris",
+            "postalCode": "75011",
+            "countryCode": "FR",
+            "coordinates": {
+              "lat": 48.8671,
+              "lon": 2.3831
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T08:53:00+02:00",
+          "plannedDepartureAt": "2026-04-10T08:58:00+02:00",
+          "status": "pending"
+        }
+      ],
+      "dispatchedAt": "2026-04-10T13:04:09.949090+00:00",
+      "updatedAt": "2026-04-10T13:04:09.949092+00:00"
+    },
+    {
+      "id": "route_20260410150409_7067eb",
+      "planId": "plan_20260410150409_fd1fa3",
+      "shiftId": "shift_noah_am",
+      "driverId": "driver_20260411175155_dd9077",
+      "vehicleId": "vehicle_bike_1",
+      "status": "completed",
+      "source": "python_mock",
+      "totalDistanceMeters": 12900,
+      "totalDurationSeconds": 3240,
+      "stops": [
+        {
+          "id": "route_20260410150409_7067eb_stop_1",
+          "orderId": "order_demo_4",
+          "sequence": 1,
+          "kind": "delivery",
+          "address": {
+            "label": "Boulevard de Waterloo 12, 1000 Bruxelles",
+            "street1": "Boulevard de Waterloo 12",
+            "city": "Bruxelles",
+            "postalCode": "1000",
+            "countryCode": "BE",
+            "coordinates": {
+              "lat": 50.8381,
+              "lon": 4.3558
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T08:45:00+02:00",
+          "plannedDepartureAt": "2026-04-10T08:49:00+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-12T15:28:42.423359+00:00"
+        },
+        {
+          "id": "route_20260410150409_7067eb_stop_2",
+          "orderId": "order_demo_6",
+          "sequence": 2,
+          "kind": "pickup",
+          "address": {
+            "label": "Rue Oberkampf 9, Paris 11",
+            "street1": "Rue Oberkampf 9",
+            "city": "Paris",
+            "postalCode": "75011",
+            "countryCode": "FR",
+            "coordinates": {
+              "lat": 48.8654,
+              "lon": 2.3781
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T08:59:00+02:00",
+          "plannedDepartureAt": "2026-04-10T09:04:00+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-12T15:28:43.782994+00:00"
+        },
+        {
+          "id": "route_20260410150409_7067eb_stop_3",
+          "orderId": "order_demo_6",
+          "sequence": 3,
+          "kind": "delivery",
+          "address": {
+            "label": "Rue des Dames 12, Paris 17",
+            "street1": "Rue des Dames 12",
+            "city": "Paris",
+            "postalCode": "75017",
+            "countryCode": "FR",
+            "coordinates": {
+              "lat": 48.883,
+              "lon": 2.3232
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T09:19:00+02:00",
+          "plannedDepartureAt": "2026-04-10T09:24:00+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-12T15:30:50.280448+00:00"
+        }
+      ],
+      "updatedAt": "2026-04-12T14:39:19.201137+00:00",
+      "dispatchedAt": "2026-04-12T14:39:19.201109+00:00",
+      "lastKnownPosition": {
+        "lat": 48.883,
+        "lon": 2.3232
+      },
+      "lastHeartbeatAt": "2026-04-12T15:34:02.797Z",
+      "lastKnownPositionLabel": "Live position 48.88300 / 2.32320",
+      "completedAt": "2026-04-12T15:30:50.280544+00:00"
+    },
+    {
+      "id": "route_20260411104846_1ca0dc",
+      "planId": "plan_20260411104846_9b6a4d",
+      "shiftId": "shift_noah_am",
+      "driverId": "driver_20260411175155_dd9077",
+      "vehicleId": "vehicle_bike_1",
+      "status": "completed",
+      "source": "python_mock",
+      "totalDistanceMeters": 8600,
+      "totalDurationSeconds": 2340,
+      "stops": [
+        {
+          "id": "route_20260411104846_1ca0dc_stop_1",
+          "orderId": "order_demo_4",
+          "sequence": 1,
+          "kind": "delivery",
+          "address": {
+            "label": "Boulevard de Waterloo 12, 1000 Bruxelles",
+            "street1": "Boulevard de Waterloo 12",
+            "city": "Bruxelles",
+            "postalCode": "1000",
+            "countryCode": "BE",
+            "coordinates": {
+              "lat": 50.8381,
+              "lon": 4.3558
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T08:15:00+02:00",
+          "plannedDepartureAt": "2026-04-10T08:19:00+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-12T10:34:25.146173+00:00"
+        },
+        {
+          "id": "route_20260411104846_1ca0dc_stop_2",
+          "orderId": "ord_20260411093917_352f2d",
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "Music lab",
+            "street1": "15 rue de la justice",
+            "city": "Saint germain en laye",
+            "postalCode": "78100",
+            "countryCode": "FR",
+            "contactName": "Sylvain Valette",
+            "phone": "0909483909",
+            "email": "",
+            "parcelSize": "M",
+            "comment": "",
+            "coordinates": {
+              "lat": 48.891157,
+              "lon": 2.075815
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T08:34:00+02:00",
+          "plannedDepartureAt": "2026-04-10T08:39:00+02:00",
+          "status": "skipped",
+          "note": "Skipped from carrier app",
+          "updatedAt": "2026-04-12T15:28:38.275252+00:00"
+        }
+      ],
+      "updatedAt": "2026-04-12T14:53:44.496094+00:00",
+      "lastKnownPosition": {
+        "lat": 50.8381,
+        "lon": 4.3558
+      },
+      "lastHeartbeatAt": "2026-04-12T15:04:50.061Z",
+      "startedAt": "2026-04-11T15:54:05.865Z",
+      "lastKnownPositionLabel": "Live position 50.83810 / 4.35580",
+      "dispatchedAt": "2026-04-12T14:53:44.496069+00:00",
+      "completedAt": "2026-04-12T15:28:38.275342+00:00"
+    },
+    {
+      "id": "route_20260411104846_4fcf0b",
+      "planId": "plan_20260411104846_9b6a4d",
+      "shiftId": "shift_noah_am",
+      "driverId": "driver_noah",
+      "vehicleId": "vehicle_bike_1",
+      "status": "ready",
+      "source": "python_mock",
+      "totalDistanceMeters": 8600,
+      "totalDurationSeconds": 2100,
+      "stops": [
+        {
+          "id": "route_20260411104846_4fcf0b_stop_1",
+          "orderId": "order_demo_6",
+          "sequence": 1,
+          "kind": "pickup",
+          "address": {
+            "label": "Rue Oberkampf 9, Paris 11",
+            "street1": "Rue Oberkampf 9",
+            "city": "Paris",
+            "postalCode": "75011",
+            "countryCode": "FR",
+            "coordinates": {
+              "lat": 48.8654,
+              "lon": 2.3781
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T08:40:00+02:00",
+          "plannedDepartureAt": "2026-04-10T08:45:00+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260411104846_4fcf0b_stop_2",
+          "orderId": "order_demo_6",
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "Rue des Dames 12, Paris 17",
+            "street1": "Rue des Dames 12",
+            "city": "Paris",
+            "postalCode": "75017",
+            "countryCode": "FR",
+            "coordinates": {
+              "lat": 48.883,
+              "lon": 2.3232
+            }
+          },
+          "plannedArrivalAt": "2026-04-10T09:00:00+02:00",
+          "plannedDepartureAt": "2026-04-10T09:05:00+02:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "route_20260417142240_180220",
+      "planId": "plan_20260417142240_27cb49",
+      "shiftId": "shift_amina_am",
+      "driverId": "driver_amina",
+      "vehicleId": "vehicle_van_1",
+      "status": "ready",
+      "source": "graphhopper",
+      "totalDistanceMeters": 34977,
+      "totalDurationSeconds": 10421,
+      "stops": [
+        {
+          "id": "route_20260417142240_180220_stop_1",
+          "orderId": "ord_20260412165956_a43676",
+          "orderIds": [
+            "ord_20260412165956_a43676",
+            "ord_20260412165956_76af5c"
+          ],
+          "sequence": 1,
+          "kind": "pickup",
+          "address": {
+            "label": "88 rue de la justice",
+            "street1": "88 rue de la justice",
+            "city": "Saint germain en laye",
+            "postalCode": "78100",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "625105668",
+            "email": "p.morcrette@gmail.com",
+            "parcelSize": "XL",
+            "comment": "Code porte 4543",
+            "coordinates": {
+              "lat": 48.890986,
+              "lon": 2.072063
+            }
+          },
+          "plannedArrivalAt": "2026-04-13T08:00:00+02:00",
+          "plannedDepartureAt": "2026-04-13T08:42:00+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260417142240_180220_stop_2",
+          "orderId": "ord_20260412165956_a43676",
+          "orderIds": [
+            "ord_20260412165956_a43676"
+          ],
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "Customer Batignolles",
+            "street1": "12 Rue des Dames",
+            "city": "Paris",
+            "postalCode": "75017",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "33622222222",
+            "email": "client2@example.com",
+            "parcelSize": "L",
+            "comment": "Pickup then direct drop",
+            "coordinates": {
+              "lat": 48.883,
+              "lon": 2.3232
+            }
+          },
+          "plannedArrivalAt": "2026-04-13T08:42:00+02:00",
+          "plannedDepartureAt": "2026-04-13T10:05:00+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260417142240_180220_stop_3",
+          "orderId": "ord_20260412165956_76af5c",
+          "orderIds": [
+            "ord_20260412165956_76af5c"
+          ],
+          "sequence": 3,
+          "kind": "delivery",
+          "address": {
+            "label": "Client Bastille",
+            "street1": "7 Rue de la Roquette",
+            "city": "Paris",
+            "postalCode": "75011",
+            "countryCode": "FR",
+            "contactName": "",
+            "phone": "33611111111",
+            "email": "client1@example.com",
+            "parcelSize": "XL",
+            "comment": "Call before arrival",
+            "coordinates": {
+              "lat": 48.8532,
+              "lon": 2.3714
+            }
+          },
+          "plannedArrivalAt": "2026-04-13T10:38:18+02:00",
+          "plannedDepartureAt": "2026-04-13T10:43:18+02:00",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "heartbeats": [
+    {
+      "id": "hb_20260417135010_813a62",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412172457_f91573",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-17T11:50:10.383Z"
+    },
+    {
+      "id": "hb_20260417134708_50732b",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412172457_f91573",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-17T11:47:08.319Z"
+    },
+    {
+      "id": "hb_20260413205139_4d48dd",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170057_dafd33",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-13T18:51:39.585Z"
+    },
+    {
+      "id": "hb_20260412173402_2bd897",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260410150409_7067eb",
+      "latitude": 48.883,
+      "longitude": 2.3232,
+      "occurredAt": "2026-04-12T15:34:02.797Z"
+    },
+    {
+      "id": "hb_20260412173055_35c905",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260410150409_7067eb",
+      "latitude": 48.8619,
+      "longitude": 2.3765,
+      "occurredAt": "2026-04-12T15:30:55.531Z"
+    },
+    {
+      "id": "hb_20260412173036_927204",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260410150409_7067eb",
+      "latitude": 48.883,
+      "longitude": 2.3232,
+      "occurredAt": "2026-04-12T15:30:36.327Z"
+    },
+    {
+      "id": "hb_20260412172849_584aa8",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170057_dafd33",
+      "latitude": 48.8532,
+      "longitude": 2.3714,
+      "occurredAt": "2026-04-12T15:28:49.493Z"
+    },
+    {
+      "id": "hb_20260412172630_1a9b28",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170057_dafd33",
+      "latitude": 48.8532,
+      "longitude": 2.3714,
+      "occurredAt": "2026-04-12T15:26:30.696Z"
+    },
+    {
+      "id": "hb_20260412171339_eb823e",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170057_dafd33",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-12T15:13:39.136Z"
+    },
+    {
+      "id": "hb_20260412171319_72490d",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170057_dafd33",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-12T15:13:19.290Z"
+    },
+    {
+      "id": "hb_20260412171220_faa0a6",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170052_4912c7",
+      "latitude": 48.883,
+      "longitude": 2.3232,
+      "occurredAt": "2026-04-12T15:12:20.133Z"
+    },
+    {
+      "id": "hb_20260412171135_439b74",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170052_4912c7",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-12T15:11:35.124Z"
+    },
+    {
+      "id": "hb_20260412171101_10a9ce",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170052_4912c7",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-12T15:11:01.934Z"
+    },
+    {
+      "id": "hb_20260412171007_c5576b",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170052_4912c7",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-12T15:10:07.654Z"
+    },
+    {
+      "id": "hb_20260412170854_8b3b2e",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170043_45cbdd",
+      "latitude": 48.8532,
+      "longitude": 2.3714,
+      "occurredAt": "2026-04-12T15:08:54.610Z"
+    },
+    {
+      "id": "hb_20260412170643_e16e51",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170043_45cbdd",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-12T15:06:43.841Z"
+    },
+    {
+      "id": "hb_20260412170528_0ab9fd",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260412170043_45cbdd",
+      "latitude": 48.890986,
+      "longitude": 2.072063,
+      "occurredAt": "2026-04-12T15:05:28.171Z"
+    },
+    {
+      "id": "hb_20260412170450_270ba5",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260411104846_1ca0dc",
+      "latitude": 50.8381,
+      "longitude": 4.3558,
+      "occurredAt": "2026-04-12T15:04:50.061Z"
+    },
+    {
+      "id": "hb_20260412150256_037ca8",
+      "driverId": "driver_amina",
+      "routeId": "route_demo_2",
+      "latitude": 50.8263,
+      "longitude": 4.3527,
+      "occurredAt": "2026-04-12T10:30:00+02:00"
+    },
+    {
+      "id": "hb_20260412124248_fc3183",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260411104846_1ca0dc",
+      "latitude": 50.8381,
+      "longitude": 4.3558,
+      "occurredAt": "2026-04-12T10:42:48.116Z"
+    },
+    {
+      "id": "hb_20260412123422_3fd2ce",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260411104846_1ca0dc",
+      "latitude": 50.8381,
+      "longitude": 4.3558,
+      "occurredAt": "2026-04-12T10:34:21.920Z"
+    },
+    {
+      "id": "hb_20260412123323_d45de9",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260411104846_1ca0dc",
+      "latitude": 50.8381,
+      "longitude": 4.3558,
+      "occurredAt": "2026-04-12T10:33:23.453Z"
+    },
+    {
+      "id": "hb_20260411175454_330a88",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260411104846_1ca0dc",
+      "latitude": 48.98746490001289,
+      "longitude": 2.0085241698920235,
+      "occurredAt": "2026-04-11T15:54:54.924Z"
+    },
+    {
+      "id": "hb_20260411175414_ebe2bb",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260411104846_1ca0dc",
+      "latitude": 48.98746490001289,
+      "longitude": 2.0085241698920235,
+      "occurredAt": "2026-04-11T15:54:14.464Z"
+    },
+    {
+      "id": "hb_20260411175405_035b9f",
+      "driverId": "driver_20260411175155_dd9077",
+      "routeId": "route_20260411104846_1ca0dc",
+      "latitude": 48.98746490001289,
+      "longitude": 2.0085241698920235,
+      "occurredAt": "2026-04-11T15:54:05.852Z"
+    }
+  ],
+  "proofs": [
+    {
+      "id": "pod_20260412150757_90532f",
+      "stopId": "route_demo_2_stop_1",
+      "routeId": "route_demo_2",
+      "orderId": "order_demo_2",
+      "deliveredAt": "2026-04-12T10:35:00+02:00",
+      "recipientName": null,
+      "otpCode": null,
+      "signatureImageUrl": null,
+      "photoUrls": [
+        "data:image/png;base64,TESTPHOTO"
+      ],
+      "latitude": 50.82631,
+      "longitude": 4.35271,
+      "locationLabel": "Customer doorstep",
+      "failureReasonCode": "customer_refusal",
+      "failureReasonLabel": "Customer refused",
+      "proofOutcomeCode": "delivery_refused_by_customer",
+      "proofOutcomeLabel": "Refused by Customer",
+      "note": "Customer refused the parcel at the door because the slot was missed.",
+      "createdAt": "2026-04-12T13:07:57.929107+00:00"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt_20260418122138_f0c446",
+      "type": "ops_user.deleted",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260418115932_735c8b",
+      "payload": {
+        "deletedAt": "2026-04-18T10:21:38.364510+00:00"
+      },
+      "occurredAt": "2026-04-18T10:21:38.364576+00:00"
+    },
+    {
+      "id": "evt_20260418122105_d87502",
+      "type": "ops_user.updated",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260418115932_735c8b",
+      "payload": {
+        "updatedAt": "2026-04-18T10:21:05.897852+00:00"
+      },
+      "occurredAt": "2026-04-18T10:21:05.898014+00:00"
+    },
+    {
+      "id": "evt_20260418115932_9fa429",
+      "type": "ops_user.created",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260418115932_735c8b",
+      "payload": {
+        "id": "ops_user_20260418115932_735c8b",
+        "firstName": "Julie",
+        "lastName": "Durand",
+        "email": "julie.edit@naaval.app",
+        "role": "ops_agent",
+        "team": "Operations",
+        "temporaryPassword": "julie123",
+        "status": "active",
+        "createdAt": "2026-04-18T09:59:32.752752+00:00",
+        "updatedAt": "2026-04-18T09:59:32.752752+00:00"
+      },
+      "occurredAt": "2026-04-18T09:59:32.752840+00:00"
+    },
+    {
+      "id": "evt_20260418115215_8ba739",
+      "type": "ops_user.deleted",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260418115156_d93937",
+      "payload": {
+        "deletedAt": "2026-04-18T09:52:15.241938+00:00"
+      },
+      "occurredAt": "2026-04-18T09:52:15.241984+00:00"
+    },
+    {
+      "id": "evt_20260418115156_963073",
+      "type": "ops_user.created",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260418115156_d93937",
+      "payload": {
+        "id": "ops_user_20260418115156_d93937",
+        "firstName": "Alex",
+        "lastName": "Martin",
+        "email": "alex.test@naaval.app",
+        "role": "ops_manager",
+        "team": "Operations",
+        "temporaryPassword": "alex123",
+        "status": "active",
+        "createdAt": "2026-04-18T09:51:56.166754+00:00",
+        "updatedAt": "2026-04-18T09:51:56.166754+00:00"
+      },
+      "occurredAt": "2026-04-18T09:51:56.166952+00:00"
+    },
+    {
+      "id": "evt_20260417142240_45fd6c",
+      "type": "planning.finished",
+      "entityType": "plan",
+      "entityId": "plan_20260417142240_27cb49",
+      "payload": {
+        "routeCount": 1,
+        "solver": "graphhopper"
+      },
+      "occurredAt": "2026-04-17T12:22:40.490008+00:00"
+    },
+    {
+      "id": "evt_20260417135010_a40252",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412172457_f91573",
+      "payload": {
+        "id": "hb_20260417135010_813a62",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412172457_f91573",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-17T11:50:10.383Z"
+      },
+      "occurredAt": "2026-04-17T11:50:10.430572+00:00"
+    },
+    {
+      "id": "evt_20260417134708_29b0f6",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412172457_f91573",
+      "payload": {
+        "id": "hb_20260417134708_50732b",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412172457_f91573",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-17T11:47:08.319Z"
+      },
+      "occurredAt": "2026-04-17T11:47:08.589313+00:00"
+    },
+    {
+      "id": "evt_20260417134541_87c6b1",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170057_dafd33_stop_1",
+      "payload": {
+        "routeId": "route_20260412170057_dafd33",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-17T11:45:41.360483+00:00"
+    },
+    {
+      "id": "evt_20260417134538_3b58c1",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170057_dafd33_stop_2",
+      "payload": {
+        "routeId": "route_20260412170057_dafd33",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-17T11:45:38.820795+00:00"
+    },
+    {
+      "id": "evt_20260413205139_a4cac9",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170057_dafd33",
+      "payload": {
+        "id": "hb_20260413205139_4d48dd",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170057_dafd33",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-13T18:51:39.585Z"
+      },
+      "occurredAt": "2026-04-13T18:51:39.607818+00:00"
+    },
+    {
+      "id": "evt_20260412173402_89218b",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260410150409_7067eb",
+      "payload": {
+        "id": "hb_20260412173402_2bd897",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260410150409_7067eb",
+        "latitude": 48.883,
+        "longitude": 2.3232,
+        "occurredAt": "2026-04-12T15:34:02.797Z"
+      },
+      "occurredAt": "2026-04-12T15:34:02.874616+00:00"
+    },
+    {
+      "id": "evt_20260412173245_2ca107",
+      "type": "recurring_route.created",
+      "entityType": "recurring_route",
+      "entityId": "rr_20260412173245_57b739",
+      "payload": {
+        "reference": "RR-965704",
+        "label": "Pain",
+        "source": "customer_portal",
+        "customerId": "customer_20260411164239_0cfb11",
+        "recurringDays": [
+          "tue",
+          "thu",
+          "sun"
+        ],
+        "frequency": "Tuesday, Thursday, Sunday",
+        "pickupTime": "13:00",
+        "windowLabel": "13h00 pickup",
+        "nextRunLabel": "Tuesday 13h00",
+        "hubId": "hub_paris_central",
+        "hubLabel": "Paris Central Hub",
+        "merchantId": "Naaval.io - Test",
+        "kind": "delivery",
+        "pricingAlgorithmId": "drops",
+        "pickupAddress": {
+          "label": "Naaval.io - Test",
+          "street1": "88 rue de la justice 78100 saint germain en laye",
+          "city": "",
+          "postalCode": "",
+          "countryCode": "FR",
+          "contactName": "Pierre Morcrette",
+          "phone": "0909898949",
+          "email": "p.morcrette@gmail.com",
+          "parcelSize": "M",
+          "comment": ""
+        },
+        "dropoffAddresses": [
+          {
+            "label": "The french bastard",
+            "street1": "45 rue faubourg du temple",
+            "city": "Paris",
+            "postalCode": "75003",
+            "countryCode": "FR",
+            "contactName": "Claire Dubois",
+            "phone": "0989309892",
+            "email": "Tmoche@tnul.com",
+            "parcelSize": "M",
+            "comment": ""
+          }
+        ],
+        "driverName": "Unassigned",
+        "vehicleLabel": "Pending assignment",
+        "stopCount": 1,
+        "customerCount": 1,
+        "status": "planned",
+        "tags": [
+          "\ud83d\udd01 Tuesday, Thursday, Sunday",
+          "\u23f1\ufe0f 13h00",
+          "\u2699\ufe0f By Drop"
+        ],
+        "note": "Recurring delivery template created from customer portal.",
+        "orders": [
+          {
+            "reference": "RR-965704",
+            "dropoffLabel": "The french bastard, 45 rue faubourg du temple, 75003, Paris",
+            "timeLabel": "13h00",
+            "status": "planned",
+            "pickupAddress": {
+              "label": "Naaval.io - Test",
+              "street1": "88 rue de la justice 78100 saint germain en laye",
+              "city": "",
+              "postalCode": "",
+              "countryCode": "FR",
+              "contactName": "Pierre Morcrette",
+              "phone": "0909898949",
+              "email": "p.morcrette@gmail.com",
+              "parcelSize": "M",
+              "comment": ""
+            },
+            "dropoffAddress": {
+              "label": "The french bastard",
+              "street1": "45 rue faubourg du temple",
+              "city": "Paris",
+              "postalCode": "75003",
+              "countryCode": "FR",
+              "contactName": "Claire Dubois",
+              "phone": "0989309892",
+              "email": "Tmoche@tnul.com",
+              "parcelSize": "M",
+              "comment": ""
+            },
+            "pricingAlgorithmId": "drops",
+            "kind": "delivery"
+          }
+        ],
+        "id": "rr_20260412173245_57b739",
+        "createdAt": "2026-04-12T15:32:45.712264+00:00",
+        "updatedAt": "2026-04-12T15:32:45.712264+00:00"
+      },
+      "occurredAt": "2026-04-12T15:32:45.712740+00:00"
+    },
+    {
+      "id": "evt_20260412173055_ed27ab",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260410150409_7067eb",
+      "payload": {
+        "id": "hb_20260412173055_35c905",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260410150409_7067eb",
+        "latitude": 48.8619,
+        "longitude": 2.3765,
+        "occurredAt": "2026-04-12T15:30:55.531Z"
+      },
+      "occurredAt": "2026-04-12T15:30:55.538096+00:00"
+    },
+    {
+      "id": "evt_20260412173050_de48d5",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260410150409_7067eb_stop_3",
+      "payload": {
+        "routeId": "route_20260410150409_7067eb",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-12T15:30:50.280695+00:00"
+    },
+    {
+      "id": "evt_20260412173036_37c529",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260410150409_7067eb_stop_3",
+      "payload": {
+        "routeId": "route_20260410150409_7067eb",
+        "status": "arrived"
+      },
+      "occurredAt": "2026-04-12T15:30:36.343232+00:00"
+    },
+    {
+      "id": "evt_20260412173036_a2f04c",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260410150409_7067eb",
+      "payload": {
+        "id": "hb_20260412173036_927204",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260410150409_7067eb",
+        "latitude": 48.883,
+        "longitude": 2.3232,
+        "occurredAt": "2026-04-12T15:30:36.327Z"
+      },
+      "occurredAt": "2026-04-12T15:30:36.331996+00:00"
+    },
+    {
+      "id": "evt_20260412172849_f4f995",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170057_dafd33_stop_2",
+      "payload": {
+        "routeId": "route_20260412170057_dafd33",
+        "status": "arrived"
+      },
+      "occurredAt": "2026-04-12T15:28:49.717416+00:00"
+    },
+    {
+      "id": "evt_20260412172849_6edbd1",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170057_dafd33",
+      "payload": {
+        "id": "hb_20260412172849_584aa8",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170057_dafd33",
+        "latitude": 48.8532,
+        "longitude": 2.3714,
+        "occurredAt": "2026-04-12T15:28:49.493Z"
+      },
+      "occurredAt": "2026-04-12T15:28:49.685001+00:00"
+    },
+    {
+      "id": "evt_20260412172843_c4d872",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260410150409_7067eb_stop_2",
+      "payload": {
+        "routeId": "route_20260410150409_7067eb",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-12T15:28:43.783198+00:00"
+    },
+    {
+      "id": "evt_20260412172842_72ee76",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260410150409_7067eb_stop_1",
+      "payload": {
+        "routeId": "route_20260410150409_7067eb",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-12T15:28:42.423621+00:00"
+    },
+    {
+      "id": "evt_20260412172838_40d60a",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260411104846_1ca0dc_stop_2",
+      "payload": {
+        "routeId": "route_20260411104846_1ca0dc",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-12T15:28:38.275525+00:00"
+    },
+    {
+      "id": "evt_20260412172630_d0142e",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170057_dafd33",
+      "payload": {
+        "id": "hb_20260412172630_1a9b28",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170057_dafd33",
+        "latitude": 48.8532,
+        "longitude": 2.3714,
+        "occurredAt": "2026-04-12T15:26:30.696Z"
+      },
+      "occurredAt": "2026-04-12T15:26:30.863820+00:00"
+    },
+    {
+      "id": "evt_20260412172606_8944c4",
+      "type": "route.dispatched",
+      "entityType": "route",
+      "entityId": "route_20260412172457_f91573",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077"
+      },
+      "occurredAt": "2026-04-12T15:26:06.838682+00:00"
+    },
+    {
+      "id": "evt_20260412172511_dc9edf",
+      "type": "route.dispatched",
+      "entityType": "route",
+      "entityId": "route_20260412172508_abf11e",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077"
+      },
+      "occurredAt": "2026-04-12T15:25:11.249085+00:00"
+    },
+    {
+      "id": "evt_20260412172508_b6104a",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "ord_20260412172125_3a476c",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412172508_abf11e"
+      },
+      "occurredAt": "2026-04-12T15:25:08.410722+00:00"
+    },
+    {
+      "id": "evt_20260412172457_93d49e",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "ord_20260412172125_9c3af8",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412172457_f91573"
+      },
+      "occurredAt": "2026-04-12T15:24:57.705623+00:00"
+    },
+    {
+      "id": "evt_20260412172441_e77c94",
+      "type": "driver.updated",
+      "entityType": "driver",
+      "entityId": "driver_20260411175155_dd9077",
+      "payload": {
+        "updatedAt": "2026-04-12T15:24:41.406499+00:00"
+      },
+      "occurredAt": "2026-04-12T15:24:41.406586+00:00"
+    },
+    {
+      "id": "evt_20260412172404_58c199",
+      "type": "carrier_company.created",
+      "entityType": "carrier_company",
+      "entityId": "carrier_company_20260412172404_5d5d35",
+      "payload": {
+        "name": "Naaval 1",
+        "legalName": "Naaval.pute",
+        "email": "driver@naaval.io",
+        "phone": "098909849",
+        "headquartersAddress": "88 rue de la justice",
+        "vatNumber": "FR12345678",
+        "contactFirstName": "Claire",
+        "contactLastName": "Martin",
+        "contactPhone": "5898490398",
+        "contactEmail": "claire@tmoche.io",
+        "tags": [],
+        "id": "carrier_company_20260412172404_5d5d35",
+        "createdAt": "2026-04-12T15:24:04.066681+00:00",
+        "updatedAt": "2026-04-12T15:24:04.066681+00:00"
+      },
+      "occurredAt": "2026-04-12T15:24:04.067027+00:00"
+    },
+    {
+      "id": "evt_20260412172125_b27841",
+      "type": "order.created",
+      "entityType": "order",
+      "entityId": "ord_20260412172125_9c3af8",
+      "payload": {
+        "reference": "PORTAL-284915-D2"
+      },
+      "occurredAt": "2026-04-12T15:21:25.436719+00:00"
+    },
+    {
+      "id": "evt_20260412172125_ef79f3",
+      "type": "order.created",
+      "entityType": "order",
+      "entityId": "ord_20260412172125_3a476c",
+      "payload": {
+        "reference": "PORTAL-284915-D1"
+      },
+      "occurredAt": "2026-04-12T15:21:25.186780+00:00"
+    },
+    {
+      "id": "evt_20260412171714_ef65b0",
+      "type": "customer.updated",
+      "entityType": "customer",
+      "entityId": "customer_20260411164239_0cfb11",
+      "payload": {
+        "updatedAt": "2026-04-12T15:17:14.950515+00:00"
+      },
+      "occurredAt": "2026-04-12T15:17:14.950697+00:00"
+    },
+    {
+      "id": "evt_20260412171633_cebbd7",
+      "type": "customer.updated",
+      "entityType": "customer",
+      "entityId": "customer_naaval_test_client_bastille",
+      "payload": {
+        "updatedAt": "2026-04-12T15:16:33.595704+00:00"
+      },
+      "occurredAt": "2026-04-12T15:16:33.595878+00:00"
+    },
+    {
+      "id": "evt_20260412171617_d392f4",
+      "type": "customer.created",
+      "entityType": "customer",
+      "entityId": "customer_naaval_test_client_bastille",
+      "payload": {
+        "id": "customer_naaval_test_client_bastille",
+        "companyName": "Client Bastille",
+        "headquartersAddress": "Client Bastille",
+        "vatNumber": "",
+        "companyPhone": "",
+        "companyEmail": "",
+        "contactFirstName": "",
+        "contactLastName": "",
+        "contactPhone": "",
+        "contactEmail": "",
+        "revenueRange": "0-500k",
+        "companySize": "smb",
+        "pricingAlgorithmId": "drops",
+        "createdAt": "2026-04-12T15:16:17.038570+00:00",
+        "updatedAt": "2026-04-12T15:16:17.038570+00:00"
+      },
+      "occurredAt": "2026-04-12T15:16:17.038808+00:00"
+    },
+    {
+      "id": "evt_20260412171542_3edd0a",
+      "type": "customer.updated",
+      "entityType": "customer",
+      "entityId": "customer_20260411164239_0cfb11",
+      "payload": {
+        "updatedAt": "2026-04-12T15:15:42.252391+00:00"
+      },
+      "occurredAt": "2026-04-12T15:15:42.252615+00:00"
+    },
+    {
+      "id": "evt_20260412171339_86ee90",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170057_dafd33_stop_1",
+      "payload": {
+        "routeId": "route_20260412170057_dafd33",
+        "status": "arrived"
+      },
+      "occurredAt": "2026-04-12T15:13:39.295856+00:00"
+    },
+    {
+      "id": "evt_20260412171339_fda006",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170057_dafd33",
+      "payload": {
+        "id": "hb_20260412171339_eb823e",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170057_dafd33",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-12T15:13:39.136Z"
+      },
+      "occurredAt": "2026-04-12T15:13:39.260437+00:00"
+    },
+    {
+      "id": "evt_20260412171319_7bf8e4",
+      "type": "carrier.route_started",
+      "entityType": "route",
+      "entityId": "route_20260412170057_dafd33",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077"
+      },
+      "occurredAt": "2026-04-12T15:13:19.343580+00:00"
+    },
+    {
+      "id": "evt_20260412171319_ff947d",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170057_dafd33",
+      "payload": {
+        "id": "hb_20260412171319_72490d",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170057_dafd33",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-12T15:13:19.290Z"
+      },
+      "occurredAt": "2026-04-12T15:13:19.312243+00:00"
+    },
+    {
+      "id": "evt_20260412171258_f6333b",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170052_4912c7_stop_2",
+      "payload": {
+        "routeId": "route_20260412170052_4912c7",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-12T15:12:58.927042+00:00"
+    },
+    {
+      "id": "evt_20260412171220_d63efc",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170052_4912c7_stop_2",
+      "payload": {
+        "routeId": "route_20260412170052_4912c7",
+        "status": "arrived"
+      },
+      "occurredAt": "2026-04-12T15:12:20.185408+00:00"
+    },
+    {
+      "id": "evt_20260412171220_de4018",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170052_4912c7",
+      "payload": {
+        "id": "hb_20260412171220_faa0a6",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170052_4912c7",
+        "latitude": 48.883,
+        "longitude": 2.3232,
+        "occurredAt": "2026-04-12T15:12:20.133Z"
+      },
+      "occurredAt": "2026-04-12T15:12:20.155697+00:00"
+    },
+    {
+      "id": "evt_20260412171213_b4ed8f",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170052_4912c7_stop_1",
+      "payload": {
+        "routeId": "route_20260412170052_4912c7",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-12T15:12:13.114622+00:00"
+    },
+    {
+      "id": "evt_20260412171135_ef23bc",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170052_4912c7_stop_1",
+      "payload": {
+        "routeId": "route_20260412170052_4912c7",
+        "status": "arrived"
+      },
+      "occurredAt": "2026-04-12T15:11:35.303746+00:00"
+    },
+    {
+      "id": "evt_20260412171135_f41317",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170052_4912c7",
+      "payload": {
+        "id": "hb_20260412171135_439b74",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170052_4912c7",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-12T15:11:35.124Z"
+      },
+      "occurredAt": "2026-04-12T15:11:35.268560+00:00"
+    },
+    {
+      "id": "evt_20260412171101_5cf4ef",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170052_4912c7",
+      "payload": {
+        "id": "hb_20260412171101_10a9ce",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170052_4912c7",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-12T15:11:01.934Z"
+      },
+      "occurredAt": "2026-04-12T15:11:01.971431+00:00"
+    },
+    {
+      "id": "evt_20260412171007_60060c",
+      "type": "carrier.route_started",
+      "entityType": "route",
+      "entityId": "route_20260412170052_4912c7",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077"
+      },
+      "occurredAt": "2026-04-12T15:10:07.824615+00:00"
+    },
+    {
+      "id": "evt_20260412171007_476f91",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170052_4912c7",
+      "payload": {
+        "id": "hb_20260412171007_c5576b",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170052_4912c7",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-12T15:10:07.654Z"
+      },
+      "occurredAt": "2026-04-12T15:10:07.793375+00:00"
+    },
+    {
+      "id": "evt_20260412170917_6aaa8a",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170043_45cbdd_stop_2",
+      "payload": {
+        "routeId": "route_20260412170043_45cbdd",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-12T15:09:17.403438+00:00"
+    },
+    {
+      "id": "evt_20260412170854_2f1eb6",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170043_45cbdd_stop_2",
+      "payload": {
+        "routeId": "route_20260412170043_45cbdd",
+        "status": "arrived"
+      },
+      "occurredAt": "2026-04-12T15:08:54.657516+00:00"
+    },
+    {
+      "id": "evt_20260412170854_fc34f8",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170043_45cbdd",
+      "payload": {
+        "id": "hb_20260412170854_8b3b2e",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170043_45cbdd",
+        "latitude": 48.8532,
+        "longitude": 2.3714,
+        "occurredAt": "2026-04-12T15:08:54.610Z"
+      },
+      "occurredAt": "2026-04-12T15:08:54.630006+00:00"
+    },
+    {
+      "id": "evt_20260412170846_c7cf75",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170043_45cbdd_stop_1",
+      "payload": {
+        "routeId": "route_20260412170043_45cbdd",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-12T15:08:46.909367+00:00"
+    },
+    {
+      "id": "evt_20260412170643_e288e3",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260412170043_45cbdd_stop_1",
+      "payload": {
+        "routeId": "route_20260412170043_45cbdd",
+        "status": "arrived"
+      },
+      "occurredAt": "2026-04-12T15:06:43.954247+00:00"
+    },
+    {
+      "id": "evt_20260412170643_557402",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170043_45cbdd",
+      "payload": {
+        "id": "hb_20260412170643_e16e51",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170043_45cbdd",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-12T15:06:43.841Z"
+      },
+      "occurredAt": "2026-04-12T15:06:43.917410+00:00"
+    },
+    {
+      "id": "evt_20260412170528_ff2dad",
+      "type": "carrier.route_started",
+      "entityType": "route",
+      "entityId": "route_20260412170043_45cbdd",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077"
+      },
+      "occurredAt": "2026-04-12T15:05:28.217610+00:00"
+    },
+    {
+      "id": "evt_20260412170528_a0e03e",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260412170043_45cbdd",
+      "payload": {
+        "id": "hb_20260412170528_0ab9fd",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170043_45cbdd",
+        "latitude": 48.890986,
+        "longitude": 2.072063,
+        "occurredAt": "2026-04-12T15:05:28.171Z"
+      },
+      "occurredAt": "2026-04-12T15:05:28.189252+00:00"
+    },
+    {
+      "id": "evt_20260412170450_7de114",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260411104846_1ca0dc",
+      "payload": {
+        "id": "hb_20260412170450_270ba5",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260411104846_1ca0dc",
+        "latitude": 50.8381,
+        "longitude": 4.3558,
+        "occurredAt": "2026-04-12T15:04:50.061Z"
+      },
+      "occurredAt": "2026-04-12T15:04:50.085882+00:00"
+    },
+    {
+      "id": "evt_20260412170443_237dc2",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "ord_20260412163554_1c774f",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170443_28ff88"
+      },
+      "occurredAt": "2026-04-12T15:04:43.357093+00:00"
+    },
+    {
+      "id": "evt_20260412170101_f82959",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "ord_20260412164610_599346",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170101_aeb714"
+      },
+      "occurredAt": "2026-04-12T15:01:01.915600+00:00"
+    },
+    {
+      "id": "evt_20260412170057_a05ddb",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "ord_20260412164610_1eed8b",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170057_dafd33"
+      },
+      "occurredAt": "2026-04-12T15:00:57.216983+00:00"
+    },
+    {
+      "id": "evt_20260412170052_e918be",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "ord_20260412163553_2ee168",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170052_4912c7"
+      },
+      "occurredAt": "2026-04-12T15:00:52.744970+00:00"
+    },
+    {
+      "id": "evt_20260412170043_c2d93d",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "ord_20260412163553_39c5e0",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260412170043_45cbdd"
+      },
+      "occurredAt": "2026-04-12T15:00:43.677139+00:00"
+    },
+    {
+      "id": "evt_20260412165957_b0d9ae",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412165957_8250e2",
+      "payload": {
+        "reference": "NAAV-CSV-001"
+      },
+      "occurredAt": "2026-04-12T14:59:57.065780+00:00"
+    },
+    {
+      "id": "evt_20260412165956_5615d7",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412165956_b87a06",
+      "payload": {
+        "reference": "NAAV-CSV-001"
+      },
+      "occurredAt": "2026-04-12T14:59:56.794184+00:00"
+    },
+    {
+      "id": "evt_20260412165956_af156f",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412165956_a43676",
+      "payload": {
+        "reference": "NAAV-CSV-001"
+      },
+      "occurredAt": "2026-04-12T14:59:56.515842+00:00"
+    },
+    {
+      "id": "evt_20260412165956_09d3da",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412165956_76af5c",
+      "payload": {
+        "reference": "NAAV-CSV-001"
+      },
+      "occurredAt": "2026-04-12T14:59:56.393254+00:00"
+    },
+    {
+      "id": "evt_20260412165344_6b111c",
+      "type": "route.dispatched",
+      "entityType": "route",
+      "entityId": "route_20260411104846_1ca0dc",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077"
+      },
+      "occurredAt": "2026-04-12T14:53:44.496282+00:00"
+    },
+    {
+      "id": "evt_20260412164611_eebc31",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412164611_478692",
+      "payload": {
+        "reference": "NAAV-CSV0"
+      },
+      "occurredAt": "2026-04-12T14:46:11.318121+00:00"
+    },
+    {
+      "id": "evt_20260412164611_42dbcf",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412164611_1e6eef",
+      "payload": {
+        "reference": "NAAV-CSV-1"
+      },
+      "occurredAt": "2026-04-12T14:46:11.048555+00:00"
+    },
+    {
+      "id": "evt_20260412164610_6878ca",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412164610_599346",
+      "payload": {
+        "reference": "NAAV-CSV-002"
+      },
+      "occurredAt": "2026-04-12T14:46:10.771973+00:00"
+    },
+    {
+      "id": "evt_20260412164610_c30d45",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412164610_1eed8b",
+      "payload": {
+        "reference": "NAAV-CSV-001"
+      },
+      "occurredAt": "2026-04-12T14:46:10.649010+00:00"
+    },
+    {
+      "id": "evt_20260412163919_6e6a88",
+      "type": "route.dispatched",
+      "entityType": "route",
+      "entityId": "route_20260410150409_7067eb",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077"
+      },
+      "occurredAt": "2026-04-12T14:39:19.201245+00:00"
+    },
+    {
+      "id": "evt_20260412163910_3519d4",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "order_demo_6",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260410150409_7067eb"
+      },
+      "occurredAt": "2026-04-12T14:39:10.095026+00:00"
+    },
+    {
+      "id": "evt_20260412163554_61d905",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412163554_1c774f",
+      "payload": {
+        "reference": "NAAV-CSV0"
+      },
+      "occurredAt": "2026-04-12T14:35:54.194559+00:00"
+    },
+    {
+      "id": "evt_20260412163553_d5b6b7",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412163553_057536",
+      "payload": {
+        "reference": "NAAV-CSV-1"
+      },
+      "occurredAt": "2026-04-12T14:35:53.912505+00:00"
+    },
+    {
+      "id": "evt_20260412163553_c08d76",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412163553_2ee168",
+      "payload": {
+        "reference": "NAAV-CSV-002"
+      },
+      "occurredAt": "2026-04-12T14:35:53.446061+00:00"
+    },
+    {
+      "id": "evt_20260412163553_67f15b",
+      "type": "order.imported",
+      "entityType": "order",
+      "entityId": "ord_20260412163553_39c5e0",
+      "payload": {
+        "reference": "NAAV-CSV-001"
+      },
+      "occurredAt": "2026-04-12T14:35:53.316464+00:00"
+    },
+    {
+      "id": "evt_20260412162354_305269",
+      "type": "inbox.message_created",
+      "entityType": "inbox_message",
+      "entityId": "msg_20260412162354_0f5c28",
+      "payload": {
+        "audience": "drivers",
+        "threadId": "driver_amina"
+      },
+      "occurredAt": "2026-04-12T14:23:54.146947+00:00"
+    },
+    {
+      "id": "evt_20260412150757_082da4",
+      "type": "proof.submitted",
+      "entityType": "proof",
+      "entityId": "pod_20260412150757_90532f",
+      "payload": {
+        "routeId": "route_demo_2",
+        "stopId": "route_demo_2_stop_1"
+      },
+      "occurredAt": "2026-04-12T13:07:57.929318+00:00"
+    },
+    {
+      "id": "evt_20260412150256_fcd477",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_demo_2",
+      "payload": {
+        "id": "hb_20260412150256_037ca8",
+        "driverId": "driver_amina",
+        "routeId": "route_demo_2",
+        "latitude": 50.8263,
+        "longitude": 4.3527,
+        "occurredAt": "2026-04-12T10:30:00+02:00"
+      },
+      "occurredAt": "2026-04-12T13:02:56.095233+00:00"
+    },
+    {
+      "id": "evt_20260412124248_120543",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260411104846_1ca0dc",
+      "payload": {
+        "id": "hb_20260412124248_fc3183",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260411104846_1ca0dc",
+        "latitude": 50.8381,
+        "longitude": 4.3558,
+        "occurredAt": "2026-04-12T10:42:48.116Z"
+      },
+      "occurredAt": "2026-04-12T10:42:48.204558+00:00"
+    },
+    {
+      "id": "evt_20260412123425_630e98",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260411104846_1ca0dc_stop_1",
+      "payload": {
+        "routeId": "route_20260411104846_1ca0dc",
+        "status": "skipped"
+      },
+      "occurredAt": "2026-04-12T10:34:25.146409+00:00"
+    },
+    {
+      "id": "evt_20260412123422_49d3ba",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260411104846_1ca0dc",
+      "payload": {
+        "id": "hb_20260412123422_3fd2ce",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260411104846_1ca0dc",
+        "latitude": 50.8381,
+        "longitude": 4.3558,
+        "occurredAt": "2026-04-12T10:34:21.920Z"
+      },
+      "occurredAt": "2026-04-12T10:34:22.064699+00:00"
+    },
+    {
+      "id": "evt_20260412123323_caeef2",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260411104846_1ca0dc",
+      "payload": {
+        "id": "hb_20260412123323_d45de9",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260411104846_1ca0dc",
+        "latitude": 50.8381,
+        "longitude": 4.3558,
+        "occurredAt": "2026-04-12T10:33:23.453Z"
+      },
+      "occurredAt": "2026-04-12T10:33:23.473418+00:00"
+    },
+    {
+      "id": "evt_20260411175454_65feb2",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260411104846_1ca0dc_stop_2",
+      "payload": {
+        "routeId": "route_20260411104846_1ca0dc",
+        "status": "arrived"
+      },
+      "occurredAt": "2026-04-11T15:54:54.948448+00:00"
+    },
+    {
+      "id": "evt_20260411175454_a95be4",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260411104846_1ca0dc",
+      "payload": {
+        "id": "hb_20260411175454_330a88",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260411104846_1ca0dc",
+        "latitude": 48.98746490001289,
+        "longitude": 2.0085241698920235,
+        "occurredAt": "2026-04-11T15:54:54.924Z"
+      },
+      "occurredAt": "2026-04-11T15:54:54.938812+00:00"
+    },
+    {
+      "id": "evt_20260411175414_99876a",
+      "type": "stop.status_changed",
+      "entityType": "stop",
+      "entityId": "route_20260411104846_1ca0dc_stop_1",
+      "payload": {
+        "routeId": "route_20260411104846_1ca0dc",
+        "status": "arrived"
+      },
+      "occurredAt": "2026-04-11T15:54:14.474603+00:00"
+    },
+    {
+      "id": "evt_20260411175414_261431",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260411104846_1ca0dc",
+      "payload": {
+        "id": "hb_20260411175414_ebe2bb",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260411104846_1ca0dc",
+        "latitude": 48.98746490001289,
+        "longitude": 2.0085241698920235,
+        "occurredAt": "2026-04-11T15:54:14.464Z"
+      },
+      "occurredAt": "2026-04-11T15:54:14.467443+00:00"
+    },
+    {
+      "id": "evt_20260411175405_658558",
+      "type": "carrier.route_started",
+      "entityType": "route",
+      "entityId": "route_20260411104846_1ca0dc",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077"
+      },
+      "occurredAt": "2026-04-11T15:54:05.867488+00:00"
+    },
+    {
+      "id": "evt_20260411175405_43c314",
+      "type": "carrier.heartbeat",
+      "entityType": "route",
+      "entityId": "route_20260411104846_1ca0dc",
+      "payload": {
+        "id": "hb_20260411175405_035b9f",
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260411104846_1ca0dc",
+        "latitude": 48.98746490001289,
+        "longitude": 2.0085241698920235,
+        "occurredAt": "2026-04-11T15:54:05.852Z"
+      },
+      "occurredAt": "2026-04-11T15:54:05.858337+00:00"
+    },
+    {
+      "id": "evt_20260411175318_355a34",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "ord_20260411093917_352f2d",
+      "payload": {
+        "driverId": "driver_20260411175155_dd9077",
+        "routeId": "route_20260411104846_1ca0dc"
+      },
+      "occurredAt": "2026-04-11T15:53:18.969526+00:00"
+    },
+    {
+      "id": "evt_20260411175155_0ed58b",
+      "type": "driver.created",
+      "entityType": "driver",
+      "entityId": "driver_20260411175155_dd9077",
+      "payload": {
+        "name": "Pierre Pierre",
+        "firstName": "Pierre",
+        "lastName": "Pierre",
+        "email": "p.morcrette@gmail.com",
+        "phone": "0698989489",
+        "skills": [],
+        "vehicleType": "van_3m3",
+        "vehiclePhotoUrls": [],
+        "carrierCompanyId": null,
+        "status": "active",
+        "id": "driver_20260411175155_dd9077",
+        "createdAt": "2026-04-11T15:51:55.502069+00:00",
+        "updatedAt": "2026-04-11T15:51:55.502069+00:00"
+      },
+      "occurredAt": "2026-04-11T15:51:55.503357+00:00"
+    },
+    {
+      "id": "evt_20260411175002_f173a1",
+      "type": "inbox.message_created",
+      "entityType": "inbox_message",
+      "entityId": "msg_20260411175002_bc4bcf",
+      "payload": {
+        "audience": "drivers",
+        "threadId": "driver_amina"
+      },
+      "occurredAt": "2026-04-11T15:50:02.807579+00:00"
+    },
+    {
+      "id": "evt_20260411164239_082eba",
+      "type": "customer.created",
+      "entityType": "customer",
+      "entityId": "customer_20260411164239_0cfb11",
+      "payload": {
+        "id": "customer_20260411164239_0cfb11",
+        "companyName": "Test",
+        "headquartersAddress": "88 rue de la justice 78100 saint germain en laye",
+        "vatNumber": "FR543456543",
+        "companyPhone": "0698904939",
+        "companyEmail": "p.morcrette@gmail.com",
+        "contactFirstName": "Pierre",
+        "contactLastName": "Morcrette",
+        "contactPhone": "0909898949",
+        "contactEmail": "p.morcrette@gmail.com",
+        "revenueRange": "0-500k",
+        "companySize": "smb",
+        "pricingAlgorithmId": "basic",
+        "createdAt": "2026-04-11T14:42:39.932756+00:00",
+        "updatedAt": "2026-04-11T14:42:39.932756+00:00"
+      },
+      "occurredAt": "2026-04-11T14:42:39.932871+00:00"
+    },
+    {
+      "id": "evt_20260411164140_f07520",
+      "type": "customer.created",
+      "entityType": "customer",
+      "entityId": "customer_merchant_demo_avenue_louise_231_1050_ixelles",
+      "payload": {
+        "id": "customer_merchant_demo_avenue_louise_231_1050_ixelles",
+        "companyName": "Avenue Louise 231, 1050 Ixelles",
+        "headquartersAddress": "Avenue Louise 231, 1050 Ixelles",
+        "vatNumber": "",
+        "companyPhone": "",
+        "companyEmail": "p.morcrette@gmail.com",
+        "contactFirstName": "",
+        "contactLastName": "",
+        "contactPhone": "",
+        "contactEmail": "",
+        "revenueRange": "0-500k",
+        "companySize": "smb",
+        "pricingAlgorithmId": "basic",
+        "createdAt": "2026-04-11T14:41:40.769863+00:00",
+        "updatedAt": "2026-04-11T14:41:40.769863+00:00"
+      },
+      "occurredAt": "2026-04-11T14:41:40.769957+00:00"
+    },
+    {
+      "id": "evt_20260411155836_b2003c",
+      "type": "order.driver_assigned",
+      "entityType": "order",
+      "entityId": "ord_20260411093917_352f2d",
+      "payload": {
+        "driverId": "driver_noah",
+        "routeId": "route_20260411104846_1ca0dc"
+      },
+      "occurredAt": "2026-04-11T13:58:36.597477+00:00"
+    },
+    {
+      "id": "evt_20260411104846_61e8d5",
+      "type": "planning.finished",
+      "entityType": "plan",
+      "entityId": "plan_20260411104846_9b6a4d",
+      "payload": {
+        "routeCount": 2,
+        "solver": "python_mock"
+      },
+      "occurredAt": "2026-04-11T08:48:46.570962+00:00"
+    },
+    {
+      "id": "evt_20260411093917_dd15fa",
+      "type": "order.created",
+      "entityType": "order",
+      "entityId": "ord_20260411093917_352f2d",
+      "payload": {
+        "reference": "NAAV-7579"
+      },
+      "occurredAt": "2026-04-11T07:39:17.583877+00:00"
+    },
+    {
+      "id": "evt_20260410150409_c4c6c9",
+      "type": "route.dispatched",
+      "entityType": "route",
+      "entityId": "route_20260410150409_e79d4e",
+      "payload": {
+        "driverId": "driver_amina"
+      },
+      "occurredAt": "2026-04-10T13:04:09.949113+00:00"
+    },
+    {
+      "id": "evt_20260410150409_3de0e4",
+      "type": "planning.finished",
+      "entityType": "plan",
+      "entityId": "plan_20260410150409_fd1fa3",
+      "payload": {
+        "routeCount": 2
+      },
+      "occurredAt": "2026-04-10T13:04:09.947002+00:00"
+    },
+    {
+      "id": "evt_20260410150409_fd2821",
+      "type": "order.created",
+      "entityType": "order",
+      "entityId": "ord_20260410150409_092ebf",
+      "payload": {
+        "reference": "NAAV-SMOKE-1775826249"
+      },
+      "occurredAt": "2026-04-10T13:04:09.945009+00:00"
+    },
+    {
+      "id": "evt_20260410150409_da0ee0",
+      "type": "driver.created",
+      "entityType": "driver",
+      "entityId": "driver_20260410150409_cd85e9",
+      "payload": {
+        "name": "Smoke Driver 1775826249",
+        "phone": "+33699990000",
+        "skills": [
+          "fragile"
+        ],
+        "id": "driver_20260410150409_cd85e9",
+        "createdAt": "2026-04-10T13:04:09.943118+00:00",
+        "updatedAt": "2026-04-10T13:04:09.943118+00:00",
+        "status": "active"
+      },
+      "occurredAt": "2026-04-10T13:04:09.943383+00:00"
+    },
+    {
+      "id": "evt_20260410131838_e3782a",
+      "type": "demo.seeded",
+      "entityType": "system",
+      "entityId": "demo",
+      "payload": {
+        "replace": false
+      },
+      "occurredAt": "2026-04-10T11:18:38.692932+00:00"
+    }
+  ],
+  "pricingConfig": {
+    "currency": "EUR",
+    "basic": {
+      "distanceRatePerKm": 0.5,
+      "sizeBasePrices": {
+        "S": 9.8,
+        "M": 14.4,
+        "L": 18.91,
+        "XL": 24.6,
+        "XXL": 29.8
+      }
+    },
+    "pallet": {
+      "pricePerPallet": 35.0,
+      "vehicleThresholds": {
+        "van_3m3": 2,
+        "van_5m3": 4,
+        "van_10m3": 6,
+        "van_20m3": 8
+      }
+    },
+    "hours": {
+      "minimumHours": 3,
+      "includedKm": 150,
+      "vehicleHourlyRates": {
+        "bike": 16.5,
+        "scooter": 19.5,
+        "car": 23.0,
+        "van_3m3": 28.75,
+        "van_5m3": 31.62,
+        "van_10m3": 36.36,
+        "van_15m3": 41.84,
+        "van_20m3": 48.11
+      }
+    },
+    "drops": {
+      "minimumDrops": 10,
+      "includedKm": 100,
+      "vehicleDropRates": {
+        "car": 8.5,
+        "van_3m3": 11.0,
+        "van_5m3": 13.25,
+        "van_10m3": 16.2,
+        "van_15m3": 18.9,
+        "van_20m3": 22.4
+      }
+    }
+  },
+  "carrierCompanies": [
+    {
+      "name": "Naaval 1",
+      "legalName": "Naaval.pute",
+      "email": "driver@naaval.io",
+      "phone": "098909849",
+      "headquartersAddress": "88 rue de la justice",
+      "vatNumber": "FR12345678",
+      "contactFirstName": "Claire",
+      "contactLastName": "Martin",
+      "contactPhone": "5898490398",
+      "contactEmail": "claire@tmoche.io",
+      "tags": [],
+      "id": "carrier_company_20260412172404_5d5d35",
+      "createdAt": "2026-04-12T15:24:04.066681+00:00",
+      "updatedAt": "2026-04-12T15:24:04.066681+00:00"
+    }
+  ],
+  "opsUsers": [
+    {
+      "id": "ops_user_pierre",
+      "firstName": "Pierre",
+      "lastName": "Ops",
+      "email": "pierre@naaval.app",
+      "role": "ops_admin",
+      "team": "Operations",
+      "temporaryPassword": "demo",
+      "status": "active",
+      "createdAt": "2026-04-18T09:46:39.403760+00:00",
+      "updatedAt": "2026-04-18T09:46:39.403760+00:00"
+    }
+  ],
+  "customers": [
+    {
+      "id": "customer_naaval_test_client_bastille",
+      "companyName": "Client Bastille",
+      "headquartersAddress": "Client Bastille",
+      "vatNumber": "",
+      "companyPhone": "",
+      "companyEmail": "",
+      "contactFirstName": "",
+      "contactLastName": "",
+      "contactPhone": "",
+      "contactEmail": "",
+      "revenueRange": "0-500k",
+      "companySize": "smb",
+      "pricingAlgorithmId": "basic",
+      "createdAt": "2026-04-12T15:16:17.038570+00:00",
+      "updatedAt": "2026-04-12T15:16:33.595704+00:00"
+    },
+    {
+      "id": "customer_20260411164239_0cfb11",
+      "companyName": "Naaval.io - Test",
+      "headquartersAddress": "88 rue de la justice 78100 saint germain en laye",
+      "vatNumber": "FR543456543",
+      "companyPhone": "0698904939",
+      "companyEmail": "p.morcrette@gmail.com",
+      "contactFirstName": "Pierre",
+      "contactLastName": "Morcrette",
+      "contactPhone": "0909898949",
+      "contactEmail": "p.morcrette@gmail.com",
+      "revenueRange": "0-500k",
+      "companySize": "smb",
+      "pricingAlgorithmId": "drops",
+      "createdAt": "2026-04-11T14:42:39.932756+00:00",
+      "updatedAt": "2026-04-12T15:17:14.950515+00:00"
+    },
+    {
+      "id": "customer_merchant_demo_avenue_louise_231_1050_ixelles",
+      "companyName": "Avenue Louise 231, 1050 Ixelles",
+      "headquartersAddress": "Avenue Louise 231, 1050 Ixelles",
+      "vatNumber": "",
+      "companyPhone": "",
+      "companyEmail": "p.morcrette@gmail.com",
+      "contactFirstName": "",
+      "contactLastName": "",
+      "contactPhone": "",
+      "contactEmail": "",
+      "revenueRange": "0-500k",
+      "companySize": "smb",
+      "pricingAlgorithmId": "basic",
+      "createdAt": "2026-04-11T14:41:40.769863+00:00",
+      "updatedAt": "2026-04-11T14:41:40.769863+00:00"
+    }
+  ],
+  "quotes": [],
+  "recurringRoutes": [
+    {
+      "reference": "RR-965704",
+      "label": "Pain",
+      "source": "customer_portal",
+      "customerId": "customer_20260411164239_0cfb11",
+      "recurringDays": [
+        "tue",
+        "thu",
+        "sun"
+      ],
+      "frequency": "Tuesday, Thursday, Sunday",
+      "pickupTime": "13:00",
+      "windowLabel": "13h00 pickup",
+      "nextRunLabel": "Tuesday 13h00",
+      "hubId": "hub_paris_central",
+      "hubLabel": "Paris Central Hub",
+      "merchantId": "Naaval.io - Test",
+      "kind": "delivery",
+      "pricingAlgorithmId": "drops",
+      "pickupAddress": {
+        "label": "Naaval.io - Test",
+        "street1": "88 rue de la justice 78100 saint germain en laye",
+        "city": "",
+        "postalCode": "",
+        "countryCode": "FR",
+        "contactName": "Pierre Morcrette",
+        "phone": "0909898949",
+        "email": "p.morcrette@gmail.com",
+        "parcelSize": "M",
+        "comment": ""
+      },
+      "dropoffAddresses": [
+        {
+          "label": "The french bastard",
+          "street1": "45 rue faubourg du temple",
+          "city": "Paris",
+          "postalCode": "75003",
+          "countryCode": "FR",
+          "contactName": "Claire Dubois",
+          "phone": "0989309892",
+          "email": "Tmoche@tnul.com",
+          "parcelSize": "M",
+          "comment": ""
+        }
+      ],
+      "driverName": "Unassigned",
+      "vehicleLabel": "Pending assignment",
+      "stopCount": 1,
+      "customerCount": 1,
+      "status": "planned",
+      "tags": [
+        "\ud83d\udd01 Tuesday, Thursday, Sunday",
+        "\u23f1\ufe0f 13h00",
+        "\u2699\ufe0f By Drop"
+      ],
+      "note": "Recurring delivery template created from customer portal.",
+      "orders": [
+        {
+          "reference": "RR-965704",
+          "dropoffLabel": "The french bastard, 45 rue faubourg du temple, 75003, Paris",
+          "timeLabel": "13h00",
+          "status": "planned",
+          "pickupAddress": {
+            "label": "Naaval.io - Test",
+            "street1": "88 rue de la justice 78100 saint germain en laye",
+            "city": "",
+            "postalCode": "",
+            "countryCode": "FR",
+            "contactName": "Pierre Morcrette",
+            "phone": "0909898949",
+            "email": "p.morcrette@gmail.com",
+            "parcelSize": "M",
+            "comment": ""
+          },
+          "dropoffAddress": {
+            "label": "The french bastard",
+            "street1": "45 rue faubourg du temple",
+            "city": "Paris",
+            "postalCode": "75003",
+            "countryCode": "FR",
+            "contactName": "Claire Dubois",
+            "phone": "0989309892",
+            "email": "Tmoche@tnul.com",
+            "parcelSize": "M",
+            "comment": ""
+          },
+          "pricingAlgorithmId": "drops",
+          "kind": "delivery"
+        }
+      ],
+      "id": "rr_20260412173245_57b739",
+      "createdAt": "2026-04-12T15:32:45.712264+00:00",
+      "updatedAt": "2026-04-12T15:32:45.712264+00:00"
+    }
+  ],
+  "graphhopperUsage": {
+    "enabled": true,
+    "remaining": "499",
+    "limit": "500",
+    "resetSeconds": "41839",
+    "updatedAt": "2026-04-17T12:22:40.489544+00:00",
+    "source": "graphhopper"
+  },
+  "inboxMessages": [
+    {
+      "id": "msg_20260411175002_bc4bcf",
+      "audience": "drivers",
+      "threadId": "driver_amina",
+      "author": "Naaval Ops",
+      "body": "Carrier app channel is live. Use this thread for delays, incidents, and POD updates.",
+      "senderType": "ops",
+      "senderId": "ops_user_pierre",
+      "createdAt": "2026-04-11T10:30:00+02:00",
+      "time": "10h30"
+    },
+    {
+      "id": "msg_20260412162354_0f5c28",
+      "audience": "drivers",
+      "threadId": "driver_amina",
+      "author": "Naaval Ops",
+      "body": "Test notif ops vers chauffeur.",
+      "senderType": "ops",
+      "senderId": "ops_control_tower",
+      "createdAt": "2026-04-12T16:45:00+02:00",
+      "time": "16h45"
+    }
+  ]
+}
