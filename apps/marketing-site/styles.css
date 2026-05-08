@@ -774,14 +774,27 @@ a {
 }
 
 .site-footer {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
-  gap: 1.4rem;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   width: 100%;
   padding: 1.4rem 0 0.6rem;
   color: var(--naaval-muted);
   font-weight: 700;
+}
+
+.site-footer__links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.site-footer__ops-button {
+  min-height: 2.75rem;
+  padding-inline: 1.05rem;
 }
 
 @media (max-width: 1160px) {
@@ -817,6 +830,10 @@ a {
 
   .hero__visual {
     min-height: 420px;
+  }
+
+  .site-footer {
+    justify-content: center;
   }
 }
 
@@ -916,6 +933,11 @@ a {
 
   .pricing-cta {
     grid-template-columns: 1fr;
+  }
+
+  .site-footer,
+  .site-footer__links {
+    justify-content: center;
   }
 
   .pricing-table {
