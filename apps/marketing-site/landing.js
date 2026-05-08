@@ -1,12 +1,12 @@
 const translations = {
   fr: {
     meta: {
-      title: "Naaval.eu - Le systeme d'exploitation de la logistique du dernier kilometre",
+      title: "Naaval.eu - Le système d'exploitation de la logistique du dernier kilomètre",
       description:
-        "Naaval est la plateforme SaaS qui permet aux transporteurs et aux equipes logistiques de piloter leurs operations, optimiser leurs tournees et automatiser leur pricing."
+        "Naaval est la plateforme SaaS qui permet aux transporteurs et aux équipes logistiques de piloter leurs opérations, optimiser leurs tournées et automatiser leur pricing."
     },
     brand: {
-      tagline: "Control tower pour les equipes livraison modernes"
+      tagline: "Control tower pour les équipes livraison modernes"
     },
     nav: {
       solution: "Solution",
@@ -18,64 +18,64 @@ const translations = {
     cta: {
       book: "Book a demo",
       ops: "Ops Login",
-      discover: "Decouvrir la plateforme"
+      discover: "Découvrir la plateforme"
     },
     hero: {
       eyebrow: "Naaval.eu",
-      title: "Naaval - Le systeme d'exploitation de la logistique du dernier kilometre",
-      subtitle: "Digitalise, optimise et scale ton activite de livraison - sans complexite.",
+      title: "Naaval - Le système d'exploitation de la logistique du dernier kilomètre",
+      subtitle: "Digitalise, optimise et scale ton activité de livraison - sans complexité.",
       body:
-        "Naaval est une plateforme SaaS qui permet aux transporteurs et aux equipes logistiques de gerer leurs operations, optimiser leurs tournees et automatiser leur pricing en temps reel.",
+        "Naaval est une plateforme SaaS qui permet aux transporteurs et aux équipes logistiques de gérer leurs opérations, optimiser leurs tournées et automatiser leur pricing en temps réel.",
       metrics: {
         opsLabel: "Ops",
         opsValue: "Control tower",
         routingLabel: "Routing",
         routingValue: "VRP intelligent",
-        executionLabel: "Execution",
+        executionLabel: "Exécution",
         executionValue: "Apps chauffeur + client"
       },
       cards: {
         controlLabel: "Control Tower",
         controlValue: "Commandes, routes, drivers, pricing, clients.",
-        realtimeLabel: "Temps reel",
+        realtimeLabel: "Temps réel",
         realtimeValue: "ETA, proof, tracking, live operations."
       }
     },
     problem: {
-      label: "Probleme",
-      title: "La logistique est encore bloquee en 2010",
+      label: "Problème",
+      title: "La logistique est encore bloquée en 2010",
       body:
-        "Aujourd'hui, les transporteurs et petites societes de livraison gerent encore leur croissance avec des outils qui ne sont plus adaptes au terrain.",
+        "Aujourd'hui, les transporteurs et petites sociétés de livraison gèrent encore leur croissance avec des outils qui ne sont plus adaptés au terrain.",
       items: [
-        "Gerent leurs tournees sur Excel",
+        "Gèrent leurs tournées sur Excel",
         "N'ont aucune optimisation intelligente",
         "Perdent du temps sur la planification",
-        "Fixent leurs prix a l'aveugle",
-        "Dependent d'intermediaires qui prennent leur marge"
+        "Fixent leurs prix à l'aveugle",
+        "Dépendent d'intermédiaires qui prennent leur marge"
       ],
-      note: "Resultat : perte de temps, perte d'argent, impossibilite de scaler."
+      note: "Résultat : perte de temps, perte d'argent, impossibilité de scaler."
     },
     solution: {
       label: "Solution",
-      title: "Une seule plateforme pour tout gerer",
+      title: "Une seule plateforme pour tout gérer",
       body:
-        "Naaval centralise toutes tes operations dans un seul outil et remplace Excel, WhatsApp et plusieurs logiciels fragmentes.",
+        "Naaval centralise toutes tes opérations dans un seul outil et remplace Excel, WhatsApp et plusieurs logiciels fragmentés.",
       items: [
         {
-          title: "Planification des tournees",
+          title: "Planification des tournées",
           body: "VRP intelligent avec optimisation des distances, du temps et des contraintes terrain."
         },
         {
-          title: "Gestion des livraisons en temps reel",
-          body: "Execution chauffeur, statuts, preuves de livraison et suivi live."
+          title: "Gestion des livraisons en temps réel",
+          body: "Exécution chauffeur, statuts, preuves de livraison et suivi live."
         },
         {
-          title: "Pricing automatise",
-          body: "Distance, zone, volume, type de vehicule et logique commerciale dans un seul moteur."
+          title: "Pricing automatisé",
+          body: "Distance, zone, volume, type de véhicule et logique commerciale dans un seul moteur."
         },
         {
           title: "Suivi des chauffeurs et interface client",
-          body: "Un ecosysteme complet pour l'ops, le transporteur et le client final."
+          body: "Un écosystème complet pour l'ops, le transporteur et le client final."
         }
       ],
       panel: {
@@ -85,7 +85,7 @@ const translations = {
           "WhatsApp",
           "Tableaux de planification",
           "Fichiers de pricing manuels",
-          "Mises a jour client fragmentees"
+          "Mises à jour client fragmentées"
         ]
       }
     },
@@ -93,19 +93,19 @@ const translations = {
       label: "Produit",
       title: "Le produit Naaval",
       body:
-        "Un socle unique pour piloter la livraison, optimiser la marge et fluidifier l'execution terrain.",
+        "Un socle unique pour piloter la livraison, optimiser la marge et fluidifier l'exécution terrain.",
       items: [
         {
           title: "Routing intelligent",
-          body: "Optimise automatiquement les tournees selon la distance, le temps et les contraintes."
+          body: "Optimise automatiquement les tournées selon la distance, le temps et les contraintes."
         },
         {
           title: "Pricing engine",
-          body: "Definis tes prix automatiquement selon la distance, la zone, le volume et le vehicule."
+          body: "Définis tes prix automatiquement selon la distance, la zone, le volume et le véhicule."
         },
         {
           title: "Driver app",
-          body: "Navigation, preuves de livraison, signatures et statuts temps reel dans une app simple."
+          body: "Navigation, preuves de livraison, signatures et statuts temps réel dans une app simple."
         },
         {
           title: "Dashboard ops",
@@ -113,111 +113,111 @@ const translations = {
         },
         {
           title: "Customer experience",
-          body: "Suivi live, notifications, ETA et portail client pour une experience professionnelle."
+          body: "Suivi live, notifications, ETA et portail client pour une expérience professionnelle."
         }
       ]
     },
     audience: {
       label: "Pour qui",
-      title: "Concu pour les acteurs du terrain",
-      body: "Tous ceux qui veulent reprendre le controle de leur logistique sans ajouter de complexite.",
+      title: "Conçu pour les acteurs du terrain",
+      body: "Tous ceux qui veulent reprendre le contrôle de leur logistique sans ajouter de complexité.",
       items: [
-        "Transporteurs independants",
+        "Transporteurs indépendants",
         "PME de livraison",
         "Retail / e-commerce",
         "Fournisseurs / grossistes"
       ]
     },
     comparison: {
-      label: "Differenciation",
-      title: "Pourquoi Naaval est different",
+      label: "Différenciation",
+      title: "Pourquoi Naaval est différent",
       head: {
         naaval: "Naaval",
         other: "Autres outils"
       },
       rows: [
         { left: "Ultra simple", right: "Complexes" },
-        { left: "Pricing integre", right: "Pricing externe" },
-        { left: "Pense terrain", right: "Pense corporate" },
-        { left: "Rapide a deployer", right: "Long a implementer" },
-        { left: "Abordable", right: "Tres cher" }
+        { left: "Pricing intégré", right: "Pricing externe" },
+        { left: "Pensé terrain", right: "Pensé corporate" },
+        { left: "Rapide à déployer", right: "Long à implémenter" },
+        { left: "Abordable", right: "Très cher" }
       ]
     },
     pricing: {
       label: "Pricing",
-      title: "Des offres qui grandissent avec ton operation",
+      title: "Des offres qui grandissent avec ton opération",
       body:
-        "Choisis le niveau de pilotage adapte a ta flotte aujourd'hui, puis monte en puissance sans changer d'outil.",
+        "Choisis le niveau de pilotage adapté à ta flotte aujourd'hui, puis monte en puissance sans changer d'outil.",
       planDriversLabel: "Chauffeurs inclus",
       plans: [
         { name: "STARTER", price: "79€/mois", drivers: "3 chauffeurs" },
         { name: "GROWTH", price: "199€/mois", drivers: "15 chauffeurs" },
         { name: "SCALE", price: "449€/mois", drivers: "75 chauffeurs" },
-        { name: "ENTERPRISE", price: "Sur devis", drivers: "Illimite / custom" }
+        { name: "ENTERPRISE", price: "Sur devis", drivers: "Illimité / custom" }
       ],
       featureHeader: "Features",
       rows: [
         { label: "Prix", values: ["79€/mois", "199€/mois", "449€/mois", "Sur devis"] },
-        { label: "Chauffeurs inclus", values: ["3", "15", "75", "Illimite / custom"] },
-        { label: "Commandes", values: ["Illimitees", "Illimitees", "Illimitees", "Illimitees"] },
+        { label: "Chauffeurs inclus", values: ["3", "15", "75", "Illimité / custom"] },
+        { label: "Commandes", values: ["Illimitées", "Illimitées", "Illimitées", "Illimitées"] },
         { label: "Driver App", values: ["✅", "✅", "✅", "✅"] },
         { label: "POD photo/signature", values: ["✅", "✅", "✅", "✅"] },
         { label: "Tracking client", values: ["✅", "✅", "✅", "✅"] },
         { label: "VRP intelligent", values: ["✅", "✅", "✅", "✅"] },
         { label: "Multi Pickup -> Multi Drop", values: ["✅", "✅", "✅", "✅"] },
         { label: "Time Windows", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Optimisation kilometrique", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Optimisation kilométrique", values: ["✅", "✅", "✅", "✅"] },
         { label: "Algo pricing Per Drop", values: ["✅", "✅", "✅", "✅"] },
         { label: "Algo pricing Just Price", values: ["✅", "✅", "✅", "✅"] },
         { label: "Algo pricing Point of Sales", values: ["✅", "✅", "✅", "✅"] },
         { label: "Algo pricing Prix Palette", values: ["✅", "✅", "✅", "✅"] },
         { label: "Import CSV", values: ["✅", "✅", "✅", "✅"] },
         { label: "Export CSV", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Dashboard operationnel", values: ["Basique", "Avance", "Avance + Analytics", "Custom"] },
-        { label: "Historique commandes", values: ["30 jours", "Illimite", "Illimite", "Illimite"] },
+        { label: "Dashboard opérationnel", values: ["Basique", "Avancé", "Avancé + Analytics", "Custom"] },
+        { label: "Historique commandes", values: ["30 jours", "Illimité", "Illimité", "Illimité"] },
         { label: "Gestion zones tarifaires", values: ["-", "✅", "✅", "✅"] },
         { label: "Suggestions automatiques dispatch", values: ["-", "✅", "✅", "✅"] },
-        { label: "Optimisation capacite vehicules", values: ["-", "✅", "✅", "✅"] },
-        { label: "Analyse cout/km & rentabilite", values: ["-", "✅", "✅", "✅"] },
+        { label: "Optimisation capacité véhicules", values: ["-", "✅", "✅", "✅"] },
+        { label: "Analyse coût/km & rentabilité", values: ["-", "✅", "✅", "✅"] },
         { label: "Notifications automatiques clients", values: ["-", "✅", "✅", "✅"] },
         { label: "Templates SMS / Email", values: ["-", "✅", "✅", "✅"] },
-        { label: "Gestion equipes", values: ["-", "✅", "✅", "✅"] },
-        { label: "Permissions avancees", values: ["-", "-", "✅", "✅"] },
-        { label: "Multi-entrepots", values: ["-", "-", "✅", "✅"] },
-        { label: "API", values: ["-", "API legere", "API complete", "API custom"] },
+        { label: "Gestion équipes", values: ["-", "✅", "✅", "✅"] },
+        { label: "Permissions avancées", values: ["-", "-", "✅", "✅"] },
+        { label: "Multi-entrepôts", values: ["-", "-", "✅", "✅"] },
+        { label: "API", values: ["-", "API légère", "API complète", "API custom"] },
         { label: "Webhooks", values: ["-", "-", "✅", "✅"] },
-        { label: "Integrations ERP / Shopify / WMS", values: ["-", "-", "✅", "✅"] },
+        { label: "Intégrations ERP / Shopify / WMS", values: ["-", "-", "✅", "✅"] },
         { label: "Portail client", values: ["-", "-", "✅", "✅"] },
         { label: "White-label tracking", values: ["-", "-", "✅", "✅"] },
         { label: "Export GeoJSON", values: ["-", "-", "✅", "✅"] },
         { label: "Analytics performance chauffeurs", values: ["-", "-", "✅", "✅"] },
-        { label: "Branding personnalise", values: ["-", "-", "✅", "✅"] },
-        { label: "Support", values: ["Standard", "Prioritaire", "Premium", "Dedie"] },
-        { label: "Onboarding personnalise", values: ["-", "-", "✅", "✅"] },
+        { label: "Branding personnalisé", values: ["-", "-", "✅", "✅"] },
+        { label: "Support", values: ["Standard", "Prioritaire", "Premium", "Dédié"] },
+        { label: "Onboarding personnalisé", values: ["-", "-", "✅", "✅"] },
         { label: "SLA / accompagnement OPS", values: ["-", "-", "-", "✅"] },
-        { label: "Hebergement dedie", values: ["-", "-", "-", "✅"] },
-        { label: "Developpements specifiques", values: ["-", "-", "-", "✅"] }
+        { label: "Hébergement dédié", values: ["-", "-", "-", "✅"] },
+        { label: "Développements spécifiques", values: ["-", "-", "-", "✅"] }
       ],
-      cta: "Besoin d'un setup sur mesure, d'un SLA ops ou d'integrations specifiques ? Parlons-en.",
+      cta: "Besoin d'un setup sur mesure, d'un SLA ops ou d'intégrations spécifiques ? Parlons-en.",
       contact: "Contact sales"
     },
     vision: {
       label: "Vision",
-      title: "Construire le futur de la logistique independante",
+      title: "Construire le futur de la logistique indépendante",
       body:
-        "Naaval permet aux transporteurs de devenir autonomes, se concentrer sur le commercial, augmenter leur rentabilite et digitaliser sans friction.",
-      columnTitle: "Ce que Naaval debloque",
+        "Naaval permet aux transporteurs de devenir autonomes, se concentrer sur le commercial, augmenter leur rentabilité et digitaliser sans friction.",
+      columnTitle: "Ce que Naaval débloque",
       items: [
         "Devenir autonomes",
         "Se concentrer sur le commercial",
-        "Augmenter leur rentabilite",
+        "Augmenter leur rentabilité",
         "Digitaliser sans friction"
       ],
-      quote: "L'objectif : creer un reseau de transporteurs independants ultra performants."
+      quote: "L'objectif : créer un réseau de transporteurs indépendants ultra performants."
     },
     finalCta: {
-      label: "Demarrer",
-      title: "Pret a simplifier tes operations de livraison ?"
+      label: "Démarrer",
+      title: "Prêt à simplifier tes opérations de livraison ?"
     },
     footer: {
       product: "Produit",
