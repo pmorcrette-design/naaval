@@ -224,7 +224,7 @@ const translations = {
       pricing: "Pricing",
       contact: "Contact",
       legal: "Legal",
-      ops: "Accès ops"
+      ops: "Ops Login"
     }
   },
   en: {
@@ -451,14 +451,14 @@ const translations = {
       pricing: "Pricing",
       contact: "Contact",
       legal: "Legal",
-      ops: "Ops access"
+      ops: "Ops Login"
     }
   }
 };
 
 const opsTargets = ["localhost", "127.0.0.1", "192.168.1.156"];
 const currentHost = window.location.hostname;
-const hostedOpsHref = "https://ops-web-eta.vercel.app";
+const hostedOpsHref = "https://ops-web-eta.vercel.app/";
 const opsHref = opsTargets.includes(currentHost) ? "/ops/" : hostedOpsHref;
 const opsLinks = document.querySelectorAll("#footer-ops-link");
 const languageButtons = document.querySelectorAll("[data-language]");
