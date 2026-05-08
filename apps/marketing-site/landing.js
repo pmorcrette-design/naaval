@@ -11,6 +11,7 @@ const translations = {
     nav: {
       solution: "Solution",
       product: "Produit",
+      pricing: "Pricing",
       audience: "Pour qui",
       vision: "Vision"
     },
@@ -142,6 +143,64 @@ const translations = {
         { left: "Abordable", right: "Tres cher" }
       ]
     },
+    pricing: {
+      label: "Pricing",
+      title: "Des offres qui grandissent avec ton operation",
+      body:
+        "Choisis le niveau de pilotage adapte a ta flotte aujourd'hui, puis monte en puissance sans changer d'outil.",
+      planDriversLabel: "Chauffeurs inclus",
+      plans: [
+        { name: "STARTER", price: "79€/mois", drivers: "3 chauffeurs" },
+        { name: "GROWTH", price: "199€/mois", drivers: "15 chauffeurs" },
+        { name: "SCALE", price: "449€/mois", drivers: "75 chauffeurs" },
+        { name: "ENTERPRISE", price: "Sur devis", drivers: "Illimite / custom" }
+      ],
+      featureHeader: "Features",
+      rows: [
+        { label: "Prix", values: ["79€/mois", "199€/mois", "449€/mois", "Sur devis"] },
+        { label: "Chauffeurs inclus", values: ["3", "15", "75", "Illimite / custom"] },
+        { label: "Commandes", values: ["Illimitees", "Illimitees", "Illimitees", "Illimitees"] },
+        { label: "Driver App", values: ["✅", "✅", "✅", "✅"] },
+        { label: "POD photo/signature", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Tracking client", values: ["✅", "✅", "✅", "✅"] },
+        { label: "VRP intelligent", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Multi Pickup -> Multi Drop", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Time Windows", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Optimisation kilometrique", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Algo pricing Per Drop", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Algo pricing Just Price", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Algo pricing Point of Sales", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Algo pricing Prix Palette", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Import CSV", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Export CSV", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Dashboard operationnel", values: ["Basique", "Avance", "Avance + Analytics", "Custom"] },
+        { label: "Historique commandes", values: ["30 jours", "Illimite", "Illimite", "Illimite"] },
+        { label: "Gestion zones tarifaires", values: ["-", "✅", "✅", "✅"] },
+        { label: "Suggestions automatiques dispatch", values: ["-", "✅", "✅", "✅"] },
+        { label: "Optimisation capacite vehicules", values: ["-", "✅", "✅", "✅"] },
+        { label: "Analyse cout/km & rentabilite", values: ["-", "✅", "✅", "✅"] },
+        { label: "Notifications automatiques clients", values: ["-", "✅", "✅", "✅"] },
+        { label: "Templates SMS / Email", values: ["-", "✅", "✅", "✅"] },
+        { label: "Gestion equipes", values: ["-", "✅", "✅", "✅"] },
+        { label: "Permissions avancees", values: ["-", "-", "✅", "✅"] },
+        { label: "Multi-entrepots", values: ["-", "-", "✅", "✅"] },
+        { label: "API", values: ["-", "API legere", "API complete", "API custom"] },
+        { label: "Webhooks", values: ["-", "-", "✅", "✅"] },
+        { label: "Integrations ERP / Shopify / WMS", values: ["-", "-", "✅", "✅"] },
+        { label: "Portail client", values: ["-", "-", "✅", "✅"] },
+        { label: "White-label tracking", values: ["-", "-", "✅", "✅"] },
+        { label: "Export GeoJSON", values: ["-", "-", "✅", "✅"] },
+        { label: "Analytics performance chauffeurs", values: ["-", "-", "✅", "✅"] },
+        { label: "Branding personnalise", values: ["-", "-", "✅", "✅"] },
+        { label: "Support", values: ["Standard", "Prioritaire", "Premium", "Dedie"] },
+        { label: "Onboarding personnalise", values: ["-", "-", "✅", "✅"] },
+        { label: "SLA / accompagnement OPS", values: ["-", "-", "-", "✅"] },
+        { label: "Hebergement dedie", values: ["-", "-", "-", "✅"] },
+        { label: "Developpements specifiques", values: ["-", "-", "-", "✅"] }
+      ],
+      cta: "Besoin d'un setup sur mesure, d'un SLA ops ou d'integrations specifiques ? Parlons-en.",
+      contact: "Contact sales"
+    },
     vision: {
       label: "Vision",
       title: "Construire le futur de la logistique independante",
@@ -179,6 +238,7 @@ const translations = {
     nav: {
       solution: "Solution",
       product: "Product",
+      pricing: "Pricing",
       audience: "For who",
       vision: "Vision"
     },
@@ -309,6 +369,64 @@ const translations = {
         { left: "Affordable", right: "Very expensive" }
       ]
     },
+    pricing: {
+      label: "Pricing",
+      title: "Plans that scale with your operations",
+      body:
+        "Start with the level of operational control you need today, then scale up without changing tools.",
+      planDriversLabel: "Included drivers",
+      plans: [
+        { name: "STARTER", price: "79€/month", drivers: "3 drivers" },
+        { name: "GROWTH", price: "199€/month", drivers: "15 drivers" },
+        { name: "SCALE", price: "449€/month", drivers: "75 drivers" },
+        { name: "ENTERPRISE", price: "Custom quote", drivers: "Unlimited / custom" }
+      ],
+      featureHeader: "Features",
+      rows: [
+        { label: "Price", values: ["79€/month", "199€/month", "449€/month", "Custom quote"] },
+        { label: "Included drivers", values: ["3", "15", "75", "Unlimited / custom"] },
+        { label: "Orders", values: ["Unlimited", "Unlimited", "Unlimited", "Unlimited"] },
+        { label: "Driver App", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Photo / signature POD", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Customer tracking", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Intelligent VRP", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Multi Pickup -> Multi Drop", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Time Windows", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Kilometric optimization", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Per Drop pricing algo", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Just Price pricing algo", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Point of Sales pricing algo", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Pallet pricing algo", values: ["✅", "✅", "✅", "✅"] },
+        { label: "CSV import", values: ["✅", "✅", "✅", "✅"] },
+        { label: "CSV export", values: ["✅", "✅", "✅", "✅"] },
+        { label: "Operations dashboard", values: ["Basic", "Advanced", "Advanced + Analytics", "Custom"] },
+        { label: "Order history", values: ["30 days", "Unlimited", "Unlimited", "Unlimited"] },
+        { label: "Pricing zones", values: ["-", "✅", "✅", "✅"] },
+        { label: "Automatic dispatch suggestions", values: ["-", "✅", "✅", "✅"] },
+        { label: "Vehicle capacity optimization", values: ["-", "✅", "✅", "✅"] },
+        { label: "Cost/km & profitability analysis", values: ["-", "✅", "✅", "✅"] },
+        { label: "Automatic customer notifications", values: ["-", "✅", "✅", "✅"] },
+        { label: "SMS / Email templates", values: ["-", "✅", "✅", "✅"] },
+        { label: "Team management", values: ["-", "✅", "✅", "✅"] },
+        { label: "Advanced permissions", values: ["-", "-", "✅", "✅"] },
+        { label: "Multi-warehouse", values: ["-", "-", "✅", "✅"] },
+        { label: "API", values: ["-", "Light API", "Full API", "Custom API"] },
+        { label: "Webhooks", values: ["-", "-", "✅", "✅"] },
+        { label: "ERP / Shopify / WMS integrations", values: ["-", "-", "✅", "✅"] },
+        { label: "Customer portal", values: ["-", "-", "✅", "✅"] },
+        { label: "White-label tracking", values: ["-", "-", "✅", "✅"] },
+        { label: "GeoJSON export", values: ["-", "-", "✅", "✅"] },
+        { label: "Driver performance analytics", values: ["-", "-", "✅", "✅"] },
+        { label: "Custom branding", values: ["-", "-", "✅", "✅"] },
+        { label: "Support", values: ["Standard", "Priority", "Premium", "Dedicated"] },
+        { label: "Personalized onboarding", values: ["-", "-", "✅", "✅"] },
+        { label: "SLA / ops enablement", values: ["-", "-", "-", "✅"] },
+        { label: "Dedicated hosting", values: ["-", "-", "-", "✅"] },
+        { label: "Custom development", values: ["-", "-", "-", "✅"] }
+      ],
+      cta: "Need a custom setup, ops SLA, or specific integrations? Let's talk.",
+      contact: "Contact sales"
+    },
     vision: {
       label: "Vision",
       title: "Building the future of independent logistics",
@@ -343,6 +461,9 @@ const opsLinks = document.querySelectorAll("#ops-login-link, #ops-login-link-bot
 const languageButtons = document.querySelectorAll("[data-language]");
 const titleNode = document.querySelector("title");
 const descriptionNode = document.querySelector('meta[name="description"]');
+const pricingPlanGridNode = document.querySelector("#pricing-plan-grid");
+const pricingTableHeadNode = document.querySelector("#pricing-table-head");
+const pricingTableBodyNode = document.querySelector("#pricing-table-body");
 const languageStorageKey = "naaval-marketing-language";
 
 function getNestedValue(source, key) {
@@ -360,6 +481,44 @@ function setActiveLanguageButton(language) {
     button.classList.toggle("language-switch__button--active", isActive);
     button.setAttribute("aria-pressed", isActive ? "true" : "false");
   });
+}
+
+function renderPricingSection(dictionary) {
+  const pricing = dictionary.pricing;
+  if (!pricingPlanGridNode || !pricingTableHeadNode || !pricingTableBodyNode || !pricing) {
+    return;
+  }
+
+  pricingPlanGridNode.innerHTML = pricing.plans
+    .map(
+      (plan) => `
+        <article class="pricing-plan-card">
+          <span class="pricing-plan-card__name">${plan.name}</span>
+          <strong class="pricing-plan-card__price">${plan.price}</strong>
+          <span class="pricing-plan-card__drivers">${pricing.planDriversLabel}</span>
+          <p class="pricing-plan-card__value">${plan.drivers}</p>
+        </article>
+      `
+    )
+    .join("");
+
+  pricingTableHeadNode.innerHTML = `
+    <tr>
+      <th>${pricing.featureHeader}</th>
+      ${pricing.plans.map((plan) => `<th>${plan.name}</th>`).join("")}
+    </tr>
+  `;
+
+  pricingTableBodyNode.innerHTML = pricing.rows
+    .map(
+      (row) => `
+        <tr>
+          <th>${row.label}</th>
+          ${row.values.map((value) => `<td>${value}</td>`).join("")}
+        </tr>
+      `
+    )
+    .join("");
 }
 
 function applyLanguage(language) {
@@ -380,6 +539,8 @@ function applyLanguage(language) {
       node.textContent = value;
     }
   });
+
+  renderPricingSection(dictionary);
 
   setActiveLanguageButton(language);
   window.localStorage.setItem(languageStorageKey, language);
