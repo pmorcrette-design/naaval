@@ -39,6 +39,14 @@ const portalState = {
 let googleRetryTimer = null;
 let portalLiveRefreshTimer = null;
 
+function getPortalAuthHeaders(extraHeaders = {}) {
+  const headers = { ...extraHeaders };
+  if (portalState.session?.token) {
+    headers.Authorization = `Bearer ${portalState.session.token}`;
+  }
+  return headers;
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -240,7 +248,9 @@ async function fetchJson(path) {
 
   for (const baseUrl of candidates) {
     try {
-      const response = await fetch(`${baseUrl}${path}`);
+      const response = await fetch(`${baseUrl}${path}`, {
+        headers: getPortalAuthHeaders()
+      });
       if (!response.ok) {
         throw new Error(await readErrorMessage(response));
       }
@@ -265,9 +275,9 @@ async function postJson(path, payload) {
     try {
       const response = await fetch(`${baseUrl}${path}`, {
         method: "POST",
-        headers: {
+        headers: getPortalAuthHeaders({
           "Content-Type": "application/json"
-        },
+        }),
         body: JSON.stringify(payload)
       });
 
@@ -294,7 +304,8 @@ async function deleteJson(path) {
   for (const baseUrl of candidates) {
     try {
       const response = await fetch(`${baseUrl}${path}`, {
-        method: "DELETE"
+        method: "DELETE",
+        headers: getPortalAuthHeaders()
       });
 
       if (!response.ok) {
@@ -812,7 +823,9 @@ function loginCustomer(customer, source = "email") {
   portalState.customer = customer;
   portalState.session = {
     customerId: customer.id,
+    tenantId: customer.tenantId || customer.companyId || null,
     email: customer.contactEmail || customer.companyEmail || "",
+    token: customer.token || null,
     source
   };
   persistSession(portalState.session);
@@ -1082,18 +1095,24 @@ async function handlePortalLogin(event) {
   }
 
   try {
+    const session = await postJson("/auth/customer-login", { email });
+    loginCustomer(
+      {
+        id: session.customerId,
+        tenantId: session.tenantId,
+        contactEmail: session.email,
+        companyEmail: session.email,
+        companyName: session.tenant?.companyName || session.name,
+        token: session.token
+      },
+      "email"
+    );
     await bootstrapPortalData();
-    const customer = findCustomerByEmail(email);
-    if (!customer) {
-      showToast("No customer account matches this email yet. Ask ops to create your customer account first.", "error");
-      return;
-    }
-
-    loginCustomer(customer, "email");
+    portalState.customer = portalState.customers.find((customer) => customer.id === session.customerId) ?? portalState.customer;
     await loadOrdersForCurrentCustomer();
     syncRecurringRoutesForCurrentCustomer();
     renderPortal();
-    showToast(`Welcome to the portal, ${customer.companyName}.`);
+    showToast(`Welcome to the portal, ${portalState.customer?.companyName || session.name}.`);
   } catch (error) {
     showToast(`Unable to open portal: ${error.message}`, "error");
   }
@@ -1350,18 +1369,24 @@ function setupGoogleIdentity(retryCount = 0) {
         return;
       }
 
+      const session = await postJson("/auth/customer-login", { email: payload.email });
+      loginCustomer(
+        {
+          id: session.customerId,
+          tenantId: session.tenantId,
+          contactEmail: session.email,
+          companyEmail: session.email,
+          companyName: session.tenant?.companyName || session.name,
+          token: session.token
+        },
+        "google"
+      );
       await bootstrapPortalData();
-      const customer = findCustomerByEmail(payload.email);
-      if (!customer) {
-        showToast("This Google account is not attached to a customer profile yet.", "error");
-        return;
-      }
-
-      loginCustomer(customer, "google");
+      portalState.customer = portalState.customers.find((customer) => customer.id === session.customerId) ?? portalState.customer;
       await loadOrdersForCurrentCustomer();
       syncRecurringRoutesForCurrentCustomer();
       renderPortal();
-      showToast(`Google login successful for ${customer.companyName}.`);
+      showToast(`Google login successful for ${portalState.customer?.companyName || session.name}.`);
     }
   });
 
@@ -1476,7 +1501,11 @@ async function initialize() {
     portalState.session = session;
   }
 
-  await refreshPortal();
+  if (portalState.session?.token) {
+    await refreshPortal();
+  } else {
+    renderPortal();
+  }
   setupGoogleIdentity();
 }
 

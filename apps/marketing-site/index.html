@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#0d5e4d" />
     <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg" />
     <link rel="stylesheet" href="./styles.css" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
   <body>
     <div class="site-shell">
@@ -37,7 +38,7 @@
             <button class="language-switch__button" type="button" data-language="en">EN</button>
           </div>
           <a class="ghost-button" href="mailto:hello@naaval.eu?subject=Book%20a%20demo" data-i18n="cta.book">Book a demo</a>
-          <a class="solid-button" href="mailto:hello@naaval.eu?subject=Inscription%20Naaval" data-i18n="cta.signup">S’inscrire</a>
+          <button class="solid-button" type="button" data-open-signup data-i18n="cta.signup">S’inscrire</button>
         </div>
       </header>
 
@@ -302,7 +303,7 @@
           </div>
           <div class="cta-section__actions">
             <a class="solid-button solid-button--large" href="mailto:hello@naaval.eu?subject=Book%20a%20demo" data-i18n="cta.book">Book a demo</a>
-            <a class="ghost-button" href="mailto:hello@naaval.eu?subject=Inscription%20Naaval" data-i18n="cta.signup">S’inscrire</a>
+            <button class="ghost-button" type="button" data-open-signup data-i18n="cta.signup">S’inscrire</button>
           </div>
         </section>
       </main>
@@ -318,6 +319,103 @@
       </footer>
     </div>
 
+    <div class="signup-modal hidden" id="signup-modal" aria-hidden="true">
+      <div class="signup-modal__backdrop" data-close-signup></div>
+      <div class="signup-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="signup-modal-title">
+        <section class="signup-modal__brand">
+          <img src="./assets/logo-mark.svg" alt="Naaval" class="signup-modal__logo" />
+          <p class="eyebrow" data-i18n="signup.label">Inscription</p>
+          <h2 data-i18n="signup.brandTitle">Crée ton workspace Naaval.</h2>
+          <p data-i18n="signup.brandBody">
+            Active ton espace ops, configure tes équipes et commence à piloter tes livraisons depuis une seule plateforme.
+          </p>
+
+          <div class="signup-modal__highlights">
+            <article>
+              <span class="mini-chip" data-i18n="signup.highlights.0.tag">Ops</span>
+              <strong data-i18n="signup.highlights.0.body">Dashboard, VRP, pricing et pilotage terrain dans un seul outil.</strong>
+            </article>
+            <article>
+              <span class="mini-chip" data-i18n="signup.highlights.1.tag">Drivers</span>
+              <strong data-i18n="signup.highlights.1.body">Apps chauffeur, preuves de livraison et statuts temps réel.</strong>
+            </article>
+            <article>
+              <span class="mini-chip" data-i18n="signup.highlights.2.tag">Clients</span>
+              <strong data-i18n="signup.highlights.2.body">Portail client, tracking live et notifications automatiques.</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="signup-modal__form-panel">
+          <button class="signup-modal__close" type="button" data-close-signup aria-label="Close signup modal">Close</button>
+          <p class="eyebrow" data-i18n="signup.label">Inscription</p>
+          <h2 id="signup-modal-title" data-i18n="signup.title">Créer votre compte Naaval</h2>
+          <p class="signup-modal__subtitle" data-i18n="signup.subtitle">
+            Remplissez le formulaire ou continuez avec Google. Nous revenons vers vous rapidement pour activer votre workspace.
+          </p>
+
+          <div class="signup-google-slot" id="signup-google-slot"></div>
+          <button class="ghost-button signup-google-button hidden" id="signup-google-button" type="button" data-i18n="signup.google">Continuer avec Google</button>
+
+          <div class="signup-divider"><span data-i18n="signup.divider">ou</span></div>
+
+          <form class="signup-form" id="signup-form">
+            <div class="signup-grid">
+              <label class="signup-field">
+                <span data-i18n="signup.fields.firstName.label">Prénom</span>
+                <input name="firstName" type="text" data-i18n-placeholder="signup.fields.firstName.placeholder" placeholder="Pierre" required />
+              </label>
+              <label class="signup-field">
+                <span data-i18n="signup.fields.lastName.label">Nom</span>
+                <input name="lastName" type="text" data-i18n-placeholder="signup.fields.lastName.placeholder" placeholder="Morcrette" required />
+              </label>
+              <label class="signup-field signup-field--full">
+                <span data-i18n="signup.fields.company.label">Société</span>
+                <input name="company" type="text" data-i18n-placeholder="signup.fields.company.placeholder" placeholder="Naaval Transport" required />
+              </label>
+              <label class="signup-field">
+                <span data-i18n="signup.fields.email.label">Email pro</span>
+                <input name="email" type="email" data-i18n-placeholder="signup.fields.email.placeholder" placeholder="contact@naaval.eu" required />
+              </label>
+              <label class="signup-field">
+                <span data-i18n="signup.fields.password.label">Mot de passe</span>
+                <input name="password" type="password" data-i18n-placeholder="signup.fields.password.placeholder" placeholder="Choisissez un mot de passe" required />
+              </label>
+              <label class="signup-field">
+                <span data-i18n="signup.fields.phone.label">Téléphone</span>
+                <input name="phone" type="tel" data-i18n-placeholder="signup.fields.phone.placeholder" placeholder="+33 6 00 00 00 00" />
+              </label>
+              <label class="signup-field signup-field--full">
+                <span data-i18n="signup.fields.volume.label">Volume mensuel estimé</span>
+                <select name="volume" required>
+                  <option value="" data-i18n="signup.fields.volume.options.placeholder">Choisir un volume</option>
+                  <option value="0-250" data-i18n="signup.fields.volume.options.0">0 à 250 livraisons / mois</option>
+                  <option value="250-1000" data-i18n="signup.fields.volume.options.1">250 à 1 000 livraisons / mois</option>
+                  <option value="1000-5000" data-i18n="signup.fields.volume.options.2">1 000 à 5 000 livraisons / mois</option>
+                  <option value="5000+" data-i18n="signup.fields.volume.options.3">5 000+ livraisons / mois</option>
+                </select>
+              </label>
+              <label class="signup-field signup-field--full">
+                <span data-i18n="signup.fields.message.label">Besoin principal</span>
+                <textarea name="message" rows="4" data-i18n-placeholder="signup.fields.message.placeholder" placeholder="Expliquez votre besoin : tournée, pricing, portail client, flotte, retail..."></textarea>
+              </label>
+            </div>
+
+            <p class="signup-helper" data-i18n="signup.helper">
+              Votre compte, votre société et votre espace Naaval sont créés automatiquement dès l’inscription.
+            </p>
+
+            <p class="signup-status hidden" id="signup-form-status" aria-live="polite"></p>
+
+            <div class="signup-form__actions">
+              <button class="solid-button solid-button--large" type="submit" data-i18n="signup.submit">Envoyer ma demande</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+
+    <script src="./marketing-config.js"></script>
     <script src="./landing.js"></script>
   </body>
 </html>

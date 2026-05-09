@@ -215,6 +215,83 @@ const translations = {
       ],
       quote: "L'objectif : créer un réseau de transporteurs indépendants ultra performants."
     },
+    signup: {
+      label: "Inscription",
+      brandTitle: "Crée ton workspace Naaval.",
+      brandBody:
+        "Active ton espace ops, configure tes équipes et commence à piloter tes livraisons depuis une seule plateforme.",
+      title: "Créer votre compte Naaval",
+      subtitle:
+        "Remplissez le formulaire ou continuez avec Google pour créer instantanément votre société sur Naaval.",
+      google: "Continuer avec Google",
+      divider: "ou",
+      helper:
+        "Votre tenant, votre compte admin et votre espace ops seront créés automatiquement.",
+      submit: "Créer mon compte",
+      close: "Fermer",
+      highlights: [
+        {
+          tag: "Ops",
+          body: "Dashboard, VRP, pricing et pilotage terrain dans un seul outil."
+        },
+        {
+          tag: "Drivers",
+          body: "Apps chauffeur, preuves de livraison et statuts temps réel."
+        },
+        {
+          tag: "Clients",
+          body: "Portail client, tracking live et notifications automatiques."
+        }
+      ],
+      fields: {
+        firstName: {
+          label: "Prénom",
+          placeholder: "Pierre"
+        },
+        lastName: {
+          label: "Nom",
+          placeholder: "Morcrette"
+        },
+        company: {
+          label: "Société",
+          placeholder: "Naaval Transport"
+        },
+        email: {
+          label: "Email pro",
+          placeholder: "contact@naaval.eu"
+        },
+        password: {
+          label: "Mot de passe",
+          placeholder: "Choisissez un mot de passe"
+        },
+        phone: {
+          label: "Téléphone",
+          placeholder: "+33 6 00 00 00 00"
+        },
+        volume: {
+          label: "Volume mensuel estimé",
+          options: {
+            placeholder: "Choisir un volume",
+            0: "0 à 250 livraisons / mois",
+            1: "250 à 1 000 livraisons / mois",
+            2: "1 000 à 5 000 livraisons / mois",
+            3: "5 000+ livraisons / mois"
+          }
+        },
+        message: {
+          label: "Besoin principal",
+          placeholder: "Expliquez votre besoin : tournée, pricing, portail client, flotte, retail..."
+        }
+      },
+      status: {
+        ready: "Compte créé. Redirection vers votre dashboard Naaval.",
+        invalid: "Merci de renseigner votre prénom, votre nom, votre société, votre e-mail professionnel et un mot de passe.",
+        googleFill: "Compte Google reconnu. Complétez votre société, choisissez un mot de passe et lancez la création.",
+        creating: "Création de votre société Naaval en cours…",
+        googleUnavailable:
+          "Le bouton Google sera activé dès que le client Google sera configuré. Vous pouvez déjà utiliser le formulaire classique."
+      }
+    },
     finalCta: {
       label: "Démarrer",
       title: "Prêt à simplifier tes opérations de livraison ?"
@@ -442,6 +519,83 @@ const translations = {
       ],
       quote: "The goal: build a network of high-performance independent carriers."
     },
+    signup: {
+      label: "Sign up",
+      brandTitle: "Create your Naaval workspace.",
+      brandBody:
+        "Activate your ops environment, configure your teams, and start running deliveries from one platform.",
+      title: "Create your Naaval account",
+      subtitle:
+        "Fill in the form or continue with Google to instantly create your company workspace on Naaval.",
+      google: "Continue with Google",
+      divider: "or",
+      helper:
+        "Your tenant, admin account, and ops workspace will be created automatically.",
+      submit: "Create my account",
+      close: "Close",
+      highlights: [
+        {
+          tag: "Ops",
+          body: "Dashboard, VRP, pricing, and field operations in one tool."
+        },
+        {
+          tag: "Drivers",
+          body: "Driver apps, proof of delivery, and real-time execution statuses."
+        },
+        {
+          tag: "Customers",
+          body: "Customer portal, live tracking, and automatic notifications."
+        }
+      ],
+      fields: {
+        firstName: {
+          label: "First name",
+          placeholder: "Pierre"
+        },
+        lastName: {
+          label: "Last name",
+          placeholder: "Morcrette"
+        },
+        company: {
+          label: "Company",
+          placeholder: "Naaval Transport"
+        },
+        email: {
+          label: "Work email",
+          placeholder: "contact@naaval.eu"
+        },
+        password: {
+          label: "Password",
+          placeholder: "Choose a password"
+        },
+        phone: {
+          label: "Phone",
+          placeholder: "+33 6 00 00 00 00"
+        },
+        volume: {
+          label: "Estimated monthly volume",
+          options: {
+            placeholder: "Choose a volume",
+            0: "0 to 250 deliveries / month",
+            1: "250 to 1,000 deliveries / month",
+            2: "1,000 to 5,000 deliveries / month",
+            3: "5,000+ deliveries / month"
+          }
+        },
+        message: {
+          label: "Main need",
+          placeholder: "Tell us about your needs: routing, pricing, customer portal, fleet, retail..."
+        }
+      },
+      status: {
+        ready: "Account created. Redirecting to your Naaval dashboard.",
+        invalid: "Please fill in your first name, last name, company, work email, and password.",
+        googleFill: "Google account recognized. Complete your company, choose a password, and launch the signup.",
+        creating: "Creating your Naaval company…",
+        googleUnavailable:
+          "Google sign-up will be available as soon as the Google client is configured. You can already use the classic form."
+      }
+    },
     finalCta: {
       label: "Get started",
       title: "Ready to simplify your delivery operations?"
@@ -456,10 +610,31 @@ const translations = {
   }
 };
 
+function normalizeBaseUrl(value) {
+  return String(value || "")
+    .trim()
+    .replace(/\/+$/, "");
+}
+
 const opsTargets = ["localhost", "127.0.0.1", "192.168.1.156"];
 const currentHost = window.location.hostname;
-const hostedOpsHref = "https://ops-web-eta.vercel.app/";
+const configuredOpsBaseUrl = normalizeBaseUrl(window.NAAVAL_OPS_BASE_URL);
+const configuredMarketingApiBaseUrl = normalizeBaseUrl(window.NAAVAL_MARKETING_API_BASE_URL);
+const hostedOpsHref = configuredOpsBaseUrl || "https://ops-web-eta.vercel.app";
 const opsHref = opsTargets.includes(currentHost) ? "/ops/" : hostedOpsHref;
+const marketingApiCandidates = (() => {
+  const candidates = [];
+  if (configuredMarketingApiBaseUrl) {
+    candidates.push(configuredMarketingApiBaseUrl);
+  }
+  if (window.location.protocol.startsWith("http")) {
+    candidates.push(window.location.origin);
+  }
+  if (opsTargets.includes(currentHost)) {
+    candidates.push("http://127.0.0.1:8787");
+  }
+  return [...new Set(candidates)];
+})();
 const opsLinks = document.querySelectorAll("#footer-ops-link");
 const languageButtons = document.querySelectorAll("[data-language]");
 const titleNode = document.querySelector("title");
@@ -468,6 +643,14 @@ const pricingPlanGridNode = document.querySelector("#pricing-plan-grid");
 const pricingTableHeadNode = document.querySelector("#pricing-table-head");
 const pricingTableBodyNode = document.querySelector("#pricing-table-body");
 const languageStorageKey = "naaval-marketing-language";
+const signupModalNode = document.querySelector("#signup-modal");
+const signupFormNode = document.querySelector("#signup-form");
+const signupStatusNode = document.querySelector("#signup-form-status");
+const signupOpenButtons = document.querySelectorAll("[data-open-signup]");
+const signupCloseButtons = document.querySelectorAll("[data-close-signup]");
+const signupGoogleSlot = document.querySelector("#signup-google-slot");
+const signupGoogleButton = document.querySelector("#signup-google-button");
+let googleSignupRetryTimer = null;
 
 function getNestedValue(source, key) {
   return key.split(".").reduce((current, part) => {
@@ -524,6 +707,220 @@ function renderPricingSection(dictionary) {
     .join("");
 }
 
+function decodeJwtPayload(token) {
+  if (!token) {
+    return null;
+  }
+
+  try {
+    const payload = token.split(".")[1];
+    const normalized = payload.replaceAll("-", "+").replaceAll("_", "/");
+    const decoded = window.atob(normalized);
+    return JSON.parse(decoded);
+  } catch (_error) {
+    return null;
+  }
+}
+
+function getCurrentLanguage() {
+  return document.documentElement.lang === "en" ? "en" : "fr";
+}
+
+function getCurrentDictionary() {
+  return translations[getCurrentLanguage()] || translations.fr;
+}
+
+function setSignupStatus(message, tone = "info") {
+  if (!signupStatusNode) {
+    return;
+  }
+
+  if (!message) {
+    signupStatusNode.textContent = "";
+    signupStatusNode.className = "signup-status hidden";
+    return;
+  }
+
+  signupStatusNode.textContent = message;
+  signupStatusNode.className = `signup-status signup-status--${tone}`;
+}
+
+function openSignupModal() {
+  if (!signupModalNode) {
+    return;
+  }
+
+  signupModalNode.classList.remove("hidden");
+  signupModalNode.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  window.setTimeout(() => signupFormNode?.elements?.firstName?.focus(), 30);
+}
+
+function closeSignupModal() {
+  if (!signupModalNode) {
+    return;
+  }
+
+  signupModalNode.classList.add("hidden");
+  signupModalNode.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  setSignupStatus("");
+}
+
+async function readApiError(response) {
+  const contentType = response.headers.get("content-type") || "";
+  try {
+    if (contentType.includes("application/json")) {
+      const payload = await response.json();
+      return payload?.error?.message || payload?.message || `HTTP ${response.status}`;
+    }
+    return (await response.text()) || `HTTP ${response.status}`;
+  } catch (_error) {
+    return `HTTP ${response.status}`;
+  }
+}
+
+async function postMarketingJson(path, payload) {
+  const errors = [];
+  for (const baseUrl of marketingApiCandidates) {
+    try {
+      const response = await fetch(`${baseUrl}${path}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      if (!response.ok) {
+        throw new Error(await readApiError(response));
+      }
+      return await response.json();
+    } catch (error) {
+      errors.push(`${baseUrl}: ${error.message}`);
+    }
+  }
+  throw new Error(errors.join(" | "));
+}
+
+function getSignupFormPayload() {
+  if (!signupFormNode) {
+    return null;
+  }
+
+  const payload = {
+    firstName: signupFormNode.elements.firstName.value.trim(),
+    lastName: signupFormNode.elements.lastName.value.trim(),
+    company: signupFormNode.elements.company.value.trim(),
+    email: signupFormNode.elements.email.value.trim(),
+    password: signupFormNode.elements.password.value.trim(),
+    phone: signupFormNode.elements.phone.value.trim(),
+    volume: signupFormNode.elements.volume.value.trim(),
+    message: signupFormNode.elements.message.value.trim()
+  };
+
+  if (!payload.firstName || !payload.lastName || !payload.company || !payload.email || !payload.password) {
+    return null;
+  }
+
+  return payload;
+}
+
+function handleSignupSubmit(event) {
+  event.preventDefault();
+  void (async () => {
+    const dictionary = getCurrentDictionary();
+    const payload = getSignupFormPayload();
+
+    if (!payload) {
+      setSignupStatus(dictionary.signup.status.invalid, "error");
+      return;
+    }
+
+    setSignupStatus(dictionary.signup.status.creating, "info");
+
+    try {
+      const session = await postMarketingJson("/auth/signup/company", payload);
+      setSignupStatus(dictionary.signup.status.ready, "success");
+      const redirectUrl = new URL(opsHref, window.location.origin);
+      redirectUrl.searchParams.set("sessionToken", session.token);
+      window.location.href = redirectUrl.toString();
+    } catch (error) {
+      setSignupStatus(error.message || dictionary.signup.status.googleUnavailable, "error");
+    }
+  })();
+}
+
+function prefillSignupFormFromGoogle(payload) {
+  if (!signupFormNode) {
+    return;
+  }
+
+  const [firstName = "", ...rest] = String(payload?.given_name || payload?.name || "").trim().split(" ");
+  const lastName = String(payload?.family_name || rest.join(" ") || "").trim();
+
+  if (firstName && !signupFormNode.elements.firstName.value.trim()) {
+    signupFormNode.elements.firstName.value = firstName;
+  }
+  if (lastName && !signupFormNode.elements.lastName.value.trim()) {
+    signupFormNode.elements.lastName.value = lastName;
+  }
+  if (payload?.email && !signupFormNode.elements.email.value.trim()) {
+    signupFormNode.elements.email.value = payload.email;
+  }
+}
+
+function setupGoogleSignup(retryCount = 0) {
+  const clientId = String(window.NAAVAL_GOOGLE_CLIENT_ID || "").trim();
+
+  if (!signupGoogleSlot || !signupGoogleButton) {
+    return;
+  }
+
+  signupGoogleSlot.innerHTML = "";
+  signupGoogleButton.classList.add("hidden");
+
+  if (!clientId) {
+    signupGoogleButton.classList.remove("hidden");
+    return;
+  }
+
+  if (!window.google?.accounts?.id) {
+    signupGoogleButton.classList.remove("hidden");
+    if (retryCount < 10) {
+      window.clearTimeout(googleSignupRetryTimer);
+      googleSignupRetryTimer = window.setTimeout(() => setupGoogleSignup(retryCount + 1), 400);
+    }
+    return;
+  }
+
+  window.clearTimeout(googleSignupRetryTimer);
+  googleSignupRetryTimer = null;
+
+  window.google.accounts.id.initialize({
+    client_id: clientId,
+    callback: (response) => {
+      const payload = decodeJwtPayload(response?.credential);
+      const dictionary = getCurrentDictionary();
+      if (!payload?.email) {
+        setSignupStatus(dictionary.signup.status.googleUnavailable, "error");
+        return;
+      }
+
+      prefillSignupFormFromGoogle(payload);
+      setSignupStatus(dictionary.signup.status.googleFill, "info");
+      openSignupModal();
+    }
+  });
+
+  window.google.accounts.id.renderButton(signupGoogleSlot, {
+    theme: "outline",
+    size: "large",
+    shape: "pill",
+    text: "continue_with",
+    width: 340
+  });
+}
+
 function applyLanguage(language) {
   const dictionary = translations[language] || translations.fr;
 
@@ -540,6 +937,14 @@ function applyLanguage(language) {
     const value = getNestedValue(dictionary, key);
     if (typeof value === "string") {
       node.textContent = value;
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+    const key = node.dataset.i18nPlaceholder;
+    const value = getNestedValue(dictionary, key);
+    if (typeof value === "string") {
+      node.setAttribute("placeholder", value);
     }
   });
 
@@ -572,6 +977,27 @@ opsLinks.forEach((link) => {
   link.setAttribute("href", opsHref);
 });
 
+signupOpenButtons.forEach((button) => {
+  button.addEventListener("click", openSignupModal);
+});
+
+signupCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeSignupModal);
+});
+
+signupFormNode?.addEventListener("submit", handleSignupSubmit);
+
+signupGoogleButton?.addEventListener("click", () => {
+  const dictionary = getCurrentDictionary();
+  setSignupStatus(dictionary.signup.status.googleUnavailable, "info");
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && signupModalNode && !signupModalNode.classList.contains("hidden")) {
+    closeSignupModal();
+  }
+});
+
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     applyLanguage(button.dataset.language === "en" ? "en" : "fr");
@@ -579,3 +1005,4 @@ languageButtons.forEach((button) => {
 });
 
 applyLanguage(resolveInitialLanguage());
+setupGoogleSignup();
