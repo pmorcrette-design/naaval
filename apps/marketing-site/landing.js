@@ -39,7 +39,21 @@ const translations = {
         controlValue: "Commandes, routes, drivers, pricing, clients.",
         realtimeLabel: "Temps réel",
         realtimeValue: "ETA, proof, tracking, live operations."
-      }
+      },
+      visuals: [
+        {
+          label: "Cockpit ops",
+          body: "Dispatch, pricing, tournées et contrôle multi-tenant dans une seule surface."
+        },
+        {
+          label: "VRP GraphHopper",
+          body: "Optimisation multi-stop lisible, exploitable et prête pour les équipes ops."
+        },
+        {
+          label: "Exécution chauffeur",
+          body: "Preuves terrain, tracking live et visibilité client en continu."
+        }
+      ]
     },
     problem: {
       label: "Problème",
@@ -344,7 +358,21 @@ const translations = {
         controlValue: "Orders, routes, drivers, pricing, customers.",
         realtimeLabel: "Realtime",
         realtimeValue: "ETA, proof, tracking, and live operations."
-      }
+      },
+      visuals: [
+        {
+          label: "Ops cockpit",
+          body: "Dispatch, pricing, routes, and tenant-level control in one surface."
+        },
+        {
+          label: "GraphHopper VRP",
+          body: "Readable multi-stop optimization that is ready for dispatch operations."
+        },
+        {
+          label: "Driver execution",
+          body: "Field proofs, live tracking, and continuous customer visibility."
+        }
+      ]
     },
     problem: {
       label: "Problem",
@@ -619,8 +647,10 @@ function normalizeBaseUrl(value) {
 const opsTargets = ["localhost", "127.0.0.1", "192.168.1.156"];
 const currentHost = window.location.hostname;
 const configuredOpsBaseUrl = normalizeBaseUrl(window.NAAVAL_OPS_BASE_URL);
+const configuredAdminBaseUrl = normalizeBaseUrl(window.NAAVAL_ADMIN_BASE_URL);
 const configuredMarketingApiBaseUrl = normalizeBaseUrl(window.NAAVAL_MARKETING_API_BASE_URL);
-const hostedOpsHref = configuredOpsBaseUrl || "https://ops-web-eta.vercel.app";
+const hostedOpsHref = configuredOpsBaseUrl || "https://ops.naaval.eu";
+const hostedAdminHref = configuredAdminBaseUrl || "https://admin.naaval.eu";
 const opsHref = opsTargets.includes(currentHost) ? "/ops/" : hostedOpsHref;
 const marketingApiCandidates = (() => {
   const candidates = [];
@@ -636,6 +666,7 @@ const marketingApiCandidates = (() => {
   return [...new Set(candidates)];
 })();
 const opsLinks = document.querySelectorAll("#footer-ops-link");
+const adminLinks = document.querySelectorAll("#footer-admin-link");
 const languageButtons = document.querySelectorAll("[data-language]");
 const titleNode = document.querySelector("title");
 const descriptionNode = document.querySelector('meta[name="description"]');
@@ -975,6 +1006,10 @@ function resolveInitialLanguage() {
 
 opsLinks.forEach((link) => {
   link.setAttribute("href", opsHref);
+});
+
+adminLinks.forEach((link) => {
+  link.setAttribute("href", hostedAdminHref);
 });
 
 signupOpenButtons.forEach((button) => {

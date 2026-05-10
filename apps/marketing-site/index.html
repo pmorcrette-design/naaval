@@ -75,22 +75,30 @@
           </div>
 
           <div class="hero__visual" aria-hidden="true">
-            <div class="orbit-card orbit-card--primary">
-              <span class="eyebrow" data-i18n="hero.cards.controlLabel">Control Tower</span>
-              <strong data-i18n="hero.cards.controlValue">Commandes, routes, drivers, pricing, clients.</strong>
-            </div>
-            <div class="orbit-card orbit-card--secondary">
-              <span class="eyebrow" data-i18n="hero.cards.realtimeLabel">Realtime</span>
-              <strong data-i18n="hero.cards.realtimeValue">ETA, proof, tracking, live operations.</strong>
-            </div>
-            <div class="hero-map">
-              <div class="hero-map__grid"></div>
-              <div class="hero-map__route hero-map__route--one"></div>
-              <div class="hero-map__route hero-map__route--two"></div>
-              <span class="hero-map__pin hero-map__pin--hub">Hub</span>
-              <span class="hero-map__pin hero-map__pin--stop-a">Drop A</span>
-              <span class="hero-map__pin hero-map__pin--stop-b">Drop B</span>
-              <span class="hero-map__pin hero-map__pin--stop-c">Drop C</span>
+            <div class="showcase-grid">
+              <article class="showcase-card showcase-card--wide">
+                <img src="./assets/ops-command-center.svg" alt="" class="showcase-card__image" />
+                <div class="showcase-card__caption">
+                  <span data-i18n="hero.visuals.0.label">Ops cockpit</span>
+                  <strong data-i18n="hero.visuals.0.body">Dispatch, pricing, routes and tenant-level control.</strong>
+                </div>
+              </article>
+
+              <article class="showcase-card">
+                <img src="./assets/route-optimization-scene.svg" alt="" class="showcase-card__image" />
+                <div class="showcase-card__caption">
+                  <span data-i18n="hero.visuals.1.label">GraphHopper VRP</span>
+                  <strong data-i18n="hero.visuals.1.body">Multi-stop optimization with operational route output.</strong>
+                </div>
+              </article>
+
+              <article class="showcase-card">
+                <img src="./assets/driver-execution-scene.svg" alt="" class="showcase-card__image" />
+                <div class="showcase-card__caption">
+                  <span data-i18n="hero.visuals.2.label">Driver execution</span>
+                  <strong data-i18n="hero.visuals.2.body">Field proofs, tracking and live customer visibility.</strong>
+                </div>
+              </article>
             </div>
           </div>
         </section>
@@ -315,7 +323,10 @@
           <a href="mailto:hello@naaval.eu" data-i18n="footer.contact">Contact</a>
           <a href="#top" data-i18n="footer.legal">Legal</a>
         </div>
-        <a class="ghost-button site-footer__ops-button" id="footer-ops-link" href="https://ops-web-eta.vercel.app/" data-i18n="footer.ops">Ops Login</a>
+        <div class="site-footer__access">
+          <a class="ghost-button site-footer__ops-button" id="footer-ops-link" href="https://ops.naaval.eu/" data-i18n="footer.ops">Ops Login</a>
+          <a class="site-footer__admin-link" id="footer-admin-link" href="https://admin.naaval.eu/">Naaval Admin</a>
+        </div>
       </footer>
     </div>
 

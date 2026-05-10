@@ -284,125 +284,79 @@ a {
 .hero__visual {
   position: relative;
   display: grid;
-  align-items: center;
+  align-items: stretch;
   min-height: 500px;
-  padding: 1rem;
+  padding: 1.1rem;
   border-radius: 30px;
   background:
-    radial-gradient(circle at 20% 12%, rgba(255, 255, 255, 0.38), transparent 18%),
-    linear-gradient(160deg, rgba(12, 91, 74, 0.98), rgba(22, 152, 115, 0.85));
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.24), transparent 18%),
+    radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.12), transparent 20%),
+    linear-gradient(160deg, rgba(10, 83, 68, 0.98), rgba(20, 137, 105, 0.88));
   overflow: hidden;
 }
 
-.hero-map {
-  position: relative;
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
   min-height: 100%;
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(247, 250, 249, 0.88), rgba(223, 244, 236, 0.78)),
-    white;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  overflow: hidden;
 }
 
-.hero-map__grid {
+.showcase-card {
+  position: relative;
+  min-height: 0;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 40px rgba(8, 34, 28, 0.16);
+}
+
+.showcase-card--wide {
+  grid-row: 1 / span 2;
+}
+
+.showcase-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.015);
+}
+
+.showcase-card::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(13, 94, 77, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(13, 94, 77, 0.06) 1px, transparent 1px);
-  background-size: 46px 46px;
+  background: linear-gradient(180deg, rgba(8, 34, 28, 0.03), rgba(8, 34, 28, 0.46));
 }
 
-.hero-map__route {
+.showcase-card__caption {
   position: absolute;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(13, 94, 77, 0.26), rgba(13, 94, 77, 0.96));
-  transform-origin: left center;
-}
-
-.hero-map__route--one {
-  left: 18%;
-  top: 40%;
-  width: 52%;
-  height: 8px;
-  transform: rotate(-15deg);
-}
-
-.hero-map__route--two {
-  left: 42%;
-  top: 46%;
-  width: 26%;
-  height: 8px;
-  transform: rotate(48deg);
-}
-
-.hero-map__pin {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 4.8rem;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  background: white;
-  box-shadow: 0 12px 24px rgba(8, 34, 28, 0.16);
-  font-size: 0.78rem;
-  font-weight: 800;
-}
-
-.hero-map__pin--hub {
-  left: 17%;
-  top: 35%;
-}
-
-.hero-map__pin--stop-a {
-  left: 55%;
-  top: 25%;
-}
-
-.hero-map__pin--stop-b {
-  left: 67%;
-  top: 53%;
-}
-
-.hero-map__pin--stop-c {
-  left: 30%;
-  top: 66%;
-}
-
-.orbit-card {
-  position: absolute;
-  z-index: 2;
-  max-width: 230px;
-  padding: 1rem 1rem 1.1rem;
-  border-radius: 24px;
+  inset: auto 1rem 1rem 1rem;
+  z-index: 1;
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.95rem 1rem 1rem;
+  border-radius: 20px;
   background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 16px 40px rgba(8, 34, 28, 0.16);
-  backdrop-filter: blur(10px);
 }
 
-.orbit-card .eyebrow {
-  color: rgba(255, 255, 255, 0.76);
+.showcase-card__caption span {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.74);
 }
 
-.orbit-card strong {
-  display: block;
-  margin-top: 0.35rem;
-  font-size: 1.02rem;
-  line-height: 1.3;
-}
-
-.orbit-card--primary {
-  right: 0.8rem;
-  top: 1rem;
-}
-
-.orbit-card--secondary {
-  left: 0.8rem;
-  bottom: 1rem;
+.showcase-card__caption strong {
+  font-size: 1rem;
+  line-height: 1.28;
 }
 
 .section,
@@ -796,9 +750,29 @@ a {
   gap: 1.4rem;
 }
 
+.site-footer__access {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
 .site-footer__ops-button {
   min-height: 2.75rem;
   padding-inline: 1.05rem;
+}
+
+.site-footer__admin-link {
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(17, 24, 39, 0.5);
+  text-decoration: none;
+}
+
+.site-footer__admin-link:hover,
+.site-footer__admin-link:focus-visible {
+  color: rgba(17, 24, 39, 0.78);
 }
 
 .hidden {
@@ -1229,19 +1203,31 @@ a {
   }
 
   .hero__visual {
-    min-height: 260px;
+    min-height: 380px;
     padding: 0.75rem;
   }
 
-  .orbit-card {
-    max-width: 170px;
-    padding: 0.75rem;
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 
-  .hero-map__pin {
-    min-width: 0;
-    padding: 0.28rem 0.5rem;
-    font-size: 0.63rem;
+  .showcase-card--wide {
+    grid-row: auto;
+  }
+
+  .showcase-card {
+    min-height: 180px;
+  }
+
+  .showcase-card__caption {
+    inset-inline: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.78rem 0.85rem 0.84rem;
+  }
+
+  .showcase-card__caption strong {
+    font-size: 0.92rem;
   }
 
   .metric-tile,
@@ -1312,53 +1298,31 @@ a {
   }
 
   .hero__visual {
-    min-height: 220px;
+    min-height: 332px;
     border-radius: 18px;
   }
 
-  .orbit-card {
-    display: none;
+  .showcase-grid {
+    gap: 0.75rem;
   }
 
-  .hero-map__grid {
-    background-size: 30px 30px;
+  .showcase-card {
+    min-height: 140px;
+    border-radius: 18px;
   }
 
-  .hero-map__route--one {
-    left: 12%;
-    top: 42%;
-    width: 58%;
+  .showcase-card__caption {
+    padding: 0.72rem 0.76rem 0.78rem;
+    border-radius: 16px;
   }
 
-  .hero-map__route--two {
-    left: 48%;
-    top: 50%;
-    width: 20%;
+  .showcase-card__caption span {
+    font-size: 0.64rem;
   }
 
-  .hero-map__pin {
-    font-size: 0.58rem;
-    padding: 0.25rem 0.42rem;
-  }
-
-  .hero-map__pin--hub {
-    left: 10%;
-    top: 33%;
-  }
-
-  .hero-map__pin--stop-a {
-    left: 55%;
-    top: 20%;
-  }
-
-  .hero-map__pin--stop-b {
-    left: 67%;
-    top: 58%;
-  }
-
-  .hero-map__pin--stop-c {
-    left: 26%;
-    top: 69%;
+  .showcase-card__caption strong {
+    font-size: 0.84rem;
+    line-height: 1.22;
   }
 
   .comparison-row span {
