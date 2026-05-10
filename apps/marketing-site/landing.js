@@ -42,16 +42,16 @@ const translations = {
       },
       visuals: [
         {
-          label: "Cockpit ops",
-          body: "Dispatch, pricing, tournées et contrôle multi-tenant dans une seule surface."
+          label: "My Orders",
+          body: "La vraie vue ops Naaval pour piloter les commandes, les affectations et les statuts en direct."
         },
         {
-          label: "VRP GraphHopper",
-          body: "Optimisation multi-stop lisible, exploitable et prête pour les équipes ops."
+          label: "Order Detail",
+          body: "Un détail opérationnel lisible avec map, route summary et informations terrain pour les dispatchers."
         },
         {
-          label: "Exécution chauffeur",
-          body: "Preuves terrain, tracking live et visibilité client en continu."
+          label: "Revenue & Pricing",
+          body: "KPIs, revenu journalier et pilotage pricing dans la même interface produit."
         }
       ]
     },
@@ -162,55 +162,47 @@ const translations = {
       title: "Des offres qui grandissent avec ton opération",
       body:
         "Choisis le niveau de pilotage adapté à ta flotte aujourd'hui, puis monte en puissance sans changer d'outil.",
-      planDriversLabel: "Chauffeurs inclus",
-      plans: [
-        { name: "STARTER", price: "79€/mois", drivers: "3 chauffeurs" },
-        { name: "GROWTH", price: "199€/mois", drivers: "15 chauffeurs" },
-        { name: "SCALE", price: "449€/mois", drivers: "75 chauffeurs" },
-        { name: "ENTERPRISE", price: "Sur devis", drivers: "Illimité / custom" }
+      commonLabel: "Inclus dans tous les plans",
+      commonFeatures: [
+        "Commandes illimitées",
+        "Driver app",
+        "POD photo + signature",
+        "Tracking client",
+        "Import / export CSV"
       ],
-      featureHeader: "Features",
-      rows: [
-        { label: "Prix", values: ["79€/mois", "199€/mois", "449€/mois", "Sur devis"] },
-        { label: "Chauffeurs inclus", values: ["3", "15", "75", "Illimité / custom"] },
-        { label: "Commandes", values: ["Illimitées", "Illimitées", "Illimitées", "Illimitées"] },
-        { label: "Driver App", values: ["✅", "✅", "✅", "✅"] },
-        { label: "POD photo/signature", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Tracking client", values: ["✅", "✅", "✅", "✅"] },
-        { label: "VRP intelligent", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Multi Pickup -> Multi Drop", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Time Windows", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Optimisation kilométrique", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Algo pricing Per Drop", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Algo pricing Just Price", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Algo pricing Point of Sales", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Algo pricing Prix Palette", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Import CSV", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Export CSV", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Dashboard opérationnel", values: ["Basique", "Avancé", "Avancé + Analytics", "Custom"] },
-        { label: "Historique commandes", values: ["30 jours", "Illimité", "Illimité", "Illimité"] },
-        { label: "Gestion zones tarifaires", values: ["-", "✅", "✅", "✅"] },
-        { label: "Suggestions automatiques dispatch", values: ["-", "✅", "✅", "✅"] },
-        { label: "Optimisation capacité véhicules", values: ["-", "✅", "✅", "✅"] },
-        { label: "Analyse coût/km & rentabilité", values: ["-", "✅", "✅", "✅"] },
-        { label: "Notifications automatiques clients", values: ["-", "✅", "✅", "✅"] },
-        { label: "Templates SMS / Email", values: ["-", "✅", "✅", "✅"] },
-        { label: "Gestion équipes", values: ["-", "✅", "✅", "✅"] },
-        { label: "Permissions avancées", values: ["-", "-", "✅", "✅"] },
-        { label: "Multi-entrepôts", values: ["-", "-", "✅", "✅"] },
-        { label: "API", values: ["-", "API légère", "API complète", "API custom"] },
-        { label: "Webhooks", values: ["-", "-", "✅", "✅"] },
-        { label: "Intégrations ERP / Shopify / WMS", values: ["-", "-", "✅", "✅"] },
-        { label: "Portail client", values: ["-", "-", "✅", "✅"] },
-        { label: "White-label tracking", values: ["-", "-", "✅", "✅"] },
-        { label: "Export GeoJSON", values: ["-", "-", "✅", "✅"] },
-        { label: "Analytics performance chauffeurs", values: ["-", "-", "✅", "✅"] },
-        { label: "Branding personnalisé", values: ["-", "-", "✅", "✅"] },
-        { label: "Support", values: ["Standard", "Prioritaire", "Premium", "Dédié"] },
-        { label: "Onboarding personnalisé", values: ["-", "-", "✅", "✅"] },
-        { label: "SLA / accompagnement OPS", values: ["-", "-", "-", "✅"] },
-        { label: "Hébergement dédié", values: ["-", "-", "-", "✅"] },
-        { label: "Développements spécifiques", values: ["-", "-", "-", "✅"] }
+      plans: [
+        {
+          name: "STARTER",
+          price: "79€",
+          cadence: "/mois",
+          drivers: "3 chauffeurs inclus",
+          summary: "Pour lancer une flotte et sortir d'Excel rapidement.",
+          features: ["VRP intelligent", "Multi pickup → multi drop", "Dashboard ops basique", "Pricing engine", "Historique 30 jours"]
+        },
+        {
+          name: "GROWTH",
+          price: "199€",
+          cadence: "/mois",
+          drivers: "15 chauffeurs inclus",
+          summary: "Pour les équipes qui commencent à dispatcher tous les jours.",
+          features: ["Suggestions dispatch", "Zones tarifaires", "Analyse coût/km", "Notifications clients", "Gestion d'équipe"]
+        },
+        {
+          name: "SCALE",
+          price: "449€",
+          cadence: "/mois",
+          drivers: "75 chauffeurs inclus",
+          summary: "Pour structurer une vraie activité multi-sites et multi-clients.",
+          features: ["Portail client", "API + webhooks", "Analytics avancées", "Multi-entrepôts", "Branding personnalisé"]
+        },
+        {
+          name: "ENTERPRISE",
+          price: "Sur devis",
+          cadence: "",
+          drivers: "Illimité / custom",
+          summary: "Pour les opérateurs qui veulent un setup dédié et du sur-mesure.",
+          features: ["Modules custom", "Support dédié", "SLA ops", "Hébergement dédié", "Développements spécifiques"]
+        }
       ],
       cta: "Besoin d'un setup sur mesure, d'un SLA ops ou d'intégrations spécifiques ? Parlons-en.",
       contact: "Contact sales"
@@ -361,16 +353,16 @@ const translations = {
       },
       visuals: [
         {
-          label: "Ops cockpit",
-          body: "Dispatch, pricing, routes, and tenant-level control in one surface."
+          label: "My Orders",
+          body: "The real Naaval ops view to manage orders, assignments, and live statuses."
         },
         {
-          label: "GraphHopper VRP",
-          body: "Readable multi-stop optimization that is ready for dispatch operations."
+          label: "Order Detail",
+          body: "A dispatcher-ready operational detail view with map, route summary, and execution data."
         },
         {
-          label: "Driver execution",
-          body: "Field proofs, live tracking, and continuous customer visibility."
+          label: "Revenue & Pricing",
+          body: "Daily revenue, pricing, and operational KPIs inside the same product surface."
         }
       ]
     },
@@ -480,55 +472,47 @@ const translations = {
       title: "Plans that scale with your operations",
       body:
         "Start with the level of operational control you need today, then scale up without changing tools.",
-      planDriversLabel: "Included drivers",
-      plans: [
-        { name: "STARTER", price: "79€/month", drivers: "3 drivers" },
-        { name: "GROWTH", price: "199€/month", drivers: "15 drivers" },
-        { name: "SCALE", price: "449€/month", drivers: "75 drivers" },
-        { name: "ENTERPRISE", price: "Custom quote", drivers: "Unlimited / custom" }
+      commonLabel: "Included in every plan",
+      commonFeatures: [
+        "Unlimited orders",
+        "Driver app",
+        "Photo + signature POD",
+        "Customer tracking",
+        "CSV import / export"
       ],
-      featureHeader: "Features",
-      rows: [
-        { label: "Price", values: ["79€/month", "199€/month", "449€/month", "Custom quote"] },
-        { label: "Included drivers", values: ["3", "15", "75", "Unlimited / custom"] },
-        { label: "Orders", values: ["Unlimited", "Unlimited", "Unlimited", "Unlimited"] },
-        { label: "Driver App", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Photo / signature POD", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Customer tracking", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Intelligent VRP", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Multi Pickup -> Multi Drop", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Time Windows", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Kilometric optimization", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Per Drop pricing algo", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Just Price pricing algo", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Point of Sales pricing algo", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Pallet pricing algo", values: ["✅", "✅", "✅", "✅"] },
-        { label: "CSV import", values: ["✅", "✅", "✅", "✅"] },
-        { label: "CSV export", values: ["✅", "✅", "✅", "✅"] },
-        { label: "Operations dashboard", values: ["Basic", "Advanced", "Advanced + Analytics", "Custom"] },
-        { label: "Order history", values: ["30 days", "Unlimited", "Unlimited", "Unlimited"] },
-        { label: "Pricing zones", values: ["-", "✅", "✅", "✅"] },
-        { label: "Automatic dispatch suggestions", values: ["-", "✅", "✅", "✅"] },
-        { label: "Vehicle capacity optimization", values: ["-", "✅", "✅", "✅"] },
-        { label: "Cost/km & profitability analysis", values: ["-", "✅", "✅", "✅"] },
-        { label: "Automatic customer notifications", values: ["-", "✅", "✅", "✅"] },
-        { label: "SMS / Email templates", values: ["-", "✅", "✅", "✅"] },
-        { label: "Team management", values: ["-", "✅", "✅", "✅"] },
-        { label: "Advanced permissions", values: ["-", "-", "✅", "✅"] },
-        { label: "Multi-warehouse", values: ["-", "-", "✅", "✅"] },
-        { label: "API", values: ["-", "Light API", "Full API", "Custom API"] },
-        { label: "Webhooks", values: ["-", "-", "✅", "✅"] },
-        { label: "ERP / Shopify / WMS integrations", values: ["-", "-", "✅", "✅"] },
-        { label: "Customer portal", values: ["-", "-", "✅", "✅"] },
-        { label: "White-label tracking", values: ["-", "-", "✅", "✅"] },
-        { label: "GeoJSON export", values: ["-", "-", "✅", "✅"] },
-        { label: "Driver performance analytics", values: ["-", "-", "✅", "✅"] },
-        { label: "Custom branding", values: ["-", "-", "✅", "✅"] },
-        { label: "Support", values: ["Standard", "Priority", "Premium", "Dedicated"] },
-        { label: "Personalized onboarding", values: ["-", "-", "✅", "✅"] },
-        { label: "SLA / ops enablement", values: ["-", "-", "-", "✅"] },
-        { label: "Dedicated hosting", values: ["-", "-", "-", "✅"] },
-        { label: "Custom development", values: ["-", "-", "-", "✅"] }
+      plans: [
+        {
+          name: "STARTER",
+          price: "79€",
+          cadence: "/month",
+          drivers: "3 included drivers",
+          summary: "For teams that want to leave spreadsheets behind and get started fast.",
+          features: ["Intelligent VRP", "Multi pickup → multi drop", "Core ops dashboard", "Pricing engine", "30-day history"]
+        },
+        {
+          name: "GROWTH",
+          price: "199€",
+          cadence: "/month",
+          drivers: "15 included drivers",
+          summary: "For operations teams dispatching routes every single day.",
+          features: ["Dispatch suggestions", "Pricing zones", "Cost/km analysis", "Customer notifications", "Team management"]
+        },
+        {
+          name: "SCALE",
+          price: "449€",
+          cadence: "/month",
+          drivers: "75 included drivers",
+          summary: "For operators managing multiple sites, fleets, and customer accounts.",
+          features: ["Customer portal", "API + webhooks", "Advanced analytics", "Multi-warehouse", "Custom branding"]
+        },
+        {
+          name: "ENTERPRISE",
+          price: "Custom quote",
+          cadence: "",
+          drivers: "Unlimited / custom",
+          summary: "For large operators that need dedicated support and a custom stack.",
+          features: ["Custom modules", "Dedicated support", "Ops SLA", "Dedicated hosting", "Specific development"]
+        }
       ],
       cta: "Need a custom setup, ops SLA, or specific integrations? Let's talk.",
       contact: "Contact sales"
@@ -652,6 +636,7 @@ const configuredMarketingApiBaseUrl = normalizeBaseUrl(window.NAAVAL_MARKETING_A
 const hostedOpsHref = configuredOpsBaseUrl || "https://ops.naaval.eu";
 const hostedAdminHref = configuredAdminBaseUrl || "https://admin.naaval.eu";
 const opsHref = opsTargets.includes(currentHost) ? "/ops/" : hostedOpsHref;
+const adminHref = opsTargets.includes(currentHost) ? "/admin/?mode=saas-admin" : hostedAdminHref;
 const marketingApiCandidates = (() => {
   const candidates = [];
   if (configuredMarketingApiBaseUrl) {
@@ -670,9 +655,8 @@ const adminLinks = document.querySelectorAll("#footer-admin-link");
 const languageButtons = document.querySelectorAll("[data-language]");
 const titleNode = document.querySelector("title");
 const descriptionNode = document.querySelector('meta[name="description"]');
+const pricingCommonListNode = document.querySelector("#pricing-common-list");
 const pricingPlanGridNode = document.querySelector("#pricing-plan-grid");
-const pricingTableHeadNode = document.querySelector("#pricing-table-head");
-const pricingTableBodyNode = document.querySelector("#pricing-table-body");
 const languageStorageKey = "naaval-marketing-language";
 const signupModalNode = document.querySelector("#signup-modal");
 const signupFormNode = document.querySelector("#signup-form");
@@ -702,37 +686,34 @@ function setActiveLanguageButton(language) {
 
 function renderPricingSection(dictionary) {
   const pricing = dictionary.pricing;
-  if (!pricingPlanGridNode || !pricingTableHeadNode || !pricingTableBodyNode || !pricing) {
+  if (!pricingCommonListNode || !pricingPlanGridNode || !pricing) {
     return;
   }
+
+  pricingCommonListNode.innerHTML = `
+    <div class="pricing-common-card">
+      <span class="pricing-common-card__label">${pricing.commonLabel}</span>
+      <div class="pricing-common-card__chips">
+        ${pricing.commonFeatures.map((feature) => `<span class="pricing-common-card__chip">${feature}</span>`).join("")}
+      </div>
+    </div>
+  `;
 
   pricingPlanGridNode.innerHTML = pricing.plans
     .map(
       (plan) => `
         <article class="pricing-plan-card">
           <span class="pricing-plan-card__name">${plan.name}</span>
-          <strong class="pricing-plan-card__price">${plan.price}</strong>
-          <span class="pricing-plan-card__drivers">${pricing.planDriversLabel}</span>
-          <p class="pricing-plan-card__value">${plan.drivers}</p>
+          <div class="pricing-plan-card__price-row">
+            <strong class="pricing-plan-card__price">${plan.price}</strong>
+            ${plan.cadence ? `<span class="pricing-plan-card__cadence">${plan.cadence}</span>` : ""}
+          </div>
+          <p class="pricing-plan-card__drivers">${plan.drivers}</p>
+          <p class="pricing-plan-card__summary">${plan.summary}</p>
+          <ul class="pricing-plan-card__features">
+            ${plan.features.map((feature) => `<li>${feature}</li>`).join("")}
+          </ul>
         </article>
-      `
-    )
-    .join("");
-
-  pricingTableHeadNode.innerHTML = `
-    <tr>
-      <th>${pricing.featureHeader}</th>
-      ${pricing.plans.map((plan) => `<th>${plan.name}</th>`).join("")}
-    </tr>
-  `;
-
-  pricingTableBodyNode.innerHTML = pricing.rows
-    .map(
-      (row) => `
-        <tr>
-          <th>${row.label}</th>
-          ${row.values.map((value) => `<td>${value}</td>`).join("")}
-        </tr>
       `
     )
     .join("");
@@ -1009,7 +990,7 @@ opsLinks.forEach((link) => {
 });
 
 adminLinks.forEach((link) => {
-  link.setAttribute("href", hostedAdminHref);
+  link.setAttribute("href", adminHref);
 });
 
 signupOpenButtons.forEach((button) => {
