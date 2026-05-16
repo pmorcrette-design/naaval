@@ -27,6 +27,7 @@
         <nav class="site-nav" aria-label="Main navigation">
           <a href="#solution" data-i18n="nav.solution">Solution</a>
           <a href="#features" data-i18n="nav.product">Product</a>
+          <a href="#driver-app" data-i18n="nav.driverApp">Driver App</a>
           <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
           <a href="#audience" data-i18n="nav.audience">For Who</a>
           <a href="#vision" data-i18n="nav.vision">Vision</a>
@@ -77,26 +78,26 @@
           <div class="hero__visual" aria-hidden="true">
             <div class="showcase-grid">
               <article class="showcase-card showcase-card--wide">
-                <img src="./assets/screenshot-ops-orders.png" alt="Naaval ops dashboard screenshot" class="showcase-card__image" />
+                <img src="./assets/hero-ops-control-room.png" alt="Naaval operations team inside a logistics control room" class="showcase-card__image" />
                 <div class="showcase-card__caption">
-                  <span data-i18n="hero.visuals.0.label">Ops cockpit</span>
-                  <strong data-i18n="hero.visuals.0.body">Dispatch, pricing, routes and tenant-level control.</strong>
+                  <span data-i18n="hero.visuals.0.label">Ops field reality</span>
+                  <strong data-i18n="hero.visuals.0.body">Warehouse rhythm, parcel prep and dispatch pressure in real life.</strong>
                 </div>
               </article>
 
               <article class="showcase-card">
-                <img src="./assets/screenshot-order-detail.png" alt="Naaval order detail screenshot" class="showcase-card__image" />
+                <img src="./assets/screenshot-ops-orders.png" alt="Naaval ops dashboard with orders and route details" class="showcase-card__image showcase-card__image--product" />
                 <div class="showcase-card__caption">
-                  <span data-i18n="hero.visuals.1.label">Route Detail</span>
-                  <strong data-i18n="hero.visuals.1.body">Multi-stop optimization with operational route output.</strong>
+                  <span data-i18n="hero.visuals.1.label">Driver execution</span>
+                  <strong data-i18n="hero.visuals.1.body">Real deliveries, proof capture and customer-facing execution.</strong>
                 </div>
               </article>
 
               <article class="showcase-card">
-                <img src="./assets/screenshot-ops-kpis.png" alt="Naaval KPI and pricing screenshot" class="showcase-card__image" />
+                <img src="./assets/field-driver-photo.png" alt="Delivery driver preparing a route on the street" class="showcase-card__image" />
                 <div class="showcase-card__caption">
-                  <span data-i18n="hero.visuals.2.label">Driver execution</span>
-                  <strong data-i18n="hero.visuals.2.body">Field proofs, tracking and live customer visibility.</strong>
+                  <span data-i18n="hero.visuals.2.label">Control tower</span>
+                  <strong data-i18n="hero.visuals.2.body">Ops teams stay aligned with routes, drivers and live updates.</strong>
                 </div>
               </article>
             </div>
@@ -202,6 +203,56 @@
               <h3 data-i18n="features.items.4.title">Customer experience</h3>
               <p data-i18n="features.items.4.body">Suivi live, notifications, ETA et portail client pour une expérience professionnelle.</p>
             </article>
+          </div>
+        </section>
+
+        <section class="section section--driver-app" id="driver-app">
+          <div class="section-heading">
+            <span class="eyebrow" data-i18n="driverApp.label">Driver App</span>
+            <h2 data-i18n="driverApp.title">Une app chauffeur installable directement sur iPhone</h2>
+            <p data-i18n="driverApp.body">
+              Donne à tes chauffeurs une vraie application mobile d’entreprise : missions, preuves, planning, inbox et suivi live sur le terrain.
+            </p>
+          </div>
+
+          <div class="driver-app-layout">
+            <div class="driver-app-copy">
+              <div class="driver-app-bullets">
+                <article class="driver-app-bullet">
+                  <strong data-i18n="driverApp.items.0.title">Distribution entreprise iPhone</strong>
+                  <p data-i18n="driverApp.items.0.body">La Carrier App est pensée pour être distribuée comme application iOS d’entreprise ou privée, avec un vrai process d’installation métier.</p>
+                </article>
+                <article class="driver-app-bullet">
+                  <strong data-i18n="driverApp.items.1.title">Reliée à l’ops</strong>
+                  <p data-i18n="driverApp.items.1.body">Les commandes assignées remontent depuis Naaval ops, avec statuts, preuves et géolocalisation.</p>
+                </article>
+                <article class="driver-app-bullet">
+                  <strong data-i18n="driverApp.items.2.title">Pensée terrain</strong>
+                  <p data-i18n="driverApp.items.2.body">Photos, signatures, Waze, planning et messagerie dans une interface mobile-first.</p>
+                </article>
+              </div>
+
+              <div class="hero__actions">
+                <a class="solid-button solid-button--large" id="carrier-install-link" href="/carrier/install" data-i18n="driverApp.install">Guide d’installation iPhone</a>
+                <a class="text-link" id="carrier-open-link" href="/carrier/" data-i18n="driverApp.open">Voir le workspace chauffeur</a>
+              </div>
+
+              <p class="section-note" data-i18n="driverApp.note">
+                Naaval Carrier App est une véritable application mobile d’entreprise. Ce n’est pas un raccourci web. Sur iPhone, il peut être nécessaire d’approuver le profil développeur dans les réglages avant de pouvoir ouvrir l’application.
+              </p>
+            </div>
+
+            <div class="driver-app-gallery" aria-hidden="true">
+              <article class="driver-app-gallery__card driver-app-gallery__card--phone">
+                <img src="./assets/field-driver-photo.png" alt="Driver using Naaval on the field" class="driver-app-gallery__image driver-app-gallery__image--portrait" />
+              </article>
+              <article class="driver-app-gallery__card">
+                <img src="./assets/customer-success-photo.png" alt="Operations and customer success team reviewing logistics data" class="driver-app-gallery__image" />
+              </article>
+              <article class="driver-app-gallery__card">
+                <img src="./assets/screenshot-ops-orders.png" alt="Naaval dispatch dashboard with live order detail" class="driver-app-gallery__image driver-app-gallery__image--product" />
+              </article>
+            </div>
           </div>
         </section>
 
@@ -315,7 +366,10 @@
           <a href="#features" data-i18n="footer.product">Product</a>
           <a href="#pricing" data-i18n="footer.pricing">Pricing</a>
           <a href="mailto:hello@naaval.eu" data-i18n="footer.contact">Contact</a>
-          <a href="#top" data-i18n="footer.legal">Legal</a>
+          <a href="/legal#cgu" data-i18n="footer.legalCgu">CGU</a>
+          <a href="/legal#cgv" data-i18n="footer.legalCgv">CGV</a>
+          <a href="/legal#privacy" data-i18n="footer.legalPrivacy">Confidentialité</a>
+          <a href="/legal#mentions" data-i18n="footer.legalNotices">Mentions légales</a>
         </div>
         <div class="site-footer__access">
           <a class="ghost-button site-footer__ops-button" id="footer-ops-link" href="https://ops.naaval.eu/" data-i18n="footer.ops">Ops Login</a>

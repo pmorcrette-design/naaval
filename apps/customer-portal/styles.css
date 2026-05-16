@@ -266,6 +266,23 @@ button {
   color: var(--naaval-green-deep);
 }
 
+.login-status {
+  margin-top: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(12, 91, 74, 0.16);
+  background: rgba(244, 247, 244, 0.92);
+  color: var(--naaval-green-deep);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.login-status--error {
+  border-color: rgba(171, 36, 52, 0.18);
+  background: rgba(255, 239, 241, 0.96);
+  color: #9d2436;
+}
+
 .portal-shell {
   padding: 2rem;
 }
@@ -701,12 +718,14 @@ button {
   position: fixed;
   right: 1.3rem;
   bottom: 1.3rem;
+  z-index: 9999;
   max-width: 420px;
   padding: 1rem 1.1rem;
   border-radius: 18px;
   background: rgba(12, 91, 74, 0.96);
   color: white;
   box-shadow: 0 20px 38px rgba(12, 91, 74, 0.18);
+  pointer-events: none;
 }
 
 .toast--error {

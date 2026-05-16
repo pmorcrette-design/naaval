@@ -9,7 +9,6 @@ const server = http.createServer(async (request, response) => {
   await app.handle(request, response);
 });
 
-server.listen(config.port, () => {
-  console.log(`core-api listening on http://localhost:${config.port}`);
+server.listen(config.port, config.host, () => {
+  console.log(`core-api listening on http://${config.host}:${config.port}`);
 });
-

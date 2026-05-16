@@ -56,10 +56,56 @@ def load_runtime_config() -> dict[str, str]:
         "graphhopper_base_url": os.environ.get("GRAPHHOPPER_BASE_URL")
         or local_env.get("GRAPHHOPPER_BASE_URL", "https://graphhopper.com/api/1"),
         "planning_solver": os.environ.get("PLANNING_SOLVER") or local_env.get("PLANNING_SOLVER", "auto"),
+        "google_client_id": os.environ.get("NAAVAL_GOOGLE_CLIENT_ID") or local_env.get("NAAVAL_GOOGLE_CLIENT_ID", ""),
+        "google_client_secret": os.environ.get("NAAVAL_GOOGLE_CLIENT_SECRET") or local_env.get("NAAVAL_GOOGLE_CLIENT_SECRET", ""),
     }
 
 
 RUNTIME_CONFIG = load_runtime_config()
+
+
+def verify_google_id_credential(credential: str) -> dict[str, Any]:
+    token = str(credential or "").strip()
+    client_id = str(RUNTIME_CONFIG.get("google_client_id", "")).strip()
+
+    if not client_id:
+        raise ValueError("Google Sign-In is not configured on the API.")
+    if not token:
+        raise ValueError("Google credential is required.")
+
+    url = f"https://oauth2.googleapis.com/tokeninfo?{urlencode({'id_token': token})}"
+    request = Request(url, headers={"Accept": "application/json"})
+
+    try:
+        with urlopen(request, timeout=20) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except HTTPError as error:
+        try:
+            payload = json.loads(error.read().decode("utf-8"))
+            message = payload.get("error_description") or payload.get("error") or "Google token verification failed."
+        except Exception:
+            message = "Google token verification failed."
+        raise ValueError(message) from error
+    except URLError as error:
+        raise ValueError("Google token verification failed.") from error
+
+    if str(payload.get("aud", "")).strip() != client_id:
+        raise ValueError("Google token audience mismatch.")
+
+    issuer = str(payload.get("iss", "")).strip().lower()
+    if issuer and issuer not in {"accounts.google.com", "https://accounts.google.com"}:
+        raise ValueError("Google token issuer mismatch.")
+
+    if str(payload.get("email_verified", "")).strip().lower() != "true":
+        raise ValueError("Google account email is not verified.")
+
+    return {
+        "email": str(payload.get("email", "")).strip().lower(),
+        "firstName": payload.get("given_name", ""),
+        "lastName": payload.get("family_name", ""),
+        "name": payload.get("name", ""),
+        "picture": payload.get("picture"),
+    }
 
 
 def now_iso() -> str:
@@ -552,6 +598,13 @@ def normalize_db(db: dict[str, Any]) -> dict[str, Any]:
     for key in tenant_scoped_keys:
         for item in normalized.get(key, []):
             ensure_tenant_scope(item, str(item.get("tenantId") or DEMO_TENANT_ID))
+
+    for driver in normalized.get("drivers", []):
+        driver.setdefault("temporaryPassword", "demo")
+        driver.setdefault("status", "active")
+
+    for customer in normalized.get("customers", []):
+        customer.setdefault("portalPassword", "demo")
 
     normalized["tenantPricingConfigs"].setdefault(DEMO_TENANT_ID, deepcopy(normalized["pricingConfig"]))
     normalized["tenantPricingConfigs"].setdefault(PLATFORM_TENANT_ID, deepcopy(normalized["pricingConfig"]))
@@ -1325,6 +1378,7 @@ def build_demo_db(replace: bool = True) -> dict[str, Any]:
             "carrierCompanyId": "carrier_naaval_partners",
             "vehiclePhotoUrls": [],
             "status": "active",
+            "temporaryPassword": "demo",
             "createdAt": timestamp,
             "updatedAt": timestamp,
         },
@@ -1340,6 +1394,7 @@ def build_demo_db(replace: bool = True) -> dict[str, Any]:
             "carrierCompanyId": "carrier_naaval_partners",
             "vehiclePhotoUrls": [],
             "status": "active",
+            "temporaryPassword": "demo",
             "createdAt": timestamp,
             "updatedAt": timestamp,
         },
@@ -1352,6 +1407,7 @@ def build_demo_db(replace: bool = True) -> dict[str, Any]:
             "email": "pierre@naaval.app",
             "role": "ops_admin",
             "team": "Operations",
+            "temporaryPassword": "demo",
             "status": "active",
             "createdAt": timestamp,
             "updatedAt": timestamp,
@@ -1369,6 +1425,7 @@ def build_demo_db(replace: bool = True) -> dict[str, Any]:
             "contactLastName": "Martin",
             "contactPhone": "+33699999999",
             "contactEmail": "claire@naavalretail.com",
+            "portalPassword": "demo",
             "revenueRange": "2m-10m",
             "companySize": "mid_market",
             "createdAt": timestamp,
@@ -1774,6 +1831,9 @@ def scoped_items(items: list[dict[str, Any]], auth: dict[str, Any] | None, colle
         driver_id = str(auth["actor"].get("id"))
         if collection_name == "drivers":
             return [item for item in scoped if str(item.get("id")) == driver_id]
+        if collection_name == "carrierCompanies":
+            carrier_company_id = str(auth["actor"].get("carrierCompanyId") or "")
+            return [item for item in scoped if str(item.get("id")) == carrier_company_id] if carrier_company_id else []
         if collection_name == "shifts":
             return [item for item in scoped if str(item.get("driverId")) == driver_id]
         if collection_name == "routes":
@@ -2797,6 +2857,35 @@ class NaavalHandler(BaseHTTPRequestHandler):
                 },
             )
 
+        if path == "/admin/backoffice/overview":
+            db = read_db()
+            auth = require_auth(self, db, ("ops_user",))
+            if not auth:
+                return
+            if not ensure_platform_admin_access(self, auth):
+                return
+            managed_tenants = [tenant for tenant in db["tenants"] if tenant.get("id") != PLATFORM_TENANT_ID]
+            active_tenants = [tenant for tenant in managed_tenants if tenant.get("status") == "active"]
+            total_mrr_eur = 0
+            for tenant in managed_tenants:
+                plan = resolve_plan(str(tenant.get("planId") or "trial"))
+                total_mrr_eur += float(plan.get("monthlyPriceEur") or 0)
+            return send_json(
+                self,
+                HTTPStatus.OK,
+                {
+                    "signedUpCompanies": len(managed_tenants),
+                    "tenants": len(managed_tenants),
+                    "activeTenants": len(active_tenants),
+                    "trialTenants": len([tenant for tenant in managed_tenants if tenant.get("planId") == "trial"]),
+                    "platformUsers": len([user for user in db["opsUsers"] if str(user.get("tenantId")) == PLATFORM_TENANT_ID]),
+                    "companyAdmins": len([user for user in db["opsUsers"] if user.get("role") == "company_admin"]),
+                    "activeRoutes": len([route for route in db["routes"] if route.get("status") in {"in_progress", "dispatched"}]),
+                    "totalOrders": len(db["orders"]),
+                    "totalMrrEur": round(total_mrr_eur, 2),
+                },
+            )
+
         if path == "/orders":
             db = read_db()
             auth = require_auth(self, db)
@@ -3090,9 +3179,18 @@ class NaavalHandler(BaseHTTPRequestHandler):
 
             if path == "/auth/google-ops":
                 db = read_db()
+                credential = str(body.get("credential", "")).strip()
                 email = str(body.get("email", "")).strip().lower()
+                if str(RUNTIME_CONFIG.get("google_client_id", "")).strip() and not credential:
+                    return json_error(self, HTTPStatus.BAD_REQUEST, "bad_request", "credential is required")
+                if credential:
+                    try:
+                        identity = verify_google_id_credential(credential)
+                    except ValueError as error:
+                        return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", str(error))
+                    email = identity["email"]
                 if not email:
-                    return json_error(self, HTTPStatus.BAD_REQUEST, "bad_request", "email is required")
+                    return json_error(self, HTTPStatus.BAD_REQUEST, "bad_request", "credential is required")
                 user = next((item for item in db["opsUsers"] if str(item.get("email", "")).strip().lower() == email), None)
                 if not user or str(user.get("status", "active")) != "active":
                     return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", "This Google account is not registered as an ops user yet")
@@ -3108,11 +3206,96 @@ class NaavalHandler(BaseHTTPRequestHandler):
                 write_db(db)
                 return send_json(self, HTTPStatus.OK, build_session_payload(session, user, tenant))
 
+            if path == "/auth/google-customer":
+                db = read_db()
+                credential = str(body.get("credential", "")).strip()
+                if not credential:
+                    return json_error(self, HTTPStatus.BAD_REQUEST, "bad_request", "credential is required")
+                try:
+                    identity = verify_google_id_credential(credential)
+                except ValueError as error:
+                    return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", str(error))
+                email = identity["email"]
+                customer = next(
+                    (
+                        item
+                        for item in db["customers"]
+                        if email in {
+                            str(item.get("companyEmail", "")).strip().lower(),
+                            str(item.get("contactEmail", "")).strip().lower(),
+                        }
+                    ),
+                    None,
+                )
+                if not customer:
+                    return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", "No customer account matches this Google account yet")
+                tenant = find_tenant(db, customer.get("tenantId"))
+                session = create_auth_session(
+                    db,
+                    actor_type="customer",
+                    actor=customer,
+                    tenant_id=str(customer.get("tenantId") or DEMO_TENANT_ID),
+                    role="customer_user",
+                    source="google",
+                )
+                write_db(db)
+                return send_json(self, HTTPStatus.OK, build_session_payload(session, customer, tenant))
+
+            if path == "/auth/google-driver":
+                db = read_db()
+                credential = str(body.get("credential", "")).strip()
+                if not credential:
+                    return json_error(self, HTTPStatus.BAD_REQUEST, "bad_request", "credential is required")
+                try:
+                    identity = verify_google_id_credential(credential)
+                except ValueError as error:
+                    return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", str(error))
+                email = identity["email"]
+                driver = next((item for item in db["drivers"] if str(item.get("email", "")).strip().lower() == email), None)
+                if not driver or str(driver.get("status", "active")) != "active":
+                    return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", "This Google account is not linked to a driver yet")
+                tenant = find_tenant(db, driver.get("tenantId"))
+                session = create_auth_session(
+                    db,
+                    actor_type="driver",
+                    actor=driver,
+                    tenant_id=str(driver.get("tenantId") or DEMO_TENANT_ID),
+                    role="driver",
+                    source="google",
+                )
+                write_db(db)
+                return send_json(self, HTTPStatus.OK, build_session_payload(session, driver, tenant))
+
+            if path == "/auth/driver-login":
+                db = read_db()
+                email = str(body.get("email", "")).strip().lower()
+                password = str(body.get("password", "")).strip()
+                if not email or not password:
+                    return json_error(self, HTTPStatus.BAD_REQUEST, "bad_request", "email and password are required")
+                driver = next((item for item in db["drivers"] if str(item.get("email", "")).strip().lower() == email), None)
+                if not driver or str(driver.get("status", "active")) != "active":
+                    return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", "Invalid credentials")
+                expected_password = str(driver.get("temporaryPassword", "")).strip() or "demo"
+                if password != expected_password:
+                    return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", "Invalid credentials")
+                tenant = find_tenant(db, driver.get("tenantId"))
+                session = create_auth_session(
+                    db,
+                    actor_type="driver",
+                    actor=driver,
+                    tenant_id=str(driver.get("tenantId") or DEMO_TENANT_ID),
+                    role="driver",
+                    source="password",
+                )
+                write_db(db)
+                return send_json(self, HTTPStatus.OK, build_session_payload(session, driver, tenant))
+
             if path == "/auth/customer-login":
                 db = read_db()
                 email = str(body.get("email", "")).strip().lower()
-                if not email:
-                    return json_error(self, HTTPStatus.BAD_REQUEST, "bad_request", "email is required")
+                password = str(body.get("password", "")).strip()
+                if not email or not password:
+                    return json_error(self, HTTPStatus.BAD_REQUEST, "bad_request", "email and password are required")
                 customer = next(
                     (
                         item
@@ -3126,6 +3309,9 @@ class NaavalHandler(BaseHTTPRequestHandler):
                 )
                 if not customer:
                     return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", "No customer account matches this email yet")
+                expected_password = str(customer.get("portalPassword", "")).strip() or "demo"
+                if password != expected_password:
+                    return json_error(self, HTTPStatus.UNAUTHORIZED, "unauthorized", "Invalid credentials")
                 tenant = find_tenant(db, customer.get("tenantId"))
                 session = create_auth_session(
                     db,
@@ -3300,6 +3486,7 @@ class NaavalHandler(BaseHTTPRequestHandler):
                 if key == "drivers":
                     entity.setdefault("skills", [])
                     entity.setdefault("status", "active")
+                    entity["temporaryPassword"] = str(entity.get("temporaryPassword", "")).strip() or "demo"
                 if key == "shifts":
                     entity.setdefault("skills", [])
                     entity.setdefault("status", "planned")
@@ -3358,6 +3545,65 @@ class NaavalHandler(BaseHTTPRequestHandler):
                 write_db(db)
                 return send_json(self, HTTPStatus.CREATED, entity)
 
+            if path == "/admin/tenants":
+                db = read_db()
+                auth = require_auth(self, db, ("ops_user",))
+                if not auth:
+                    return
+                if not ensure_platform_admin_access(self, auth):
+                    return
+                company_name = str(body.get("companyName", "") or body.get("company", "")).strip()
+                display_name = str(body.get("displayName", "")).strip()
+                admin_first_name = str(body.get("adminFirstName", "") or body.get("firstName", "")).strip()
+                admin_last_name = str(body.get("adminLastName", "") or body.get("lastName", "")).strip()
+                admin_email = str(body.get("adminEmail", "") or body.get("email", "")).strip().lower()
+                admin_phone = str(body.get("adminPhone", "") or body.get("phone", "")).strip()
+                temporary_password = str(body.get("temporaryPassword", "")).strip() or "demo"
+                plan_id = str(body.get("planId", "starter")).strip() or "starter"
+                status = str(body.get("status", "active")).strip() or "active"
+                if not company_name or not admin_first_name or not admin_last_name or not admin_email:
+                    return json_error(self, HTTPStatus.BAD_REQUEST, "bad_request", "companyName, adminFirstName, adminLastName and adminEmail are required")
+                if any(str(item.get("email", "")).strip().lower() == admin_email for item in db["opsUsers"]):
+                    return json_error(self, HTTPStatus.CONFLICT, "conflict", "An account with this email already exists")
+                tenant = create_company_tenant(db, company_name=company_name, plan_id=plan_id, status=status)
+                if display_name:
+                    tenant["displayName"] = display_name
+                tenant["signupMeta"] = {
+                    "createdByEmail": admin_email,
+                    "phone": admin_phone,
+                }
+                tenant["updatedAt"] = now_iso()
+                create_default_company_hub(db, tenant)
+                timestamp = now_iso()
+                user = {
+                    "id": create_id("ops_user"),
+                    "tenantId": tenant["id"],
+                    "companyId": tenant["id"],
+                    "firstName": admin_first_name,
+                    "lastName": admin_last_name,
+                    "email": admin_email,
+                    "phone": admin_phone,
+                    "role": "company_admin",
+                    "team": company_name,
+                    "temporaryPassword": temporary_password,
+                    "status": "active",
+                    "createdAt": timestamp,
+                    "updatedAt": timestamp,
+                }
+                db["opsUsers"].insert(0, user)
+                append_event(db, "ops_user.created", "ops_user", user["id"], {"tenantId": tenant["id"], "email": admin_email, "role": user["role"]})
+                write_db(db)
+                return send_json(
+                    self,
+                    HTTPStatus.CREATED,
+                    {
+                        "tenant": serialize_tenant_record(db, tenant),
+                        "pricingConfig": deepcopy(db["tenantPricingConfigs"].get(tenant["id"]) or db.get("pricingConfig") or default_pricing_config()),
+                        "tenantContext": resolve_tenant_context(tenant),
+                        "latestUsers": [deepcopy(user)],
+                    },
+                )
+
             if path == "/customers":
                 db = read_db()
                 auth = require_auth(self, db, ("ops_user",))
@@ -3378,6 +3624,7 @@ class NaavalHandler(BaseHTTPRequestHandler):
                     "contactLastName": body.get("contactLastName", ""),
                     "contactPhone": body.get("contactPhone", ""),
                     "contactEmail": body.get("contactEmail", ""),
+                    "portalPassword": str(body.get("portalPassword", "")).strip() or "demo",
                     "revenueRange": body.get("revenueRange", ""),
                     "companySize": body.get("companySize", "smb"),
                     "pricingAlgorithmId": body.get("pricingAlgorithmId", "basic"),
@@ -4096,6 +4343,7 @@ class NaavalHandler(BaseHTTPRequestHandler):
                 customer["id"] = customer_id
                 customer["tenantId"] = customer.get("tenantId") or auth["tenantId"]
                 customer["companyId"] = customer.get("companyId") or auth["companyId"]
+                customer["portalPassword"] = str(customer.get("portalPassword", "")).strip() or "demo"
                 customer["updatedAt"] = now_iso()
                 append_event(db, "customer.updated", "customer", customer_id, {"updatedAt": customer["updatedAt"]})
                 write_db(db)
@@ -4116,6 +4364,7 @@ class NaavalHandler(BaseHTTPRequestHandler):
                 driver["id"] = driver_id
                 driver["tenantId"] = driver.get("tenantId") or auth["tenantId"]
                 driver["companyId"] = driver.get("companyId") or auth["companyId"]
+                driver["temporaryPassword"] = str(driver.get("temporaryPassword", "")).strip() or "demo"
                 driver["updatedAt"] = now_iso()
                 append_event(db, "driver.updated", "driver", driver_id, {"updatedAt": driver["updatedAt"]})
                 write_db(db)
@@ -4143,6 +4392,14 @@ class NaavalHandler(BaseHTTPRequestHandler):
                     tenant["planId"] = str(body.get("planId")).strip() or tenant.get("planId")
                 if body.get("status"):
                     tenant["status"] = str(body.get("status")).strip() or tenant.get("status")
+                if isinstance(body.get("enabledModules"), list):
+                    tenant["enabledModules"] = [str(item) for item in body["enabledModules"] if item]
+                if isinstance(body.get("disabledModules"), list):
+                    tenant["disabledModules"] = [str(item) for item in body["disabledModules"] if item]
+                if isinstance(body.get("enabledAlgorithms"), list):
+                    tenant["enabledAlgorithms"] = [str(item) for item in body["enabledAlgorithms"] if item]
+                if isinstance(body.get("disabledAlgorithms"), list):
+                    tenant["disabledAlgorithms"] = [str(item) for item in body["disabledAlgorithms"] if item]
                 if isinstance(body.get("moduleOverrides"), dict):
                     tenant["moduleOverrides"] = deepcopy(body["moduleOverrides"])
                 if isinstance(body.get("algorithmOverrides"), dict):
@@ -4281,12 +4538,24 @@ class NaavalHandler(BaseHTTPRequestHandler):
         elif path.startswith("/ops/"):
             base_dir = OPS_FRONTEND_DIR
             relative_path = path.removeprefix("/ops/").lstrip("/")
+        elif path == "/admin" or path == "/admin/":
+            base_dir = OPS_FRONTEND_DIR
+            relative_path = "index.html"
+        elif path.startswith("/admin/"):
+            base_dir = OPS_FRONTEND_DIR
+            relative_path = path.removeprefix("/admin/").lstrip("/")
         elif path == "/portal" or path == "/portal/":
             base_dir = PORTAL_FRONTEND_DIR
             relative_path = "index.html"
         elif path.startswith("/portal/"):
             base_dir = PORTAL_FRONTEND_DIR
             relative_path = path.removeprefix("/portal/").lstrip("/")
+        elif path == "/legal" or path == "/legal/":
+            base_dir = MARKETING_FRONTEND_DIR / "legal"
+            relative_path = "index.html"
+        elif path.startswith("/legal/"):
+            base_dir = MARKETING_FRONTEND_DIR / "legal"
+            relative_path = path.removeprefix("/legal/").lstrip("/")
         elif path == "/carrier" or path == "/carrier/":
             base_dir = CARRIER_FRONTEND_DIR
             relative_path = "index.html"

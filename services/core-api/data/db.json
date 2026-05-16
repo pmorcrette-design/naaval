@@ -1,6 +1,76 @@
 {
   "hubs": [
     {
+      "id": "hub_moznlj62_ji2ehi",
+      "tenantId": "tenant_moznlj62_lrae9v",
+      "companyId": "tenant_moznlj62_lrae9v",
+      "label": "Final API Check Main Hub",
+      "city": "",
+      "address": "",
+      "coordinates": {
+        "lat": 48.8566,
+        "lon": 2.3522
+      },
+      "createdAt": "2026-05-10T10:52:18.122Z",
+      "updatedAt": "2026-05-10T10:52:18.122Z"
+    },
+    {
+      "id": "hub_moznenxc_5djtwi",
+      "tenantId": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "label": "Tenant API Test Main Hub",
+      "city": "",
+      "address": "",
+      "coordinates": {
+        "lat": 48.8566,
+        "lon": 2.3522
+      },
+      "createdAt": "2026-05-10T10:46:57.696Z",
+      "updatedAt": "2026-05-10T10:46:57.696Z"
+    },
+    {
+      "id": "hub_20260509193713_b58a1a",
+      "tenantId": "tenant_20260509193713_88fa82",
+      "companyId": "tenant_20260509193713_88fa82",
+      "label": "Martin Express Main Hub",
+      "city": "",
+      "address": "",
+      "coordinates": {
+        "lat": 48.8566,
+        "lon": 2.3522
+      },
+      "createdAt": "2026-05-09T17:37:13.641043+00:00",
+      "updatedAt": "2026-05-09T17:37:13.641043+00:00"
+    },
+    {
+      "id": "hub_20260509193351_039bca",
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "label": "Transports Durand Main Hub",
+      "city": "",
+      "address": "",
+      "coordinates": {
+        "lat": 48.8566,
+        "lon": 2.3522
+      },
+      "createdAt": "2026-05-09T17:33:51.606467+00:00",
+      "updatedAt": "2026-05-09T17:33:51.606467+00:00"
+    },
+    {
+      "id": "hub_20260509193009_091232",
+      "tenantId": "tenant_20260509193009_427e22",
+      "companyId": "tenant_20260509193009_427e22",
+      "label": "Blue Mile Logistics Main Hub",
+      "city": "",
+      "address": "",
+      "coordinates": {
+        "lat": 48.8566,
+        "lon": 2.3522
+      },
+      "createdAt": "2026-05-09T17:30:09.442286+00:00",
+      "updatedAt": "2026-05-09T17:30:09.442286+00:00"
+    },
+    {
       "id": "hub_paris_central",
       "label": "Paris Central Hub",
       "city": "Paris",
@@ -10,7 +80,9 @@
         "lon": 2.3765
       },
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "vehicleTypes": [
@@ -25,7 +97,9 @@
         "volumeDm3": 6000
       },
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "vehicletype_bike",
@@ -38,7 +112,9 @@
         "volumeDm3": 900
       },
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "vehicles": [
@@ -48,7 +124,9 @@
       "hubId": "hub_paris_central",
       "vehicleTypeId": "vehicletype_van",
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "vehicle_bike_1",
@@ -56,7 +134,9 @@
       "hubId": "hub_paris_central",
       "vehicleTypeId": "vehicletype_bike",
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "drivers": [
@@ -73,7 +153,10 @@
       "status": "active",
       "id": "driver_20260411175155_dd9077",
       "createdAt": "2026-04-11T15:51:55.502069+00:00",
-      "updatedAt": "2026-04-12T15:24:41.406499+00:00"
+      "updatedAt": "2026-04-12T15:24:41.406499+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "temporaryPassword": "demo"
     },
     {
       "name": "Smoke Driver 1775826249",
@@ -84,30 +167,51 @@
       "id": "driver_20260410150409_cd85e9",
       "createdAt": "2026-04-10T13:04:09.943118+00:00",
       "updatedAt": "2026-04-10T13:04:09.943118+00:00",
-      "status": "active"
+      "status": "active",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "temporaryPassword": "demo"
     },
     {
       "id": "driver_amina",
       "name": "Amina Laurent",
+      "firstName": "Amina",
+      "lastName": "Laurent",
+      "email": "amina@naavalpartners.com",
       "phone": "+33600000001",
       "skills": [
         "fragile"
       ],
+      "vehicleType": "van_3m3",
+      "carrierCompanyId": "carrier_naaval_partners",
+      "vehiclePhotoUrls": [],
       "status": "active",
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "temporaryPassword": "demo"
     },
     {
       "id": "driver_noah",
       "name": "Noah Bernard",
+      "firstName": "Noah",
+      "lastName": "Bernard",
+      "email": "noah@naavalpartners.com",
       "phone": "+33600000002",
       "skills": [
         "cold_chain",
         "bike"
       ],
+      "vehicleType": "bike",
+      "carrierCompanyId": "carrier_naaval_partners",
+      "vehiclePhotoUrls": [],
       "status": "active",
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "temporaryPassword": "demo"
     }
   ],
   "shifts": [
@@ -131,7 +235,9 @@
       ],
       "status": "planned",
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "shift_noah_am",
@@ -154,10 +260,130 @@
       ],
       "status": "planned",
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "orders": [
+    {
+      "id": "ord_moznenxu_ojiesn",
+      "tenantId": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "merchantId": "merchant_api_test",
+      "customerId": "customer_moznenxq_42rvpu",
+      "hubId": null,
+      "kind": "delivery",
+      "reference": "ORD-1778410017631",
+      "pickupAddress": null,
+      "dropoffAddress": {
+        "label": "Drop",
+        "street1": "10 Rue de Rivoli",
+        "city": "Paris",
+        "postalCode": "75001",
+        "countryCode": "FR",
+        "coordinates": {
+          "lat": 48.8566,
+          "lon": 2.3522
+        }
+      },
+      "parcelSize": "M",
+      "serviceDurationSeconds": 300,
+      "pickupServiceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 0,
+      "volumeDm3": 0,
+      "requiredSkills": [],
+      "timeWindows": [],
+      "priority": 0,
+      "pickupGroupId": null,
+      "sourceBatchId": null,
+      "notes": "",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "ready",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-05-10T10:46:57.714Z",
+      "updatedAt": "2026-05-10T10:46:57.714Z"
+    },
+    {
+      "id": "ord_20260509194055_2244b6",
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "merchantId": "merchant_tenant_test",
+      "customerId": null,
+      "hubId": null,
+      "kind": "delivery",
+      "reference": "TENANT-CHECK-001",
+      "pickupAddress": {
+        "label": "Entrepot Paris",
+        "street1": "12 Rue du Depot",
+        "city": "Paris",
+        "postalCode": "75011",
+        "countryCode": "FR",
+        "latitude": 48.8566,
+        "longitude": 2.3522,
+        "coordinates": {
+          "lat": 48.8579444,
+          "lon": 2.3717706
+        }
+      },
+      "dropoffAddress": {
+        "label": "Client Victor Hugo",
+        "street1": "5 Avenue Victor Hugo",
+        "city": "Paris",
+        "postalCode": "75016",
+        "countryCode": "FR",
+        "latitude": 48.8698,
+        "longitude": 2.3076,
+        "coordinates": {
+          "lat": 48.8704492,
+          "lon": 2.2868833
+        }
+      },
+      "parcelSize": "M",
+      "serviceDurationSeconds": 300,
+      "pickupServiceDurationSeconds": 300,
+      "parcelCount": 1,
+      "weightKg": 0,
+      "volumeDm3": 0,
+      "requiredSkills": [],
+      "timeWindows": [],
+      "priority": 0,
+      "pickupGroupId": null,
+      "sourceBatchId": null,
+      "notes": "",
+      "source": "ops",
+      "sourceLabel": "Ops",
+      "status": "ready_to_plan",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-05-09T17:40:55.704279+00:00",
+      "updatedAt": "2026-05-09T17:40:55.704279+00:00"
+    },
     {
       "id": "ord_20260412172125_9c3af8",
       "merchantId": "Naaval.io - Test",
@@ -200,8 +426,8 @@
       "parcelSize": "S",
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 0.0,
-      "volumeDm3": 0.0,
+      "weightKg": 0,
+      "volumeDm3": 0,
       "requiredSkills": [],
       "timeWindows": [
         {
@@ -231,7 +457,9 @@
       "lastKnownPositionAt": "2026-04-17T11:50:10.383Z",
       "lastKnownPositionLabel": "Live position 48.89099 / 2.07206",
       "createdAt": "2026-04-12T15:21:25.436544+00:00",
-      "updatedAt": "2026-04-17T11:50:10.430471+00:00"
+      "updatedAt": "2026-04-17T11:50:10.430471+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412172125_3a476c",
@@ -275,8 +503,8 @@
       "parcelSize": "L",
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 0.0,
-      "volumeDm3": 0.0,
+      "weightKg": 0,
+      "volumeDm3": 0,
       "requiredSkills": [],
       "timeWindows": [
         {
@@ -303,7 +531,9 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T15:21:25.186339+00:00",
-      "updatedAt": "2026-04-12T15:25:11.248945+00:00"
+      "updatedAt": "2026-04-12T15:25:11.248945+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260411093917_352f2d",
@@ -346,8 +576,8 @@
       "parcelSize": "M",
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 0.0,
-      "volumeDm3": 0.0,
+      "weightKg": 0,
+      "volumeDm3": 0,
       "requiredSkills": [],
       "timeWindows": [],
       "priority": 0,
@@ -364,7 +594,9 @@
       "statusMessage": "Failed",
       "statusReasonCode": null,
       "statusReasonLabel": null,
-      "statusReason": "Skipped from carrier app"
+      "statusReason": "Skipped from carrier app",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260410150409_092ebf",
@@ -386,8 +618,8 @@
       },
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 4.0,
-      "volumeDm3": 15.0,
+      "weightKg": 4,
+      "volumeDm3": 15,
       "requiredSkills": [],
       "timeWindows": [
         {
@@ -399,7 +631,9 @@
       "notes": "Created during automated smoke test",
       "status": "dispatched",
       "createdAt": "2026-04-10T13:04:09.944973+00:00",
-      "updatedAt": "2026-04-10T13:04:09.949100+00:00"
+      "updatedAt": "2026-04-10T13:04:09.949100+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "order_demo_1",
@@ -444,7 +678,9 @@
       "notes": "Left with concierge after signature",
       "status": "completed",
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T11:18:38.680346+00:00"
+      "updatedAt": "2026-04-10T11:18:38.680346+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "order_demo_2",
@@ -507,7 +743,9 @@
         "data:image/png;base64,TESTPHOTO"
       ],
       "lastProofNote": "Customer refused the parcel at the door because the slot was missed.",
-      "lastProofDeliveredAt": "2026-04-12T10:35:00+02:00"
+      "lastProofDeliveredAt": "2026-04-12T10:35:00+02:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "order_demo_3",
@@ -552,7 +790,9 @@
       "notes": "High-priority customer reroute requested",
       "status": "dispatched",
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T13:04:09.949095+00:00"
+      "updatedAt": "2026-04-10T13:04:09.949095+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "order_demo_4",
@@ -609,7 +849,9 @@
       "statusMessage": "Failed",
       "statusReasonCode": null,
       "statusReasonLabel": null,
-      "statusReason": "Skipped from carrier app"
+      "statusReason": "Skipped from carrier app",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "order_demo_5",
@@ -656,7 +898,9 @@
       "notes": "Cargo bike eligible",
       "status": "dispatched",
       "createdAt": "2026-04-10T11:18:38.680346+00:00",
-      "updatedAt": "2026-04-10T13:04:09.949098+00:00"
+      "updatedAt": "2026-04-10T13:04:09.949098+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "order_demo_6",
@@ -711,7 +955,9 @@
         "lon": 2.3232
       },
       "lastKnownPositionAt": "2026-04-12T15:34:02.797Z",
-      "lastKnownPositionLabel": "Live position 48.88300 / 2.32320"
+      "lastKnownPositionLabel": "Live position 48.88300 / 2.32320",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412163553_39c5e0",
@@ -755,8 +1001,8 @@
       "parcelSize": "XL",
       "serviceDurationSeconds": 300,
       "parcelCount": 2,
-      "weightKg": 8.0,
-      "volumeDm3": 35.0,
+      "weightKg": 8,
+      "volumeDm3": 35,
       "requiredSkills": [
         "fragile"
       ],
@@ -788,7 +1034,9 @@
       "lastKnownPositionAt": "2026-04-12T15:08:54.610Z",
       "lastKnownPositionLabel": "Live position 48.85320 / 2.37140",
       "createdAt": "2026-04-12T14:35:53.316204+00:00",
-      "updatedAt": "2026-04-12T15:09:17.403289+00:00"
+      "updatedAt": "2026-04-12T15:09:17.403289+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412163553_2ee168",
@@ -832,8 +1080,8 @@
       "parcelSize": "L",
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 5.0,
-      "volumeDm3": 18.0,
+      "weightKg": 5,
+      "volumeDm3": 18,
       "requiredSkills": [],
       "timeWindows": [
         {
@@ -863,7 +1111,9 @@
       "lastKnownPositionAt": "2026-04-12T15:12:20.133Z",
       "lastKnownPositionLabel": "Live position 48.88300 / 2.32320",
       "createdAt": "2026-04-12T14:35:53.445985+00:00",
-      "updatedAt": "2026-04-12T15:12:58.926815+00:00"
+      "updatedAt": "2026-04-12T15:12:58.926815+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412163553_057536",
@@ -907,8 +1157,8 @@
       "parcelSize": "S",
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 10.0,
-      "volumeDm3": 0.0,
+      "weightKg": 10,
+      "volumeDm3": 0,
       "requiredSkills": [],
       "timeWindows": [
         {
@@ -935,7 +1185,9 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T14:35:53.912329+00:00",
-      "updatedAt": "2026-04-12T14:35:53.912329+00:00"
+      "updatedAt": "2026-04-12T14:35:53.912329+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412163554_1c774f",
@@ -979,8 +1231,8 @@
       "parcelSize": "XXL",
       "serviceDurationSeconds": 400,
       "parcelCount": 1,
-      "weightKg": 10.0,
-      "volumeDm3": 0.0,
+      "weightKg": 10,
+      "volumeDm3": 0,
       "requiredSkills": [
         "fragile"
       ],
@@ -1009,7 +1261,9 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T14:35:54.194345+00:00",
-      "updatedAt": "2026-04-12T15:04:43.357068+00:00"
+      "updatedAt": "2026-04-12T15:04:43.357068+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412164610_1eed8b",
@@ -1053,8 +1307,8 @@
       "parcelSize": "XL",
       "serviceDurationSeconds": 300,
       "parcelCount": 2,
-      "weightKg": 8.0,
-      "volumeDm3": 35.0,
+      "weightKg": 8,
+      "volumeDm3": 35,
       "requiredSkills": [
         "fragile"
       ],
@@ -1086,7 +1340,9 @@
       "lastKnownPositionAt": "2026-04-13T18:51:39.585Z",
       "lastKnownPositionLabel": "Live position 48.89099 / 2.07206",
       "createdAt": "2026-04-12T14:46:10.648870+00:00",
-      "updatedAt": "2026-04-17T11:45:41.360439+00:00"
+      "updatedAt": "2026-04-17T11:45:41.360439+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412164610_599346",
@@ -1130,8 +1386,8 @@
       "parcelSize": "L",
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 5.0,
-      "volumeDm3": 18.0,
+      "weightKg": 5,
+      "volumeDm3": 18,
       "requiredSkills": [],
       "timeWindows": [
         {
@@ -1158,7 +1414,9 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T14:46:10.771891+00:00",
-      "updatedAt": "2026-04-12T15:01:01.915571+00:00"
+      "updatedAt": "2026-04-12T15:01:01.915571+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412164611_1e6eef",
@@ -1202,8 +1460,8 @@
       "parcelSize": "S",
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 10.0,
-      "volumeDm3": 0.0,
+      "weightKg": 10,
+      "volumeDm3": 0,
       "requiredSkills": [],
       "timeWindows": [
         {
@@ -1230,7 +1488,9 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T14:46:11.048375+00:00",
-      "updatedAt": "2026-04-12T14:46:11.048375+00:00"
+      "updatedAt": "2026-04-12T14:46:11.048375+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412164611_478692",
@@ -1274,8 +1534,8 @@
       "parcelSize": "XXL",
       "serviceDurationSeconds": 400,
       "parcelCount": 1,
-      "weightKg": 10.0,
-      "volumeDm3": 0.0,
+      "weightKg": 10,
+      "volumeDm3": 0,
       "requiredSkills": [
         "fragile"
       ],
@@ -1304,7 +1564,9 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T14:46:11.317910+00:00",
-      "updatedAt": "2026-04-12T14:46:11.317910+00:00"
+      "updatedAt": "2026-04-12T14:46:11.317910+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412165956_76af5c",
@@ -1348,8 +1610,8 @@
       "parcelSize": "XL",
       "serviceDurationSeconds": 300,
       "parcelCount": 2,
-      "weightKg": 8.0,
-      "volumeDm3": 35.0,
+      "weightKg": 8,
+      "volumeDm3": 35,
       "requiredSkills": [
         "fragile"
       ],
@@ -1378,7 +1640,9 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T14:59:56.393127+00:00",
-      "updatedAt": "2026-04-17T12:22:40.489959+00:00"
+      "updatedAt": "2026-04-17T12:22:40.489959+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412165956_a43676",
@@ -1422,8 +1686,8 @@
       "parcelSize": "L",
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 5.0,
-      "volumeDm3": 18.0,
+      "weightKg": 5,
+      "volumeDm3": 18,
       "requiredSkills": [],
       "timeWindows": [
         {
@@ -1450,7 +1714,9 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T14:59:56.515779+00:00",
-      "updatedAt": "2026-04-17T12:22:40.489963+00:00"
+      "updatedAt": "2026-04-17T12:22:40.489963+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412165956_b87a06",
@@ -1494,8 +1760,8 @@
       "parcelSize": "S",
       "serviceDurationSeconds": 300,
       "parcelCount": 1,
-      "weightKg": 10.0,
-      "volumeDm3": 0.0,
+      "weightKg": 10,
+      "volumeDm3": 0,
       "requiredSkills": [],
       "timeWindows": [
         {
@@ -1522,7 +1788,9 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T14:59:56.793879+00:00",
-      "updatedAt": "2026-04-12T14:59:56.793879+00:00"
+      "updatedAt": "2026-04-12T14:59:56.793879+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "ord_20260412165957_8250e2",
@@ -1566,8 +1834,8 @@
       "parcelSize": "XXL",
       "serviceDurationSeconds": 400,
       "parcelCount": 1,
-      "weightKg": 10.0,
-      "volumeDm3": 0.0,
+      "weightKg": 10,
+      "volumeDm3": 0,
       "requiredSkills": [
         "fragile"
       ],
@@ -1596,10 +1864,281 @@
       "lastKnownPositionAt": null,
       "lastKnownPositionLabel": null,
       "createdAt": "2026-04-12T14:59:57.065567+00:00",
-      "updatedAt": "2026-04-12T14:59:57.065567+00:00"
+      "updatedAt": "2026-04-12T14:59:57.065567+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
+    },
+    {
+      "id": "ord_20260509122229_2cfec0",
+      "merchantId": "client_a",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "DROP-1",
+      "pickupAddress": {
+        "label": "Naaval Warehouse",
+        "street1": "12 Rue du Depot, 75011 Paris",
+        "city": "",
+        "postalCode": "",
+        "countryCode": "FR",
+        "contactName": "Pierre Ops",
+        "phone": "+33600000000",
+        "email": "ops@naaval.eu",
+        "parcelSize": "M",
+        "comment": "Main pickup",
+        "coordinates": {
+          "lat": 48.8579444,
+          "lon": 2.3717706
+        }
+      },
+      "dropoffAddress": {
+        "label": "Client A",
+        "street1": "7 Rue de la Roquette, 75011 Paris",
+        "city": "",
+        "postalCode": "",
+        "countryCode": "FR",
+        "contactName": "Alice Martin",
+        "phone": "+33611111111",
+        "email": "alice@example.com",
+        "parcelSize": "S",
+        "comment": "Door code 1234",
+        "coordinates": {
+          "lat": 48.8558275,
+          "lon": 2.3755799
+        }
+      },
+      "parcelSize": "S",
+      "serviceDurationSeconds": 600,
+      "pickupServiceDurationSeconds": 900,
+      "parcelCount": 1,
+      "weightKg": 3,
+      "volumeDm3": 8,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-05-09T09:00:00+02:00",
+          "end": "2026-05-09T11:00:00+02:00"
+        }
+      ],
+      "priority": 0,
+      "pickupGroupId": "group_1",
+      "sourceBatchId": "vrp_batch_20260509122228_7c899a",
+      "notes": "Door code 1234",
+      "source": "vrp_csv",
+      "sourceLabel": "VRP CSV Import",
+      "status": "planned",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-05-09T10:22:29.029843+00:00",
+      "updatedAt": "2026-05-09T10:22:30.004353+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
+    },
+    {
+      "id": "ord_20260509122229_6d70a0",
+      "merchantId": "client_b",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "DROP-2",
+      "pickupAddress": {
+        "label": "Naaval Warehouse",
+        "street1": "12 Rue du Depot, 75011 Paris",
+        "city": "",
+        "postalCode": "",
+        "countryCode": "FR",
+        "contactName": "Pierre Ops",
+        "phone": "+33600000000",
+        "email": "ops@naaval.eu",
+        "parcelSize": "M",
+        "comment": "Main pickup",
+        "coordinates": {
+          "lat": 48.8579444,
+          "lon": 2.3717706
+        }
+      },
+      "dropoffAddress": {
+        "label": "Client B",
+        "street1": "15 Rue des Dames, 75017 Paris",
+        "city": "",
+        "postalCode": "",
+        "countryCode": "FR",
+        "contactName": "Bob Durand",
+        "phone": "+33622222222",
+        "email": "bob@example.com",
+        "parcelSize": "M",
+        "comment": "Call on arrival",
+        "coordinates": {
+          "lat": 48.8849412,
+          "lon": 2.3250828
+        }
+      },
+      "parcelSize": "M",
+      "serviceDurationSeconds": 600,
+      "pickupServiceDurationSeconds": 900,
+      "parcelCount": 1,
+      "weightKg": 4,
+      "volumeDm3": 12,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-05-09T10:00:00+02:00",
+          "end": "2026-05-09T12:30:00+02:00"
+        }
+      ],
+      "priority": 0,
+      "pickupGroupId": "group_1",
+      "sourceBatchId": "vrp_batch_20260509122228_7c899a",
+      "notes": "Call on arrival",
+      "source": "vrp_csv",
+      "sourceLabel": "VRP CSV Import",
+      "status": "planned",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-05-09T10:22:29.282329+00:00",
+      "updatedAt": "2026-05-09T10:22:30.004354+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
+    },
+    {
+      "id": "ord_20260509122229_adbf5e",
+      "merchantId": "client_c",
+      "customerId": null,
+      "hubId": "hub_paris_central",
+      "kind": "pickup_delivery",
+      "reference": "DROP-3",
+      "pickupAddress": {
+        "label": "Naaval Warehouse",
+        "street1": "12 Rue du Depot, 75011 Paris",
+        "city": "",
+        "postalCode": "",
+        "countryCode": "FR",
+        "contactName": "Pierre Ops",
+        "phone": "+33600000000",
+        "email": "ops@naaval.eu",
+        "parcelSize": "M",
+        "comment": "Main pickup",
+        "coordinates": {
+          "lat": 48.8579444,
+          "lon": 2.3717706
+        }
+      },
+      "dropoffAddress": {
+        "label": "Client C",
+        "street1": "20 Avenue de Clichy, 75018 Paris",
+        "city": "",
+        "postalCode": "",
+        "countryCode": "FR",
+        "contactName": "Chloe Bernard",
+        "phone": "+33633333333",
+        "email": "chloe@example.com",
+        "parcelSize": "L",
+        "comment": "Reception desk",
+        "coordinates": {
+          "lat": 48.8850547,
+          "lon": 2.3268915
+        }
+      },
+      "parcelSize": "L",
+      "serviceDurationSeconds": 600,
+      "pickupServiceDurationSeconds": 900,
+      "parcelCount": 1,
+      "weightKg": 5,
+      "volumeDm3": 18,
+      "requiredSkills": [],
+      "timeWindows": [
+        {
+          "start": "2026-05-09T10:30:00+02:00",
+          "end": "2026-05-09T13:00:00+02:00"
+        }
+      ],
+      "priority": 0,
+      "pickupGroupId": "group_1",
+      "sourceBatchId": "vrp_batch_20260509122228_7c899a",
+      "notes": "Reception desk",
+      "source": "vrp_csv",
+      "sourceLabel": "VRP CSV Import",
+      "status": "planned",
+      "statusMessage": null,
+      "statusReasonCode": null,
+      "statusReasonLabel": null,
+      "statusReason": null,
+      "lastProofId": null,
+      "lastProofOutcomeCode": null,
+      "lastProofOutcomeLabel": null,
+      "lastProofPhotoUrls": [],
+      "lastProofNote": null,
+      "lastProofDeliveredAt": null,
+      "lastKnownPosition": null,
+      "lastKnownPositionAt": null,
+      "lastKnownPositionLabel": null,
+      "createdAt": "2026-05-09T10:22:29.535442+00:00",
+      "updatedAt": "2026-05-09T10:22:30.004356+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "planningJobs": [
+    {
+      "id": "plan_20260509122229_d34fad",
+      "hubId": "hub_paris_central",
+      "planDate": "2026-05-09",
+      "orderIds": [
+        "ord_20260509122229_2cfec0",
+        "ord_20260509122229_6d70a0",
+        "ord_20260509122229_adbf5e"
+      ],
+      "driverShiftIds": [
+        "shift_amina_am"
+      ],
+      "objectivePreset": "speed",
+      "solver": "graphhopper",
+      "solverNote": null,
+      "status": "finished",
+      "routeIds": [
+        "route_20260509122230_2ecb6d"
+      ],
+      "unassignedJobIds": [],
+      "optimizerSetup": {
+        "vrpName": "Smoke CSV VRP",
+        "customer": "Test Customer",
+        "truckCount": 1,
+        "startTime": "08:00",
+        "endTime": "14:00",
+        "handlingMinutes": 10,
+        "pickupLandingMinutes": 15,
+        "defaultPickupAddress": "12 Rue du Depot, 75011 Paris",
+        "pickupParcelSize": "M"
+      },
+      "draftSource": "csv",
+      "createdAt": "2026-05-09T10:22:30.004341+00:00",
+      "updatedAt": "2026-05-09T10:22:30.004342+00:00",
+      "completedAt": "2026-05-09T10:22:30.004343+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
+    },
     {
       "id": "plan_20260417142240_27cb49",
       "hubId": "hub_paris_central",
@@ -1620,7 +2159,9 @@
       ],
       "createdAt": "2026-04-17T12:22:40.489934+00:00",
       "updatedAt": "2026-04-17T12:22:40.489938+00:00",
-      "completedAt": "2026-04-17T12:22:40.489941+00:00"
+      "completedAt": "2026-04-17T12:22:40.489941+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "plan_20260411104846_9b6a4d",
@@ -1645,7 +2186,9 @@
       ],
       "createdAt": "2026-04-11T08:48:46.570936+00:00",
       "updatedAt": "2026-04-11T08:48:46.570938+00:00",
-      "completedAt": "2026-04-11T08:48:46.570939+00:00"
+      "completedAt": "2026-04-11T08:48:46.570939+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "plan_20260410150409_fd1fa3",
@@ -1671,7 +2214,9 @@
       ],
       "createdAt": "2026-04-10T13:04:09.946982+00:00",
       "updatedAt": "2026-04-10T13:04:09.946983+00:00",
-      "completedAt": "2026-04-10T13:04:09.946984+00:00"
+      "completedAt": "2026-04-10T13:04:09.946984+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "routes": [
@@ -1714,7 +2259,9 @@
       ],
       "createdAt": "2026-04-12T15:25:08.410686+00:00",
       "updatedAt": "2026-04-12T15:25:11.248907+00:00",
-      "dispatchedAt": "2026-04-12T15:25:11.248867+00:00"
+      "dispatchedAt": "2026-04-12T15:25:11.248867+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260412172457_f91573",
@@ -1761,7 +2308,9 @@
         "lon": 2.072063
       },
       "lastHeartbeatAt": "2026-04-17T11:50:10.383Z",
-      "lastKnownPositionLabel": "Live position 48.89099 / 2.07206"
+      "lastKnownPositionLabel": "Live position 48.89099 / 2.07206",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260412170443_28ff88",
@@ -1826,7 +2375,9 @@
         }
       ],
       "createdAt": "2026-04-12T15:04:43.357053+00:00",
-      "updatedAt": "2026-04-12T15:04:43.357058+00:00"
+      "updatedAt": "2026-04-12T15:04:43.357058+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260412170101_aeb714",
@@ -1891,7 +2442,9 @@
         }
       ],
       "createdAt": "2026-04-12T15:01:01.915542+00:00",
-      "updatedAt": "2026-04-12T15:01:01.915551+00:00"
+      "updatedAt": "2026-04-12T15:01:01.915551+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260412170057_dafd33",
@@ -1968,7 +2521,9 @@
       "lastHeartbeatAt": "2026-04-13T18:51:39.585Z",
       "lastKnownPositionLabel": "Live position 48.89099 / 2.07206",
       "startedAt": "2026-04-12T15:13:19.331Z",
-      "completedAt": "2026-04-17T11:45:41.360443+00:00"
+      "completedAt": "2026-04-17T11:45:41.360443+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260412170052_4912c7",
@@ -2045,7 +2600,9 @@
       "lastHeartbeatAt": "2026-04-12T15:12:20.133Z",
       "lastKnownPositionLabel": "Live position 48.88300 / 2.32320",
       "startedAt": "2026-04-12T15:10:07.814Z",
-      "completedAt": "2026-04-12T15:12:58.926847+00:00"
+      "completedAt": "2026-04-12T15:12:58.926847+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260412170043_45cbdd",
@@ -2122,7 +2679,9 @@
       "lastHeartbeatAt": "2026-04-12T15:08:54.610Z",
       "lastKnownPositionLabel": "Live position 48.85320 / 2.37140",
       "startedAt": "2026-04-12T15:05:28.211Z",
-      "completedAt": "2026-04-12T15:09:17.403308+00:00"
+      "completedAt": "2026-04-12T15:09:17.403308+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_demo_1",
@@ -2154,7 +2713,9 @@
           "plannedDepartureAt": "2026-04-10T09:05:00+02:00",
           "status": "served"
         }
-      ]
+      ],
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_demo_2",
@@ -2200,7 +2761,9 @@
       },
       "lastHeartbeatAt": "2026-04-12T10:35:00+02:00",
       "lastKnownPositionLabel": "Customer doorstep",
-      "completedAt": "2026-04-12T13:07:57.929269+00:00"
+      "completedAt": "2026-04-12T13:07:57.929269+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260410150409_e79d4e",
@@ -2275,7 +2838,9 @@
         }
       ],
       "dispatchedAt": "2026-04-10T13:04:09.949090+00:00",
-      "updatedAt": "2026-04-10T13:04:09.949092+00:00"
+      "updatedAt": "2026-04-10T13:04:09.949092+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260410150409_7067eb",
@@ -2363,7 +2928,9 @@
       },
       "lastHeartbeatAt": "2026-04-12T15:34:02.797Z",
       "lastKnownPositionLabel": "Live position 48.88300 / 2.32320",
-      "completedAt": "2026-04-12T15:30:50.280544+00:00"
+      "completedAt": "2026-04-12T15:30:50.280544+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260411104846_1ca0dc",
@@ -2435,7 +3002,9 @@
       "startedAt": "2026-04-11T15:54:05.865Z",
       "lastKnownPositionLabel": "Live position 50.83810 / 4.35580",
       "dispatchedAt": "2026-04-12T14:53:44.496069+00:00",
-      "completedAt": "2026-04-12T15:28:38.275342+00:00"
+      "completedAt": "2026-04-12T15:28:38.275342+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260411104846_4fcf0b",
@@ -2488,7 +3057,9 @@
           "plannedDepartureAt": "2026-04-10T09:05:00+02:00",
           "status": "pending"
         }
-      ]
+      ],
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "route_20260417142240_180220",
@@ -2586,7 +3157,146 @@
           "plannedDepartureAt": "2026-04-13T10:43:18+02:00",
           "status": "pending"
         }
-      ]
+      ],
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
+    },
+    {
+      "id": "route_20260509122230_2ecb6d",
+      "planId": "plan_20260509122229_d34fad",
+      "shiftId": "shift_amina_am",
+      "driverId": "driver_amina",
+      "vehicleId": "vehicle_van_1",
+      "status": "ready",
+      "source": "graphhopper",
+      "orderIds": [
+        "ord_20260509122229_2cfec0",
+        "ord_20260509122229_6d70a0",
+        "ord_20260509122229_adbf5e"
+      ],
+      "pickupGroupIds": [
+        "group_1"
+      ],
+      "totalDistanceMeters": 14317,
+      "totalDurationSeconds": 11485,
+      "stops": [
+        {
+          "id": "route_20260509122230_2ecb6d_stop_1",
+          "orderId": "ord_20260509122229_2cfec0",
+          "orderIds": [
+            "ord_20260509122229_2cfec0",
+            "ord_20260509122229_6d70a0",
+            "ord_20260509122229_adbf5e"
+          ],
+          "sequence": 1,
+          "kind": "pickup",
+          "address": {
+            "label": "Naaval Warehouse",
+            "street1": "12 Rue du Depot, 75011 Paris",
+            "city": "",
+            "postalCode": "",
+            "countryCode": "FR",
+            "contactName": "Pierre Ops",
+            "phone": "+33600000000",
+            "email": "ops@naaval.eu",
+            "parcelSize": "M",
+            "comment": "Main pickup",
+            "coordinates": {
+              "lat": 48.8579444,
+              "lon": 2.3717706
+            }
+          },
+          "plannedArrivalAt": "2026-05-09T08:00:00+02:00",
+          "plannedDepartureAt": "2026-05-09T08:06:16+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260509122230_2ecb6d_stop_2",
+          "orderId": "ord_20260509122229_2cfec0",
+          "orderIds": [
+            "ord_20260509122229_2cfec0"
+          ],
+          "sequence": 2,
+          "kind": "delivery",
+          "address": {
+            "label": "Client A",
+            "street1": "7 Rue de la Roquette, 75011 Paris",
+            "city": "",
+            "postalCode": "",
+            "countryCode": "FR",
+            "contactName": "Alice Martin",
+            "phone": "+33611111111",
+            "email": "alice@example.com",
+            "parcelSize": "S",
+            "comment": "Door code 1234",
+            "coordinates": {
+              "lat": 48.8558275,
+              "lon": 2.3755799
+            }
+          },
+          "plannedArrivalAt": "2026-05-09T08:06:16+02:00",
+          "plannedDepartureAt": "2026-05-09T09:10:00+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260509122230_2ecb6d_stop_3",
+          "orderId": "ord_20260509122229_6d70a0",
+          "orderIds": [
+            "ord_20260509122229_6d70a0"
+          ],
+          "sequence": 3,
+          "kind": "delivery",
+          "address": {
+            "label": "Client B",
+            "street1": "15 Rue des Dames, 75017 Paris",
+            "city": "",
+            "postalCode": "",
+            "countryCode": "FR",
+            "contactName": "Bob Durand",
+            "phone": "+33622222222",
+            "email": "bob@example.com",
+            "parcelSize": "M",
+            "comment": "Call on arrival",
+            "coordinates": {
+              "lat": 48.8849412,
+              "lon": 2.3250828
+            }
+          },
+          "plannedArrivalAt": "2026-05-09T09:42:30+02:00",
+          "plannedDepartureAt": "2026-05-09T10:10:00+02:00",
+          "status": "pending"
+        },
+        {
+          "id": "route_20260509122230_2ecb6d_stop_4",
+          "orderId": "ord_20260509122229_adbf5e",
+          "orderIds": [
+            "ord_20260509122229_adbf5e"
+          ],
+          "sequence": 4,
+          "kind": "delivery",
+          "address": {
+            "label": "Client C",
+            "street1": "20 Avenue de Clichy, 75018 Paris",
+            "city": "",
+            "postalCode": "",
+            "countryCode": "FR",
+            "contactName": "Chloe Bernard",
+            "phone": "+33633333333",
+            "email": "chloe@example.com",
+            "parcelSize": "L",
+            "comment": "Reception desk",
+            "coordinates": {
+              "lat": 48.8850547,
+              "lon": 2.3268915
+            }
+          },
+          "plannedArrivalAt": "2026-05-09T10:14:16+02:00",
+          "plannedDepartureAt": "2026-05-09T10:40:00+02:00",
+          "status": "pending"
+        }
+      ],
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "heartbeats": [
@@ -2596,7 +3306,9 @@
       "routeId": "route_20260412172457_f91573",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-17T11:50:10.383Z"
+      "occurredAt": "2026-04-17T11:50:10.383Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260417134708_50732b",
@@ -2604,7 +3316,9 @@
       "routeId": "route_20260412172457_f91573",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-17T11:47:08.319Z"
+      "occurredAt": "2026-04-17T11:47:08.319Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260413205139_4d48dd",
@@ -2612,7 +3326,9 @@
       "routeId": "route_20260412170057_dafd33",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-13T18:51:39.585Z"
+      "occurredAt": "2026-04-13T18:51:39.585Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412173402_2bd897",
@@ -2620,7 +3336,9 @@
       "routeId": "route_20260410150409_7067eb",
       "latitude": 48.883,
       "longitude": 2.3232,
-      "occurredAt": "2026-04-12T15:34:02.797Z"
+      "occurredAt": "2026-04-12T15:34:02.797Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412173055_35c905",
@@ -2628,7 +3346,9 @@
       "routeId": "route_20260410150409_7067eb",
       "latitude": 48.8619,
       "longitude": 2.3765,
-      "occurredAt": "2026-04-12T15:30:55.531Z"
+      "occurredAt": "2026-04-12T15:30:55.531Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412173036_927204",
@@ -2636,7 +3356,9 @@
       "routeId": "route_20260410150409_7067eb",
       "latitude": 48.883,
       "longitude": 2.3232,
-      "occurredAt": "2026-04-12T15:30:36.327Z"
+      "occurredAt": "2026-04-12T15:30:36.327Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412172849_584aa8",
@@ -2644,7 +3366,9 @@
       "routeId": "route_20260412170057_dafd33",
       "latitude": 48.8532,
       "longitude": 2.3714,
-      "occurredAt": "2026-04-12T15:28:49.493Z"
+      "occurredAt": "2026-04-12T15:28:49.493Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412172630_1a9b28",
@@ -2652,7 +3376,9 @@
       "routeId": "route_20260412170057_dafd33",
       "latitude": 48.8532,
       "longitude": 2.3714,
-      "occurredAt": "2026-04-12T15:26:30.696Z"
+      "occurredAt": "2026-04-12T15:26:30.696Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412171339_eb823e",
@@ -2660,7 +3386,9 @@
       "routeId": "route_20260412170057_dafd33",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-12T15:13:39.136Z"
+      "occurredAt": "2026-04-12T15:13:39.136Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412171319_72490d",
@@ -2668,7 +3396,9 @@
       "routeId": "route_20260412170057_dafd33",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-12T15:13:19.290Z"
+      "occurredAt": "2026-04-12T15:13:19.290Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412171220_faa0a6",
@@ -2676,7 +3406,9 @@
       "routeId": "route_20260412170052_4912c7",
       "latitude": 48.883,
       "longitude": 2.3232,
-      "occurredAt": "2026-04-12T15:12:20.133Z"
+      "occurredAt": "2026-04-12T15:12:20.133Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412171135_439b74",
@@ -2684,7 +3416,9 @@
       "routeId": "route_20260412170052_4912c7",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-12T15:11:35.124Z"
+      "occurredAt": "2026-04-12T15:11:35.124Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412171101_10a9ce",
@@ -2692,7 +3426,9 @@
       "routeId": "route_20260412170052_4912c7",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-12T15:11:01.934Z"
+      "occurredAt": "2026-04-12T15:11:01.934Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412171007_c5576b",
@@ -2700,7 +3436,9 @@
       "routeId": "route_20260412170052_4912c7",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-12T15:10:07.654Z"
+      "occurredAt": "2026-04-12T15:10:07.654Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412170854_8b3b2e",
@@ -2708,7 +3446,9 @@
       "routeId": "route_20260412170043_45cbdd",
       "latitude": 48.8532,
       "longitude": 2.3714,
-      "occurredAt": "2026-04-12T15:08:54.610Z"
+      "occurredAt": "2026-04-12T15:08:54.610Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412170643_e16e51",
@@ -2716,7 +3456,9 @@
       "routeId": "route_20260412170043_45cbdd",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-12T15:06:43.841Z"
+      "occurredAt": "2026-04-12T15:06:43.841Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412170528_0ab9fd",
@@ -2724,7 +3466,9 @@
       "routeId": "route_20260412170043_45cbdd",
       "latitude": 48.890986,
       "longitude": 2.072063,
-      "occurredAt": "2026-04-12T15:05:28.171Z"
+      "occurredAt": "2026-04-12T15:05:28.171Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412170450_270ba5",
@@ -2732,7 +3476,9 @@
       "routeId": "route_20260411104846_1ca0dc",
       "latitude": 50.8381,
       "longitude": 4.3558,
-      "occurredAt": "2026-04-12T15:04:50.061Z"
+      "occurredAt": "2026-04-12T15:04:50.061Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412150256_037ca8",
@@ -2740,7 +3486,9 @@
       "routeId": "route_demo_2",
       "latitude": 50.8263,
       "longitude": 4.3527,
-      "occurredAt": "2026-04-12T10:30:00+02:00"
+      "occurredAt": "2026-04-12T10:30:00+02:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412124248_fc3183",
@@ -2748,7 +3496,9 @@
       "routeId": "route_20260411104846_1ca0dc",
       "latitude": 50.8381,
       "longitude": 4.3558,
-      "occurredAt": "2026-04-12T10:42:48.116Z"
+      "occurredAt": "2026-04-12T10:42:48.116Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412123422_3fd2ce",
@@ -2756,7 +3506,9 @@
       "routeId": "route_20260411104846_1ca0dc",
       "latitude": 50.8381,
       "longitude": 4.3558,
-      "occurredAt": "2026-04-12T10:34:21.920Z"
+      "occurredAt": "2026-04-12T10:34:21.920Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260412123323_d45de9",
@@ -2764,7 +3516,9 @@
       "routeId": "route_20260411104846_1ca0dc",
       "latitude": 50.8381,
       "longitude": 4.3558,
-      "occurredAt": "2026-04-12T10:33:23.453Z"
+      "occurredAt": "2026-04-12T10:33:23.453Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260411175454_330a88",
@@ -2772,7 +3526,9 @@
       "routeId": "route_20260411104846_1ca0dc",
       "latitude": 48.98746490001289,
       "longitude": 2.0085241698920235,
-      "occurredAt": "2026-04-11T15:54:54.924Z"
+      "occurredAt": "2026-04-11T15:54:54.924Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260411175414_ebe2bb",
@@ -2780,7 +3536,9 @@
       "routeId": "route_20260411104846_1ca0dc",
       "latitude": 48.98746490001289,
       "longitude": 2.0085241698920235,
-      "occurredAt": "2026-04-11T15:54:14.464Z"
+      "occurredAt": "2026-04-11T15:54:14.464Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "hb_20260411175405_035b9f",
@@ -2788,7 +3546,9 @@
       "routeId": "route_20260411104846_1ca0dc",
       "latitude": 48.98746490001289,
       "longitude": 2.0085241698920235,
-      "occurredAt": "2026-04-11T15:54:05.852Z"
+      "occurredAt": "2026-04-11T15:54:05.852Z",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "proofs": [
@@ -2812,10 +3572,251 @@
       "proofOutcomeCode": "delivery_refused_by_customer",
       "proofOutcomeLabel": "Refused by Customer",
       "note": "Customer refused the parcel at the door because the slot was missed.",
-      "createdAt": "2026-04-12T13:07:57.929107+00:00"
+      "createdAt": "2026-04-12T13:07:57.929107+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "events": [
+    {
+      "id": "evt_20260510222242_4e3117",
+      "type": "ops_user.deleted",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260509193009_f141ae",
+      "payload": {
+        "deletedAt": "2026-05-10T20:22:42.146125+00:00"
+      },
+      "occurredAt": "2026-05-10T20:22:42.146275+00:00"
+    },
+    {
+      "id": "evt_20260510222240_19e494",
+      "type": "ops_user.deleted",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260509193351_ac69ca",
+      "payload": {
+        "deletedAt": "2026-05-10T20:22:40.105848+00:00"
+      },
+      "occurredAt": "2026-05-10T20:22:40.106000+00:00"
+    },
+    {
+      "id": "evt_20260510222236_5b062b",
+      "type": "ops_user.deleted",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260509193713_5743cb",
+      "payload": {
+        "deletedAt": "2026-05-10T20:22:36.940184+00:00"
+      },
+      "occurredAt": "2026-05-10T20:22:36.940434+00:00"
+    },
+    {
+      "id": "evt_moznlj62_1eco7i",
+      "tenantId": "tenant_moznlj62_lrae9v",
+      "companyId": "tenant_moznlj62_lrae9v",
+      "type": "ops_user.created",
+      "entityType": "ops_user",
+      "entityId": "ops_user_moznlj62_jfhj6h",
+      "payload": {
+        "tenantId": "tenant_moznlj62_lrae9v",
+        "email": "final-1778410338068@naaval.eu"
+      },
+      "occurredAt": "2026-05-10T10:52:18.122Z"
+    },
+    {
+      "id": "evt_moznj8cc_rq8ofc",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "type": "pricing.config_updated",
+      "entityType": "pricing",
+      "entityId": "tenant_demo_transport",
+      "payload": {
+        "tenantId": "tenant_demo_transport",
+        "updatedAt": "2026-05-10T10:50:30.780Z"
+      },
+      "occurredAt": "2026-05-10T10:50:30.780Z"
+    },
+    {
+      "id": "evt_moznenxv_h4pj0y",
+      "tenantId": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "type": "order.created",
+      "entityType": "order",
+      "entityId": "ord_moznenxu_ojiesn",
+      "payload": {
+        "reference": "ORD-1778410017631",
+        "tenantId": "tenant_moznenxb_asy7qq"
+      },
+      "occurredAt": "2026-05-10T10:46:57.715Z"
+    },
+    {
+      "id": "evt_moznenxq_0kg6m5",
+      "tenantId": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "type": "customer.created",
+      "entityType": "customer",
+      "entityId": "customer_moznenxq_42rvpu",
+      "payload": {
+        "companyName": "Tenant API Test Customer",
+        "tenantId": "tenant_moznenxb_asy7qq"
+      },
+      "occurredAt": "2026-05-10T10:46:57.710Z"
+    },
+    {
+      "id": "evt_moznenxc_9n3f8n",
+      "tenantId": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "type": "ops_user.created",
+      "entityType": "ops_user",
+      "entityId": "ops_user_moznenxc_1ffpv1",
+      "payload": {
+        "tenantId": "tenant_moznenxb_asy7qq",
+        "email": "api-test-1778410017631@naaval.eu"
+      },
+      "occurredAt": "2026-05-10T10:46:57.696Z"
+    },
+    {
+      "id": "evt_20260509195030_2f6100",
+      "type": "customer.created",
+      "entityType": "customer",
+      "entityId": "customer_20260509195030_c98267",
+      "payload": {
+        "id": "customer_20260509195030_c98267",
+        "tenantId": "tenant_20260509193351_0ea4a4",
+        "companyId": "tenant_20260509193351_0ea4a4",
+        "companyName": "Client Durand Retail",
+        "headquartersAddress": "10 Rue de Rivoli, Paris",
+        "vatNumber": "",
+        "companyPhone": "+33123456789",
+        "companyEmail": "ops@durand-retail.test",
+        "contactFirstName": "Sarah",
+        "contactLastName": "Retail",
+        "contactPhone": "+33622222222",
+        "contactEmail": "sarah@durand-retail.test",
+        "revenueRange": "",
+        "companySize": "smb",
+        "pricingAlgorithmId": "basic",
+        "createdAt": "2026-05-09T17:50:30.395867+00:00",
+        "updatedAt": "2026-05-09T17:50:30.395867+00:00"
+      },
+      "occurredAt": "2026-05-09T17:50:30.395919+00:00"
+    },
+    {
+      "id": "evt_20260509194055_664617",
+      "type": "order.created",
+      "entityType": "order",
+      "entityId": "ord_20260509194055_2244b6",
+      "payload": {
+        "reference": "TENANT-CHECK-001"
+      },
+      "occurredAt": "2026-05-09T17:40:55.704530+00:00"
+    },
+    {
+      "id": "evt_20260509193713_fc5636",
+      "type": "ops_user.created",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260509193713_5743cb",
+      "payload": {
+        "tenantId": "tenant_20260509193713_88fa82",
+        "email": "luc.martin+tenantcheck@naaval.eu"
+      },
+      "occurredAt": "2026-05-09T17:37:13.641090+00:00"
+    },
+    {
+      "id": "evt_20260509193713_924449",
+      "type": "hub.created",
+      "entityType": "hub",
+      "entityId": "hub_20260509193713_b58a1a",
+      "payload": {
+        "tenantId": "tenant_20260509193713_88fa82"
+      },
+      "occurredAt": "2026-05-09T17:37:13.641068+00:00"
+    },
+    {
+      "id": "evt_20260509193713_d6cf69",
+      "type": "tenant.created",
+      "entityType": "tenant",
+      "entityId": "tenant_20260509193713_88fa82",
+      "payload": {
+        "companyName": "Martin Express",
+        "planId": "trial"
+      },
+      "occurredAt": "2026-05-09T17:37:13.641035+00:00"
+    },
+    {
+      "id": "evt_20260509193351_d0d956",
+      "type": "ops_user.created",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260509193351_ac69ca",
+      "payload": {
+        "tenantId": "tenant_20260509193351_0ea4a4",
+        "email": "marie.durand+tenanttest@naaval.eu"
+      },
+      "occurredAt": "2026-05-09T17:33:51.606527+00:00"
+    },
+    {
+      "id": "evt_20260509193351_70afb7",
+      "type": "hub.created",
+      "entityType": "hub",
+      "entityId": "hub_20260509193351_039bca",
+      "payload": {
+        "tenantId": "tenant_20260509193351_0ea4a4"
+      },
+      "occurredAt": "2026-05-09T17:33:51.606505+00:00"
+    },
+    {
+      "id": "evt_20260509193351_ba3a1b",
+      "type": "tenant.created",
+      "entityType": "tenant",
+      "entityId": "tenant_20260509193351_0ea4a4",
+      "payload": {
+        "companyName": "Transports Durand",
+        "planId": "trial"
+      },
+      "occurredAt": "2026-05-09T17:33:51.606455+00:00"
+    },
+    {
+      "id": "evt_20260509193009_a8166a",
+      "type": "ops_user.created",
+      "entityType": "ops_user",
+      "entityId": "ops_user_20260509193009_f141ae",
+      "payload": {
+        "tenantId": "tenant_20260509193009_427e22",
+        "email": "alice.tenant+naaval@example.com"
+      },
+      "occurredAt": "2026-05-09T17:30:09.442330+00:00"
+    },
+    {
+      "id": "evt_20260509193009_e25936",
+      "type": "hub.created",
+      "entityType": "hub",
+      "entityId": "hub_20260509193009_091232",
+      "payload": {
+        "tenantId": "tenant_20260509193009_427e22"
+      },
+      "occurredAt": "2026-05-09T17:30:09.442308+00:00"
+    },
+    {
+      "id": "evt_20260509193009_894ab2",
+      "type": "tenant.created",
+      "entityType": "tenant",
+      "entityId": "tenant_20260509193009_427e22",
+      "payload": {
+        "companyName": "Blue Mile Logistics",
+        "planId": "trial"
+      },
+      "occurredAt": "2026-05-09T17:30:09.442279+00:00"
+    },
+    {
+      "id": "evt_20260509122230_f5b399",
+      "type": "planning.finished",
+      "entityType": "plan",
+      "entityId": "plan_20260509122229_d34fad",
+      "payload": {
+        "routeCount": 1,
+        "solver": "graphhopper",
+        "draftSource": "csv"
+      },
+      "occurredAt": "2026-05-09T10:22:30.004369+00:00"
+    },
     {
       "id": "evt_20260418122138_f0c446",
       "type": "ops_user.deleted",
@@ -4204,7 +5205,7 @@
       }
     },
     "pallet": {
-      "pricePerPallet": 35.0,
+      "pricePerPallet": 35,
       "vehicleThresholds": {
         "van_3m3": 2,
         "van_5m3": 4,
@@ -4218,7 +5219,7 @@
       "vehicleHourlyRates": {
         "bike": 16.5,
         "scooter": 19.5,
-        "car": 23.0,
+        "car": 23,
         "van_3m3": 28.75,
         "van_5m3": 31.62,
         "van_10m3": 36.36,
@@ -4231,7 +5232,7 @@
       "includedKm": 100,
       "vehicleDropRates": {
         "car": 8.5,
-        "van_3m3": 11.0,
+        "van_3m3": 11,
         "van_5m3": 13.25,
         "van_10m3": 16.2,
         "van_15m3": 18.9,
@@ -4254,24 +5255,112 @@
       "tags": [],
       "id": "carrier_company_20260412172404_5d5d35",
       "createdAt": "2026-04-12T15:24:04.066681+00:00",
-      "updatedAt": "2026-04-12T15:24:04.066681+00:00"
+      "updatedAt": "2026-04-12T15:24:04.066681+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "opsUsers": [
+    {
+      "id": "ops_user_moznlj62_jfhj6h",
+      "tenantId": "tenant_moznlj62_lrae9v",
+      "companyId": "tenant_moznlj62_lrae9v",
+      "firstName": "Final",
+      "lastName": "Check",
+      "email": "final-1778410338068@naaval.eu",
+      "phone": "",
+      "role": "company_admin",
+      "team": "Final API Check",
+      "temporaryPassword": "demo",
+      "status": "active",
+      "createdAt": "2026-05-10T10:52:18.122Z",
+      "updatedAt": "2026-05-10T10:52:18.122Z"
+    },
+    {
+      "id": "ops_user_moznenxc_1ffpv1",
+      "tenantId": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "firstName": "API",
+      "lastName": "Tester",
+      "email": "api-test-1778410017631@naaval.eu",
+      "phone": "",
+      "role": "company_admin",
+      "team": "Tenant API Test",
+      "temporaryPassword": "demo",
+      "status": "active",
+      "createdAt": "2026-05-10T10:46:57.696Z",
+      "updatedAt": "2026-05-10T10:46:57.696Z"
+    },
     {
       "id": "ops_user_pierre",
       "firstName": "Pierre",
       "lastName": "Ops",
       "email": "pierre@naaval.app",
-      "role": "ops_admin",
+      "role": "super_admin",
       "team": "Operations",
       "temporaryPassword": "demo",
       "status": "active",
       "createdAt": "2026-04-18T09:46:39.403760+00:00",
-      "updatedAt": "2026-04-18T09:46:39.403760+00:00"
+      "updatedAt": "2026-04-18T09:46:39.403760+00:00",
+      "tenantId": "tenant_naaval_internal",
+      "companyId": "tenant_naaval_internal"
+    },
+    {
+      "id": "ops_user_demo",
+      "firstName": "Demo",
+      "lastName": "Naaval",
+      "email": "demo@naaval.app",
+      "role": "company_admin",
+      "team": "Operations",
+      "temporaryPassword": "demo",
+      "status": "active",
+      "createdAt": "2026-05-08T09:04:18.896062+00:00",
+      "updatedAt": "2026-05-08T09:04:18.896062+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "customers": [
+    {
+      "id": "customer_moznenxq_42rvpu",
+      "tenantId": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "companyName": "Tenant API Test Customer",
+      "headquartersAddress": "10 Rue de Rivoli, Paris",
+      "vatNumber": "",
+      "companyPhone": "",
+      "companyEmail": "customer-1778410017631@tenant.eu",
+      "contactFirstName": "",
+      "contactLastName": "",
+      "contactPhone": "",
+      "contactEmail": "",
+      "revenueRange": "",
+      "companySize": "smb",
+      "preferredAlgorithmId": null,
+      "createdAt": "2026-05-10T10:46:57.710Z",
+      "updatedAt": "2026-05-10T10:46:57.710Z",
+      "portalPassword": "demo"
+    },
+    {
+      "id": "customer_20260509195030_c98267",
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "companyName": "Client Durand Retail",
+      "headquartersAddress": "10 Rue de Rivoli, Paris",
+      "vatNumber": "",
+      "companyPhone": "+33123456789",
+      "companyEmail": "ops@durand-retail.test",
+      "contactFirstName": "Sarah",
+      "contactLastName": "Retail",
+      "contactPhone": "+33622222222",
+      "contactEmail": "sarah@durand-retail.test",
+      "revenueRange": "",
+      "companySize": "smb",
+      "pricingAlgorithmId": "basic",
+      "createdAt": "2026-05-09T17:50:30.395867+00:00",
+      "updatedAt": "2026-05-09T17:50:30.395867+00:00",
+      "portalPassword": "demo"
+    },
     {
       "id": "customer_naaval_test_client_bastille",
       "companyName": "Client Bastille",
@@ -4287,7 +5376,10 @@
       "companySize": "smb",
       "pricingAlgorithmId": "basic",
       "createdAt": "2026-04-12T15:16:17.038570+00:00",
-      "updatedAt": "2026-04-12T15:16:33.595704+00:00"
+      "updatedAt": "2026-04-12T15:16:33.595704+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "portalPassword": "demo"
     },
     {
       "id": "customer_20260411164239_0cfb11",
@@ -4304,7 +5396,10 @@
       "companySize": "smb",
       "pricingAlgorithmId": "drops",
       "createdAt": "2026-04-11T14:42:39.932756+00:00",
-      "updatedAt": "2026-04-12T15:17:14.950515+00:00"
+      "updatedAt": "2026-04-12T15:17:14.950515+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "portalPassword": "demo"
     },
     {
       "id": "customer_merchant_demo_avenue_louise_231_1050_ixelles",
@@ -4321,7 +5416,10 @@
       "companySize": "smb",
       "pricingAlgorithmId": "basic",
       "createdAt": "2026-04-11T14:41:40.769863+00:00",
-      "updatedAt": "2026-04-11T14:41:40.769863+00:00"
+      "updatedAt": "2026-04-11T14:41:40.769863+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "portalPassword": "demo"
     }
   ],
   "quotes": [],
@@ -4418,15 +5516,17 @@
       ],
       "id": "rr_20260412173245_57b739",
       "createdAt": "2026-04-12T15:32:45.712264+00:00",
-      "updatedAt": "2026-04-12T15:32:45.712264+00:00"
+      "updatedAt": "2026-04-12T15:32:45.712264+00:00",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
   ],
   "graphhopperUsage": {
     "enabled": true,
-    "remaining": "499",
+    "remaining": "488",
     "limit": "500",
-    "resetSeconds": "41839",
-    "updatedAt": "2026-04-17T12:22:40.489544+00:00",
+    "resetSeconds": "46665",
+    "updatedAt": "2026-05-09T11:02:14.075599+00:00",
     "source": "graphhopper"
   },
   "inboxMessages": [
@@ -4439,7 +5539,9 @@
       "senderType": "ops",
       "senderId": "ops_user_pierre",
       "createdAt": "2026-04-11T10:30:00+02:00",
-      "time": "10h30"
+      "time": "10h30",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     },
     {
       "id": "msg_20260412162354_0f5c28",
@@ -4450,7 +5552,843 @@
       "senderType": "ops",
       "senderId": "ops_control_tower",
       "createdAt": "2026-04-12T16:45:00+02:00",
-      "time": "16h45"
+      "time": "16h45",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport"
     }
-  ]
+  ],
+  "tenants": [
+    {
+      "id": "tenant_moznlj62_lrae9v",
+      "companyId": "tenant_moznlj62_lrae9v",
+      "slug": "final-api-check",
+      "companyName": "Final API Check",
+      "status": "active",
+      "planId": "trial",
+      "enabledModules": [],
+      "disabledModules": [],
+      "enabledAlgorithms": [],
+      "disabledAlgorithms": [],
+      "usageOverrides": {},
+      "moduleOverrides": {},
+      "algorithmOverrides": {},
+      "createdAt": "2026-05-10T10:52:18.121Z",
+      "updatedAt": "2026-05-10T10:52:18.122Z",
+      "signupMeta": {
+        "volume": "",
+        "message": "",
+        "phone": "",
+        "createdByEmail": "final-1778410338068@naaval.eu"
+      }
+    },
+    {
+      "id": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "slug": "tenant-api-test",
+      "companyName": "Tenant API Test",
+      "status": "active",
+      "planId": "starter",
+      "enabledModules": [],
+      "disabledModules": [],
+      "enabledAlgorithms": [],
+      "disabledAlgorithms": [],
+      "usageOverrides": {},
+      "moduleOverrides": {},
+      "algorithmOverrides": {},
+      "createdAt": "2026-05-10T10:46:57.695Z",
+      "updatedAt": "2026-05-10T10:46:57.696Z",
+      "signupMeta": {
+        "volume": "",
+        "message": "",
+        "phone": "",
+        "createdByEmail": "api-test-1778410017631@naaval.eu"
+      }
+    },
+    {
+      "id": "tenant_20260509193713_88fa82",
+      "companyId": "tenant_20260509193713_88fa82",
+      "slug": "martin-express",
+      "companyName": "Martin Express",
+      "status": "active",
+      "planId": "trial",
+      "enabledModules": [],
+      "disabledModules": [],
+      "enabledAlgorithms": [],
+      "disabledAlgorithms": [],
+      "usageOverrides": {},
+      "moduleOverrides": {},
+      "algorithmOverrides": {},
+      "createdAt": "2026-05-09T17:37:13.640926+00:00",
+      "updatedAt": "2026-05-09T17:37:13.641041+00:00",
+      "signupMeta": {
+        "volume": "starter",
+        "message": "Isolation check",
+        "phone": "+33611111111",
+        "createdByEmail": "luc.martin+tenantcheck@naaval.eu"
+      }
+    },
+    {
+      "id": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "slug": "transports-durand",
+      "companyName": "Transports Durand",
+      "status": "active",
+      "planId": "trial",
+      "enabledModules": [],
+      "disabledModules": [],
+      "enabledAlgorithms": [],
+      "disabledAlgorithms": [],
+      "usageOverrides": {},
+      "moduleOverrides": {},
+      "algorithmOverrides": {},
+      "createdAt": "2026-05-09T17:33:51.606338+00:00",
+      "updatedAt": "2026-05-09T17:33:51.606465+00:00",
+      "signupMeta": {
+        "volume": "starter",
+        "message": "Tenant signup test",
+        "phone": "+33600000000",
+        "createdByEmail": "marie.durand+tenanttest@naaval.eu"
+      }
+    },
+    {
+      "id": "tenant_20260509193009_427e22",
+      "companyId": "tenant_20260509193009_427e22",
+      "slug": "blue-mile-logistics",
+      "companyName": "Blue Mile Logistics",
+      "status": "active",
+      "planId": "trial",
+      "enabledModules": [],
+      "disabledModules": [],
+      "enabledAlgorithms": [],
+      "disabledAlgorithms": [],
+      "usageOverrides": {},
+      "moduleOverrides": {},
+      "algorithmOverrides": {},
+      "createdAt": "2026-05-09T17:30:09.442089+00:00",
+      "updatedAt": "2026-05-09T17:30:09.442284+00:00",
+      "signupMeta": {
+        "volume": "250-1000",
+        "message": "Testing auto-tenant signup",
+        "phone": "+33611111111",
+        "createdByEmail": "alice.tenant+naaval@example.com"
+      }
+    },
+    {
+      "id": "tenant_naaval_internal",
+      "companyId": "tenant_naaval_internal",
+      "slug": "naaval-internal",
+      "companyName": "Naaval Internal",
+      "status": "active",
+      "planId": "enterprise",
+      "enabledModules": [],
+      "disabledModules": [],
+      "enabledAlgorithms": [],
+      "disabledAlgorithms": [],
+      "usageOverrides": {},
+      "moduleOverrides": {},
+      "algorithmOverrides": {},
+      "createdAt": "2026-05-09T17:25:24.879291+00:00",
+      "updatedAt": "2026-05-09T17:25:24.879291+00:00"
+    },
+    {
+      "id": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "slug": "naaval-demo-transport",
+      "companyName": "Naaval Demo Transport",
+      "status": "active",
+      "planId": "trial",
+      "enabledModules": [],
+      "disabledModules": [],
+      "enabledAlgorithms": [],
+      "disabledAlgorithms": [],
+      "usageOverrides": {},
+      "moduleOverrides": {},
+      "algorithmOverrides": {},
+      "createdAt": "2026-05-09T17:25:24.879291+00:00",
+      "updatedAt": "2026-05-09T17:25:24.879291+00:00"
+    }
+  ],
+  "authSessions": [
+    {
+      "id": "session_20260516180707_58a260",
+      "token": "8a3aa8ce595347cab3d5fb22b71cfbab",
+      "actorType": "driver",
+      "userId": null,
+      "customerId": null,
+      "driverId": "driver_amina",
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "role": "driver",
+      "source": "password",
+      "createdAt": "2026-05-16T16:07:07.553384+00:00",
+      "updatedAt": "2026-05-16T16:07:07.553387+00:00"
+    },
+    {
+      "id": "session_20260516180707_97844f",
+      "token": "19d5d0bdefb840c5a9d775c9c6649007",
+      "actorType": "customer",
+      "userId": null,
+      "customerId": "customer_moznenxq_42rvpu",
+      "driverId": null,
+      "tenantId": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "role": "customer_user",
+      "source": "email",
+      "createdAt": "2026-05-16T16:07:07.309309+00:00",
+      "updatedAt": "2026-05-16T16:07:07.309313+00:00"
+    },
+    {
+      "id": "session_20260516180112_623c66",
+      "token": "a77c4065b02248bc97e4fea4fae85409",
+      "actorType": "ops_user",
+      "userId": "ops_user_demo",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-16T16:01:12.700921+00:00",
+      "updatedAt": "2026-05-16T16:01:12.700925+00:00"
+    },
+    {
+      "id": "session_20260510222125_f7920b",
+      "token": "46f46e3343814a6fa5406ee6934c3b4a",
+      "actorType": "ops_user",
+      "userId": "ops_user_pierre",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_naaval_internal",
+      "companyId": "tenant_naaval_internal",
+      "role": "super_admin",
+      "source": "password",
+      "createdAt": "2026-05-10T20:21:25.979658+00:00",
+      "updatedAt": "2026-05-10T20:21:25.979666+00:00"
+    },
+    {
+      "id": "session_mozp539u_sbs4nq",
+      "token": "b9826aae43bf4e09ba5c4f854d97c915",
+      "actorType": "ops_user",
+      "userId": "ops_user_pierre",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_naaval_internal",
+      "companyId": "tenant_naaval_internal",
+      "role": "super_admin",
+      "source": "password",
+      "createdAt": "2026-05-10T11:35:30.259Z",
+      "updatedAt": "2026-05-10T11:35:30.259Z"
+    },
+    {
+      "id": "session_mozo4uuo_fo05og",
+      "token": "44430c33349141f9af55bd70d9bd6329",
+      "actorType": "ops_user",
+      "userId": "ops_user_pierre",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_naaval_internal",
+      "companyId": "tenant_naaval_internal",
+      "role": "super_admin",
+      "source": "google",
+      "createdAt": "2026-05-10T11:07:19.728Z",
+      "updatedAt": "2026-05-10T11:07:19.728Z"
+    },
+    {
+      "id": "session_moznlj62_frv3ni",
+      "token": "4b3b08c00d5e4e6a955a4a42c7d727f6",
+      "actorType": "ops_user",
+      "userId": "ops_user_moznlj62_jfhj6h",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_moznlj62_lrae9v",
+      "companyId": "tenant_moznlj62_lrae9v",
+      "role": "company_admin",
+      "source": "signup",
+      "createdAt": "2026-05-10T10:52:18.122Z",
+      "updatedAt": "2026-05-10T10:52:18.122Z"
+    },
+    {
+      "id": "session_moznj8c4_lqwm9o",
+      "token": "7f947047f11c4fe49485aa2288ac5265",
+      "actorType": "ops_user",
+      "userId": "ops_user_demo",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-10T10:50:30.772Z",
+      "updatedAt": "2026-05-10T10:50:30.772Z"
+    },
+    {
+      "id": "session_moznj8bu_12q9mx",
+      "token": "9a05831eb17b437d9f6c097eb68f75c0",
+      "actorType": "ops_user",
+      "userId": "ops_user_pierre",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_naaval_internal",
+      "companyId": "tenant_naaval_internal",
+      "role": "super_admin",
+      "source": "password",
+      "createdAt": "2026-05-10T10:50:30.762Z",
+      "updatedAt": "2026-05-10T10:50:30.762Z"
+    },
+    {
+      "id": "session_moznenyd_r00vwt",
+      "token": "42502583014d4dd591a02fd15e8d6450",
+      "actorType": "ops_user",
+      "userId": "ops_user_pierre",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_naaval_internal",
+      "companyId": "tenant_naaval_internal",
+      "role": "super_admin",
+      "source": "password",
+      "createdAt": "2026-05-10T10:46:57.733Z",
+      "updatedAt": "2026-05-10T10:46:57.733Z"
+    },
+    {
+      "id": "session_mozneny2_uhpvz9",
+      "token": "7f55f544df9b4d9cb106a21213e019ad",
+      "actorType": "ops_user",
+      "userId": "ops_user_demo",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-10T10:46:57.722Z",
+      "updatedAt": "2026-05-10T10:46:57.722Z"
+    },
+    {
+      "id": "session_moznenxc_ivnz8s",
+      "token": "4109744d1b844d388c6707f57c9d4787",
+      "actorType": "ops_user",
+      "userId": "ops_user_moznenxc_1ffpv1",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_moznenxb_asy7qq",
+      "companyId": "tenant_moznenxb_asy7qq",
+      "role": "company_admin",
+      "source": "signup",
+      "createdAt": "2026-05-10T10:46:57.696Z",
+      "updatedAt": "2026-05-10T10:46:57.696Z"
+    },
+    {
+      "id": "session_20260509195030_76f02e",
+      "token": "6610d098fcde4f8fae96344fe28b5551",
+      "actorType": "customer",
+      "userId": null,
+      "customerId": "customer_20260509195030_c98267",
+      "driverId": null,
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "role": "customer_user",
+      "source": "email",
+      "createdAt": "2026-05-09T17:50:30.407862+00:00",
+      "updatedAt": "2026-05-09T17:50:30.407864+00:00"
+    },
+    {
+      "id": "session_20260509195030_c30e2e",
+      "token": "aac66c20b1bd47e481a8c36594b62592",
+      "actorType": "ops_user",
+      "userId": "ops_user_20260509193351_ac69ca",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:50:30.381711+00:00",
+      "updatedAt": "2026-05-09T17:50:30.381714+00:00"
+    },
+    {
+      "id": "session_20260509194909_144aa9",
+      "token": "01ddce179c334ab4bccc8c3756e833c2",
+      "actorType": "ops_user",
+      "userId": "ops_user_20260509193351_ac69ca",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:49:09.784591+00:00",
+      "updatedAt": "2026-05-09T17:49:09.784594+00:00"
+    },
+    {
+      "id": "session_20260509194635_0c9f47",
+      "token": "a6f0e59cdfba43679db9d1ebe3147fa7",
+      "actorType": "ops_user",
+      "userId": "ops_user_pierre",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_naaval_internal",
+      "companyId": "tenant_naaval_internal",
+      "role": "super_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:46:35.940561+00:00",
+      "updatedAt": "2026-05-09T17:46:35.940564+00:00"
+    },
+    {
+      "id": "session_20260509194055_21da04",
+      "token": "487d64dd52884002a3a94b327eea6f5c",
+      "actorType": "ops_user",
+      "userId": "ops_user_demo",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:40:55.325611+00:00",
+      "updatedAt": "2026-05-09T17:40:55.325614+00:00"
+    },
+    {
+      "id": "session_20260509194055_05593b",
+      "token": "d680c8898bdd484d93c356656302b45c",
+      "actorType": "ops_user",
+      "userId": "ops_user_20260509193351_ac69ca",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:40:55.310921+00:00",
+      "updatedAt": "2026-05-09T17:40:55.310925+00:00"
+    },
+    {
+      "id": "session_20260509193936_742144",
+      "token": "8642d067806b4f6b9542f8e394c5ae8f",
+      "actorType": "ops_user",
+      "userId": "ops_user_20260509193351_ac69ca",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:39:36.744732+00:00",
+      "updatedAt": "2026-05-09T17:39:36.744735+00:00"
+    },
+    {
+      "id": "session_20260509193916_dca317",
+      "token": "505bb75861564adb9d65b300d707cd1b",
+      "actorType": "ops_user",
+      "userId": "ops_user_20260509193351_ac69ca",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:39:16.671515+00:00",
+      "updatedAt": "2026-05-09T17:39:16.671517+00:00"
+    },
+    {
+      "id": "session_20260509193853_cbdec9",
+      "token": "22a8dc2e3eb64ae88e1cf8b26072c05b",
+      "actorType": "ops_user",
+      "userId": "ops_user_demo",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:38:53.544251+00:00",
+      "updatedAt": "2026-05-09T17:38:53.544254+00:00"
+    },
+    {
+      "id": "session_20260509193853_a3a0ef",
+      "token": "89e890783ef74387a3a97744810ae51e",
+      "actorType": "ops_user",
+      "userId": "ops_user_20260509193351_ac69ca",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:38:53.530525+00:00",
+      "updatedAt": "2026-05-09T17:38:53.530528+00:00"
+    },
+    {
+      "id": "session_20260509193713_0cb9f9",
+      "token": "65e8e8c2de1f42b39f45408cbef0a225",
+      "actorType": "ops_user",
+      "userId": "ops_user_demo",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_demo_transport",
+      "companyId": "tenant_demo_transport",
+      "role": "company_admin",
+      "source": "password",
+      "createdAt": "2026-05-09T17:37:13.657123+00:00",
+      "updatedAt": "2026-05-09T17:37:13.657127+00:00"
+    },
+    {
+      "id": "session_20260509193713_848891",
+      "token": "1eb3d08aad2745a4916051fdf4bbdc7c",
+      "actorType": "ops_user",
+      "userId": "ops_user_20260509193713_5743cb",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_20260509193713_88fa82",
+      "companyId": "tenant_20260509193713_88fa82",
+      "role": "company_admin",
+      "source": "signup",
+      "createdAt": "2026-05-09T17:37:13.641108+00:00",
+      "updatedAt": "2026-05-09T17:37:13.641110+00:00"
+    },
+    {
+      "id": "session_20260509193351_fa93ee",
+      "token": "22f371692b804c8db48fcafd6e372ecb",
+      "actorType": "ops_user",
+      "userId": "ops_user_20260509193351_ac69ca",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_20260509193351_0ea4a4",
+      "companyId": "tenant_20260509193351_0ea4a4",
+      "role": "company_admin",
+      "source": "signup",
+      "createdAt": "2026-05-09T17:33:51.606543+00:00",
+      "updatedAt": "2026-05-09T17:33:51.606545+00:00"
+    },
+    {
+      "id": "session_20260509193009_362929",
+      "token": "26ed07ca7b5448d59136ade0922f5d74",
+      "actorType": "ops_user",
+      "userId": "ops_user_20260509193009_f141ae",
+      "customerId": null,
+      "driverId": null,
+      "tenantId": "tenant_20260509193009_427e22",
+      "companyId": "tenant_20260509193009_427e22",
+      "role": "company_admin",
+      "source": "signup",
+      "createdAt": "2026-05-09T17:30:09.442346+00:00",
+      "updatedAt": "2026-05-09T17:30:09.442348+00:00"
+    }
+  ],
+  "tenantPricingConfigs": {
+    "tenant_demo_transport": {
+      "currency": "EUR",
+      "basic": {
+        "distanceRatePerKm": 0.99,
+        "sizeBasePrices": {
+          "S": 1,
+          "M": 2,
+          "L": 3,
+          "XL": 4,
+          "XXL": 5
+        }
+      },
+      "pallet": {
+        "pricePerPallet": 1,
+        "vehicleThresholds": {}
+      },
+      "hours": {
+        "minimumHours": 1,
+        "includedKm": 10,
+        "vehicleHourlyRates": {}
+      },
+      "drops": {
+        "minimumDrops": 1,
+        "includedKm": 10,
+        "vehicleDropRates": {}
+      }
+    },
+    "tenant_naaval_internal": {
+      "currency": "EUR",
+      "basic": {
+        "distanceRatePerKm": 0.5,
+        "sizeBasePrices": {
+          "S": 9.8,
+          "M": 14.4,
+          "L": 18.91,
+          "XL": 24.6,
+          "XXL": 29.8
+        }
+      },
+      "pallet": {
+        "pricePerPallet": 35,
+        "vehicleThresholds": {
+          "van_3m3": 2,
+          "van_5m3": 4,
+          "van_10m3": 6,
+          "van_20m3": 8
+        }
+      },
+      "hours": {
+        "minimumHours": 3,
+        "includedKm": 150,
+        "vehicleHourlyRates": {
+          "bike": 16.5,
+          "scooter": 19.5,
+          "car": 23,
+          "van_3m3": 28.75,
+          "van_5m3": 31.62,
+          "van_10m3": 36.36,
+          "van_15m3": 41.84,
+          "van_20m3": 48.11
+        }
+      },
+      "drops": {
+        "minimumDrops": 10,
+        "includedKm": 100,
+        "vehicleDropRates": {
+          "car": 8.5,
+          "van_3m3": 11,
+          "van_5m3": 13.25,
+          "van_10m3": 16.2,
+          "van_15m3": 18.9,
+          "van_20m3": 22.4
+        }
+      }
+    },
+    "tenant_20260509193009_427e22": {
+      "currency": "EUR",
+      "basic": {
+        "distanceRatePerKm": 0.5,
+        "sizeBasePrices": {
+          "S": 9.8,
+          "M": 14.4,
+          "L": 18.91,
+          "XL": 24.6,
+          "XXL": 29.8
+        }
+      },
+      "pallet": {
+        "pricePerPallet": 35,
+        "vehicleThresholds": {
+          "van_3m3": 2,
+          "van_5m3": 4,
+          "van_10m3": 6,
+          "van_20m3": 8
+        }
+      },
+      "hours": {
+        "minimumHours": 3,
+        "includedKm": 150,
+        "vehicleHourlyRates": {
+          "bike": 16.5,
+          "scooter": 19.5,
+          "car": 23,
+          "van_3m3": 28.75,
+          "van_5m3": 31.62,
+          "van_10m3": 36.36,
+          "van_15m3": 41.84,
+          "van_20m3": 48.11
+        }
+      },
+      "drops": {
+        "minimumDrops": 10,
+        "includedKm": 100,
+        "vehicleDropRates": {
+          "car": 8.5,
+          "van_3m3": 11,
+          "van_5m3": 13.25,
+          "van_10m3": 16.2,
+          "van_15m3": 18.9,
+          "van_20m3": 22.4
+        }
+      }
+    },
+    "tenant_20260509193351_0ea4a4": {
+      "currency": "EUR",
+      "basic": {
+        "distanceRatePerKm": 0.5,
+        "sizeBasePrices": {
+          "S": 9.8,
+          "M": 14.4,
+          "L": 18.91,
+          "XL": 24.6,
+          "XXL": 29.8
+        }
+      },
+      "pallet": {
+        "pricePerPallet": 35,
+        "vehicleThresholds": {
+          "van_3m3": 2,
+          "van_5m3": 4,
+          "van_10m3": 6,
+          "van_20m3": 8
+        }
+      },
+      "hours": {
+        "minimumHours": 3,
+        "includedKm": 150,
+        "vehicleHourlyRates": {
+          "bike": 16.5,
+          "scooter": 19.5,
+          "car": 23,
+          "van_3m3": 28.75,
+          "van_5m3": 31.62,
+          "van_10m3": 36.36,
+          "van_15m3": 41.84,
+          "van_20m3": 48.11
+        }
+      },
+      "drops": {
+        "minimumDrops": 10,
+        "includedKm": 100,
+        "vehicleDropRates": {
+          "car": 8.5,
+          "van_3m3": 11,
+          "van_5m3": 13.25,
+          "van_10m3": 16.2,
+          "van_15m3": 18.9,
+          "van_20m3": 22.4
+        }
+      }
+    },
+    "tenant_20260509193713_88fa82": {
+      "currency": "EUR",
+      "basic": {
+        "distanceRatePerKm": 0.5,
+        "sizeBasePrices": {
+          "S": 9.8,
+          "M": 14.4,
+          "L": 18.91,
+          "XL": 24.6,
+          "XXL": 29.8
+        }
+      },
+      "pallet": {
+        "pricePerPallet": 35,
+        "vehicleThresholds": {
+          "van_3m3": 2,
+          "van_5m3": 4,
+          "van_10m3": 6,
+          "van_20m3": 8
+        }
+      },
+      "hours": {
+        "minimumHours": 3,
+        "includedKm": 150,
+        "vehicleHourlyRates": {
+          "bike": 16.5,
+          "scooter": 19.5,
+          "car": 23,
+          "van_3m3": 28.75,
+          "van_5m3": 31.62,
+          "van_10m3": 36.36,
+          "van_15m3": 41.84,
+          "van_20m3": 48.11
+        }
+      },
+      "drops": {
+        "minimumDrops": 10,
+        "includedKm": 100,
+        "vehicleDropRates": {
+          "car": 8.5,
+          "van_3m3": 11,
+          "van_5m3": 13.25,
+          "van_10m3": 16.2,
+          "van_15m3": 18.9,
+          "van_20m3": 22.4
+        }
+      }
+    },
+    "tenant_moznenxb_asy7qq": {
+      "currency": "EUR",
+      "basic": {
+        "distanceRatePerKm": 0.5,
+        "sizeBasePrices": {
+          "S": 9.8,
+          "M": 14.4,
+          "L": 18.91,
+          "XL": 24.6,
+          "XXL": 29.8
+        }
+      },
+      "pallet": {
+        "pricePerPallet": 35,
+        "vehicleThresholds": {
+          "van_3m3": 2,
+          "van_5m3": 4,
+          "van_10m3": 6,
+          "van_20m3": 8
+        }
+      },
+      "hours": {
+        "minimumHours": 3,
+        "includedKm": 150,
+        "vehicleHourlyRates": {
+          "bike": 16.5,
+          "scooter": 19.5,
+          "car": 23,
+          "van_3m3": 28.75,
+          "van_5m3": 31.62,
+          "van_10m3": 36.36,
+          "van_15m3": 41.84,
+          "van_20m3": 48.11
+        }
+      },
+      "drops": {
+        "minimumDrops": 10,
+        "includedKm": 100,
+        "vehicleDropRates": {
+          "car": 8.5,
+          "van_3m3": 11,
+          "van_5m3": 13.25,
+          "van_10m3": 16.2,
+          "van_15m3": 18.9,
+          "van_20m3": 22.4
+        }
+      }
+    },
+    "tenant_moznlj62_lrae9v": {
+      "currency": "EUR",
+      "basic": {
+        "distanceRatePerKm": 0.5,
+        "sizeBasePrices": {
+          "S": 9.8,
+          "M": 14.4,
+          "L": 18.91,
+          "XL": 24.6,
+          "XXL": 29.8
+        }
+      },
+      "pallet": {
+        "pricePerPallet": 35,
+        "vehicleThresholds": {
+          "van_3m3": 2,
+          "van_5m3": 4,
+          "van_10m3": 6,
+          "van_20m3": 8
+        }
+      },
+      "hours": {
+        "minimumHours": 3,
+        "includedKm": 150,
+        "vehicleHourlyRates": {
+          "bike": 16.5,
+          "scooter": 19.5,
+          "car": 23,
+          "van_3m3": 28.75,
+          "van_5m3": 31.62,
+          "van_10m3": 36.36,
+          "van_15m3": 41.84,
+          "van_20m3": 48.11
+        }
+      },
+      "drops": {
+        "minimumDrops": 10,
+        "includedKm": 100,
+        "vehicleDropRates": {
+          "car": 8.5,
+          "van_3m3": 11,
+          "van_5m3": 13.25,
+          "van_10m3": 16.2,
+          "van_15m3": 18.9,
+          "van_20m3": 22.4
+        }
+      }
+    }
+  }
 }

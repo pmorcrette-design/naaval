@@ -1,9 +1,10 @@
 import { appendEvent } from "../lib/events.js";
+import { entityBelongsToAuth, requireAuth, scopedItems } from "../lib/auth.js";
 import { badRequest, notFound, readJsonBody, sendJson } from "../lib/http.js";
 import { createId } from "../lib/ids.js";
 import { readDb, updateDb } from "../lib/store.js";
 
-function normalizeOrderInput(input, fallbackMerchantId) {
+function normalizeOrderInput(input, fallbackMerchantId, tenantId, companyId) {
   if (!input.reference) {
     throw new Error("Order reference is required");
   }
@@ -14,7 +15,10 @@ function normalizeOrderInput(input, fallbackMerchantId) {
 
   return {
     id: input.id ?? createId("ord"),
+    tenantId,
+    companyId,
     merchantId: input.merchantId ?? fallbackMerchantId,
+    customerId: input.customerId ?? null,
     hubId: input.hubId ?? null,
     kind: input.kind ?? "delivery",
     reference: input.reference,
@@ -22,14 +26,32 @@ function normalizeOrderInput(input, fallbackMerchantId) {
     dropoffAddress: input.dropoffAddress,
     parcelSize: input.parcelSize ?? input.dropoffAddress?.parcelSize ?? input.pickupAddress?.parcelSize ?? "M",
     serviceDurationSeconds: input.serviceDurationSeconds ?? 300,
+    pickupServiceDurationSeconds: input.pickupServiceDurationSeconds ?? input.serviceDurationSeconds ?? 300,
     parcelCount: input.parcelCount ?? 1,
     weightKg: input.weightKg ?? 0,
     volumeDm3: input.volumeDm3 ?? 0,
     requiredSkills: input.requiredSkills ?? [],
     timeWindows: input.timeWindows ?? [],
     priority: input.priority ?? 0,
+    pickupGroupId: input.pickupGroupId ?? null,
+    sourceBatchId: input.sourceBatchId ?? null,
     notes: input.notes ?? "",
+    source: input.source ?? "ops",
+    sourceLabel: input.sourceLabel ?? "Ops",
     status: input.status ?? "ready",
+    statusMessage: input.statusMessage ?? null,
+    statusReasonCode: input.statusReasonCode ?? null,
+    statusReasonLabel: input.statusReasonLabel ?? null,
+    statusReason: input.statusReason ?? null,
+    lastProofId: input.lastProofId ?? null,
+    lastProofOutcomeCode: input.lastProofOutcomeCode ?? null,
+    lastProofOutcomeLabel: input.lastProofOutcomeLabel ?? null,
+    lastProofPhotoUrls: input.lastProofPhotoUrls ?? [],
+    lastProofNote: input.lastProofNote ?? null,
+    lastProofDeliveredAt: input.lastProofDeliveredAt ?? null,
+    lastKnownPosition: input.lastKnownPosition ?? null,
+    lastKnownPositionAt: input.lastKnownPositionAt ?? null,
+    lastKnownPositionLabel: input.lastKnownPositionLabel ?? null,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   };
@@ -57,7 +79,7 @@ function createManualRouteForOrder(db, order, driverId) {
 
   if ((order.kind === "pickup_delivery" || order.kind === "return") && order.pickupAddress) {
     const pickupArrival = new Date(currentTime + 10 * 60 * 1000).toISOString();
-    currentTime += 10 * 60 * 1000 + (order.serviceDurationSeconds ?? 300) * 1000;
+    currentTime += 10 * 60 * 1000 + (order.pickupServiceDurationSeconds ?? order.serviceDurationSeconds ?? 300) * 1000;
     stops.push({
       id: `${routeId}_stop_${sequence}`,
       orderId: order.id,
@@ -86,6 +108,8 @@ function createManualRouteForOrder(db, order, driverId) {
 
   return {
     id: routeId,
+    tenantId: order.tenantId,
+    companyId: order.companyId,
     planId: createId("manual_plan"),
     shiftId: shift?.id ?? null,
     driverId,
@@ -101,9 +125,14 @@ function createManualRouteForOrder(db, order, driverId) {
 }
 
 export function registerOrdersRoutes(router) {
-  router.get("/orders", async (_request, response, { query }) => {
+  router.get("/orders", async (request, response, { query }) => {
     const db = readDb();
-    let items = [...db.orders];
+    const auth = requireAuth(request, response, db, ["ops_user", "customer"]);
+    if (!auth) {
+      return;
+    }
+
+    let items = [...scopedItems(db.orders, auth, "orders")];
 
     if (query.status) {
       items = items.filter((order) => order.status === query.status);
@@ -123,11 +152,16 @@ export function registerOrdersRoutes(router) {
     });
   });
 
-  router.get("/orders/:orderId", async (_request, response, { params }) => {
+  router.get("/orders/:orderId", async (request, response, { params }) => {
     const db = readDb();
+    const auth = requireAuth(request, response, db, ["ops_user", "customer"]);
+    if (!auth) {
+      return;
+    }
+
     const order = db.orders.find((candidate) => candidate.id === params.orderId);
 
-    if (!order) {
+    if (!order || !entityBelongsToAuth(order, auth)) {
       notFound(response, "Order not found");
       return;
     }
@@ -137,6 +171,11 @@ export function registerOrdersRoutes(router) {
 
   router.post("/orders", async (request, response) => {
     const body = await readJsonBody(request);
+    const db = readDb();
+    const auth = requireAuth(request, response, db, ["ops_user", "customer"]);
+    if (!auth) {
+      return;
+    }
 
     if (!body.merchantId) {
       badRequest(response, "merchantId is required");
@@ -144,17 +183,20 @@ export function registerOrdersRoutes(router) {
     }
 
     try {
-      const order = normalizeOrderInput(body, body.merchantId);
+      const order = normalizeOrderInput(body, body.merchantId, auth.tenantId, auth.companyId);
 
-      updateDb((db) => {
-        db.orders.push(order);
-        appendEvent(db, {
+      updateDb((nextDb) => {
+        nextDb.orders.unshift(order);
+        appendEvent(nextDb, {
           type: "order.created",
           entityType: "order",
           entityId: order.id,
-          payload: { reference: order.reference }
+          payload: {
+            reference: order.reference,
+            tenantId: order.tenantId
+          }
         });
-        return db;
+        return nextDb;
       });
 
       sendJson(response, 201, order);
@@ -165,6 +207,11 @@ export function registerOrdersRoutes(router) {
 
   router.post("/orders/import", async (request, response) => {
     const body = await readJsonBody(request);
+    const db = readDb();
+    const auth = requireAuth(request, response, db, ["ops_user"]);
+    if (!auth) {
+      return;
+    }
 
     if (!body.merchantId || !Array.isArray(body.orders)) {
       badRequest(response, "merchantId and orders[] are required");
@@ -172,20 +219,25 @@ export function registerOrdersRoutes(router) {
     }
 
     try {
-      const importedOrders = body.orders.map((order) => normalizeOrderInput(order, body.merchantId));
+      const importedOrders = body.orders.map((order) =>
+        normalizeOrderInput(order, body.merchantId, auth.tenantId, auth.companyId)
+      );
 
-      updateDb((db) => {
+      updateDb((nextDb) => {
         for (const order of importedOrders) {
-          db.orders.push(order);
-          appendEvent(db, {
+          nextDb.orders.push(order);
+          appendEvent(nextDb, {
             type: "order.imported",
             entityType: "order",
             entityId: order.id,
-            payload: { reference: order.reference }
+            payload: {
+              reference: order.reference,
+              tenantId: order.tenantId
+            }
           });
         }
 
-        return db;
+        return nextDb;
       });
 
       sendJson(response, 202, {
@@ -197,48 +249,94 @@ export function registerOrdersRoutes(router) {
     }
   });
 
-  router.patch("/orders/:orderId/assignment", async (request, response, { params }) => {
+  router.patch("/orders/:orderId", async (request, response, { params }) => {
     const body = await readJsonBody(request);
+    const db = readDb();
+    const auth = requireAuth(request, response, db, ["ops_user"]);
+    if (!auth) {
+      return;
+    }
+
+    const existing = db.orders.find((candidate) => candidate.id === params.orderId);
+    if (!existing || !entityBelongsToAuth(existing, auth)) {
+      notFound(response, "Order not found");
+      return;
+    }
+
+    let entity = null;
+
+    updateDb((nextDb) => {
+      entity = nextDb.orders.find((candidate) => candidate.id === params.orderId);
+      if (!entity) {
+        return nextDb;
+      }
+
+      Object.assign(entity, body, {
+        id: params.orderId,
+        tenantId: entity.tenantId,
+        companyId: entity.companyId,
+        updatedAt: new Date().toISOString()
+      });
+
+      appendEvent(nextDb, {
+        type: "order.updated",
+        entityType: "order",
+        entityId: entity.id,
+        payload: {
+          status: entity.status,
+          updatedAt: entity.updatedAt
+        }
+      });
+      return nextDb;
+    });
+
+    sendJson(response, 200, entity);
+  });
+
+  router.post("/orders/:orderId/assignment", async (request, response, { params }) => {
+    const body = await readJsonBody(request);
+    const db = readDb();
+    const auth = requireAuth(request, response, db, ["ops_user"]);
+    if (!auth) {
+      return;
+    }
 
     if (!body.driverId) {
       badRequest(response, "driverId is required");
       return;
     }
 
-    const db = readDb();
     const order = db.orders.find((candidate) => candidate.id === params.orderId);
-
-    if (!order) {
+    if (!order || !entityBelongsToAuth(order, auth)) {
       notFound(response, "Order not found");
       return;
     }
 
     const driver = findDriver(db, body.driverId);
-
-    if (!driver) {
+    if (!driver || !entityBelongsToAuth(driver, auth)) {
       notFound(response, "Driver not found");
       return;
     }
 
     let assignedRoute = null;
 
-    updateDb((db) => {
-      const mutableOrder = db.orders.find((candidate) => candidate.id === params.orderId);
+    updateDb((nextDb) => {
+      const mutableOrder = nextDb.orders.find((candidate) => candidate.id === params.orderId);
       if (!mutableOrder) {
-        return db;
+        return nextDb;
       }
 
-      let route = db.routes.find((candidate) => candidate.stops?.some((stop) => stop.orderId === params.orderId));
+      let route = nextDb.routes.find((candidate) => candidate.stops?.some((stop) => stop.orderId === params.orderId));
 
       if (route) {
-        const shift = findFirstShiftForDriver(db, body.driverId);
+        const shift = findFirstShiftForDriver(nextDb, body.driverId);
         route.driverId = body.driverId;
         route.shiftId = shift?.id ?? route.shiftId ?? null;
         route.vehicleId = shift?.vehicleId ?? route.vehicleId ?? null;
         route.updatedAt = new Date().toISOString();
       } else {
-        route = createManualRouteForOrder(db, mutableOrder, body.driverId);
-        db.routes.unshift(route);
+        route = createManualRouteForOrder(nextDb, mutableOrder, body.driverId);
+        nextDb.routes.unshift(route);
       }
 
       if (!["completed", "in_progress", "dispatched"].includes(mutableOrder.status)) {
@@ -248,7 +346,7 @@ export function registerOrdersRoutes(router) {
       mutableOrder.updatedAt = new Date().toISOString();
       assignedRoute = route;
 
-      appendEvent(db, {
+      appendEvent(nextDb, {
         type: "order.driver_assigned",
         entityType: "order",
         entityId: mutableOrder.id,
@@ -258,15 +356,14 @@ export function registerOrdersRoutes(router) {
         }
       });
 
-      return db;
+      return nextDb;
     });
 
-    sendJson(response, 200, {
-      order: {
-        ...order,
-        status: ["completed", "in_progress", "dispatched"].includes(order.status) ? order.status : "planned"
-      },
-      route: assignedRoute
-    });
+    if (!assignedRoute) {
+      notFound(response, "Order not found");
+      return;
+    }
+
+    sendJson(response, 200, assignedRoute);
   });
 }

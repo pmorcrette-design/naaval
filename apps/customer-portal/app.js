@@ -1,11 +1,25 @@
 const PORTAL_API_BASE_CANDIDATES = (() => {
   const candidates = [];
+  const configuredApiBase = String(window.NAAVAL_API_BASE_URL || "")
+    .trim()
+    .replace(/\/+$/, "");
+  const normalizedHost = String(window.location.hostname || "")
+    .trim()
+    .toLowerCase();
+  const isLocal = ["localhost", "127.0.0.1", "192.168.1.156"].includes(normalizedHost);
+  const allowOriginFallback = !configuredApiBase || isLocal;
 
-  if (window.location.protocol.startsWith("http")) {
+  if (configuredApiBase) {
+    candidates.push(configuredApiBase);
+  }
+
+  if (allowOriginFallback && window.location.protocol.startsWith("http")) {
     candidates.push(window.location.origin);
   }
 
-  candidates.push("http://localhost:3001");
+  if (!configuredApiBase || isLocal) {
+    candidates.push("http://localhost:3001");
+  }
   return [...new Set(candidates)];
 })();
 
@@ -224,6 +238,22 @@ function showToast(message, type = "info") {
   portalState.toastTimer = window.setTimeout(() => {
     toast.classList.add("hidden");
   }, 4200);
+}
+
+function setPortalLoginStatus(message = "", tone = "info") {
+  const node = document.querySelector("#portal-login-status");
+  if (!node) {
+    return;
+  }
+
+  if (!message) {
+    node.textContent = "";
+    node.className = "login-status hidden";
+    return;
+  }
+
+  node.textContent = message;
+  node.className = `login-status login-status--${tone}`;
 }
 
 async function readErrorMessage(response) {
@@ -828,6 +858,7 @@ function loginCustomer(customer, source = "email") {
     token: customer.token || null,
     source
   };
+  setPortalLoginStatus("");
   persistSession(portalState.session);
 }
 
@@ -837,6 +868,7 @@ function logoutCustomer() {
   portalState.orders = [];
   portalState.recurringRoutes = [];
   clearSession();
+  setPortalLoginStatus("");
   window.google?.accounts?.id?.disableAutoSelect?.();
   renderPortal();
   setupGoogleIdentity();
@@ -1089,13 +1121,15 @@ async function handlePortalLogin(event) {
   event.preventDefault();
 
   const email = event.currentTarget.elements.email.value.trim().toLowerCase();
-  if (!email) {
-    showToast("Email is required.", "error");
+  const password = event.currentTarget.elements.password.value.trim();
+  if (!email || !password) {
+    setPortalLoginStatus("Use the customer email and the portal password configured in Naaval.", "error");
+    showToast("Use the customer email and the portal password configured in Naaval.", "error");
     return;
   }
 
   try {
-    const session = await postJson("/auth/customer-login", { email });
+    const session = await postJson("/auth/customer-login", { email, password });
     loginCustomer(
       {
         id: session.customerId,
@@ -1112,8 +1146,10 @@ async function handlePortalLogin(event) {
     await loadOrdersForCurrentCustomer();
     syncRecurringRoutesForCurrentCustomer();
     renderPortal();
+    setPortalLoginStatus("");
     showToast(`Welcome to the portal, ${portalState.customer?.companyName || session.name}.`);
   } catch (error) {
+    setPortalLoginStatus(error.message || "Unable to open portal.", "error");
     showToast(`Unable to open portal: ${error.message}`, "error");
   }
 }
@@ -1365,18 +1401,22 @@ function setupGoogleIdentity(retryCount = 0) {
     callback: async (response) => {
       const payload = decodeJwtPayload(response?.credential);
       if (!payload?.email) {
+        setPortalLoginStatus("Google login failed.", "error");
         showToast("Google login failed.", "error");
         return;
       }
 
-      const session = await postJson("/auth/customer-login", { email: payload.email });
+      const session = await postJson("/auth/google-customer", {
+        credential: response?.credential,
+        email: payload.email
+      });
       loginCustomer(
         {
-          id: session.customerId,
-          tenantId: session.tenantId,
-          contactEmail: session.email,
-          companyEmail: session.email,
-          companyName: session.tenant?.companyName || session.name,
+          id: session.customerId || session.actor?.id,
+          tenantId: session.tenantId || session.actor?.tenantId,
+          contactEmail: session.email || session.actor?.contactEmail,
+          companyEmail: session.email || session.actor?.companyEmail,
+          companyName: session.tenant?.companyName || session.name || session.actor?.companyName,
           token: session.token
         },
         "google"
@@ -1386,6 +1426,7 @@ function setupGoogleIdentity(retryCount = 0) {
       await loadOrdersForCurrentCustomer();
       syncRecurringRoutesForCurrentCustomer();
       renderPortal();
+      setPortalLoginStatus("");
       showToast(`Google login successful for ${portalState.customer?.companyName || session.name}.`);
     }
   });
@@ -1409,6 +1450,7 @@ function bindEvents() {
     showToast("Portal session closed.");
   });
   document.querySelector("#portal-google-button")?.addEventListener("click", () => {
+    setPortalLoginStatus("Google Sign-In is available when the Google client ID is configured and this domain is authorized.", "error");
     showToast("Google button is available when the Google client ID is configured.", "error");
   });
   document.querySelector("#portal-add-drop")?.addEventListener("click", () => addDropoffCard("#portal-dropoff-list", "dropoff", "remove-drop"));

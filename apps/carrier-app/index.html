@@ -5,22 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Naaval Carrier App</title>
     <meta name="theme-color" content="#129a79" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Naaval Carrier" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <link rel="manifest" href="/carrier/manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="/carrier/assets/naaval-carrier-icon-512.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/carrier/assets/naaval-carrier-icon-192.png" />
-    <link rel="stylesheet" href="/carrier/styles.css" />
-    <script src="/ops-config.js"></script>
+    <link rel="apple-touch-icon" href="./assets/naaval-carrier-icon-512.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/naaval-carrier-icon-192.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./ops-config.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
   <body>
     <div class="carrier-login" id="carrier-login">
       <div class="carrier-login__card">
         <section class="carrier-login__brand">
-          <img class="carrier-login__logo" src="/assets/logo-mark.svg" alt="Naaval" />
+          <img class="carrier-login__logo" src="./assets/logo-mark.svg" alt="Naaval" />
           <p class="carrier-login__eyebrow">Naaval Carrier App</p>
           <h1>Run every route from one driver cockpit.</h1>
           <p class="carrier-login__subtitle">Start your route, open Waze, capture photos and signatures, and keep ops updated in real time.</p>
@@ -46,15 +41,34 @@
           <h2>Sign in to your carrier workspace</h2>
           <p class="carrier-login__helper">Use your driver email from the ops workspace or connect with Google if your account is configured.</p>
 
-          <form id="carrier-login-form" class="stack">
+          <form id="carrier-login-form" class="stack" novalidate>
             <label class="field">
               <span>Email</span>
-              <input name="email" type="email" placeholder="amina@naavalpartners.com" required />
+              <input
+                name="email"
+                type="email"
+                placeholder=""
+                required
+                autocomplete="username"
+                inputmode="email"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
+              />
             </label>
 
             <label class="field">
               <span>Password</span>
-              <input name="password" type="password" placeholder="demo" required />
+              <input
+                name="password"
+                type="password"
+                placeholder=""
+                required
+                autocomplete="current-password"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
+              />
             </label>
 
             <button class="solid-button" type="submit">Open Carrier App</button>
@@ -63,11 +77,12 @@
           <div class="carrier-login__divider"><span>or</span></div>
           <div class="carrier-google-slot" id="carrier-google-slot"></div>
           <button class="ghost-button hidden" id="carrier-google-button" type="button">Continue with Google</button>
+          <div class="login-status hidden" id="carrier-login-status" role="status" aria-live="polite"></div>
 
           <div class="carrier-login__hint">
             <strong>Demo emails</strong>
-            <p><code>amina@naavalpartners.com</code> or <code>noah@naavalpartners.com</code></p>
-            <p><a href="/carrier/install">Install on iPhone</a></p>
+            <p><code>amina@naavalpartners.com</code> or <code>noah@naavalpartners.com</code> with password <code>demo</code></p>
+            <p><a href="./install">iPhone enterprise install guide</a></p>
           </div>
         </section>
       </div>
@@ -147,6 +162,6 @@
 
     <div class="toast hidden" id="carrier-toast" role="status" aria-live="polite"></div>
 
-    <script src="/carrier/app.js" defer></script>
+    <script src="./app.js" defer></script>
   </body>
 </html>

@@ -11,6 +11,7 @@ const translations = {
     nav: {
       solution: "Solution",
       product: "Produit",
+      driverApp: "App chauffeur",
       pricing: "Pricing",
       audience: "Pour qui",
       vision: "Vision"
@@ -42,16 +43,16 @@ const translations = {
       },
       visuals: [
         {
-          label: "My Orders",
-          body: "La vraie vue ops Naaval pour piloter les commandes, les affectations et les statuts en direct."
+          label: "Ops control room",
+          body: "Une équipe ops qui pilote entrepôt, tournées et dispatch depuis un vrai cockpit logistique."
         },
         {
-          label: "Order Detail",
-          body: "Un détail opérationnel lisible avec map, route summary et informations terrain pour les dispatchers."
+          label: "Naaval dashboard",
+          body: "La surface produit qui centralise commandes, affectations, statuts et détail opérationnel."
         },
         {
-          label: "Revenue & Pricing",
-          body: "KPIs, revenu journalier et pilotage pricing dans la même interface produit."
+          label: "Field execution",
+          body: "Le terrain reste connecté à l’ops avec navigation, preuve et remontée d’état en direct."
         }
       ]
     },
@@ -130,6 +131,29 @@ const translations = {
           body: "Suivi live, notifications, ETA et portail client pour une expérience professionnelle."
         }
       ]
+    },
+    driverApp: {
+      label: "App chauffeur",
+      title: "Une app chauffeur installable directement sur iPhone",
+      body:
+        "Donne à tes chauffeurs une véritable application mobile d'entreprise : missions, preuves, planning, inbox et suivi live dans un environnement pensé terrain.",
+      items: [
+        {
+          title: "Distribution entreprise iPhone",
+          body: "La Carrier App est pensée pour être distribuée comme application iOS d'entreprise ou privée, avec un vrai process d'installation métier."
+        },
+        {
+          title: "Reliée à l'ops",
+          body: "Les commandes assignées remontent depuis Naaval ops, avec statuts, preuves et géolocalisation."
+        },
+        {
+          title: "Pensée terrain",
+          body: "Photos, signatures, Waze, planning et messagerie dans une interface mobile-first."
+        }
+      ],
+      install: "Guide d’installation iPhone",
+      open: "Voir le workspace chauffeur",
+      note: "Naaval Carrier App est une véritable application mobile d’entreprise. Ce n’est pas un raccourci web. Sur iPhone, il peut être nécessaire d’approuver le profil développeur dans les réglages avant de pouvoir ouvrir l’application."
     },
     audience: {
       label: "Pour qui",
@@ -306,7 +330,10 @@ const translations = {
       product: "Produit",
       pricing: "Pricing",
       contact: "Contact",
-      legal: "Legal",
+      legalCgu: "CGU",
+      legalCgv: "CGV",
+      legalPrivacy: "Confidentialité",
+      legalNotices: "Mentions légales",
       ops: "Ops Login"
     }
   },
@@ -322,6 +349,7 @@ const translations = {
     nav: {
       solution: "Solution",
       product: "Product",
+      driverApp: "Driver App",
       pricing: "Pricing",
       audience: "For who",
       vision: "Vision"
@@ -353,16 +381,16 @@ const translations = {
       },
       visuals: [
         {
-          label: "My Orders",
-          body: "The real Naaval ops view to manage orders, assignments, and live statuses."
+          label: "Ops control room",
+          body: "A real logistics control room where ops teams manage warehouse flow, routing, and dispatch."
         },
         {
-          label: "Order Detail",
-          body: "A dispatcher-ready operational detail view with map, route summary, and execution data."
+          label: "Naaval dashboard",
+          body: "The product surface that centralizes orders, assignments, live statuses, and operational detail."
         },
         {
-          label: "Revenue & Pricing",
-          body: "Daily revenue, pricing, and operational KPIs inside the same product surface."
+          label: "Field execution",
+          body: "Field execution stays connected to ops with navigation, proof capture, and live updates."
         }
       ]
     },
@@ -440,6 +468,29 @@ const translations = {
           body: "Live tracking, notifications, ETA, and a customer portal for a professional experience."
         }
       ]
+    },
+    driverApp: {
+      label: "Driver App",
+      title: "A driver work app installable directly on iPhone",
+      body:
+        "Give drivers a true enterprise mobile application with missions, proofs, planning, inbox, and live tracking in a field-ready environment.",
+      items: [
+        {
+          title: "Enterprise iPhone distribution",
+          body: "The Carrier App is designed to be distributed later as a private or enterprise iOS mobile app with a proper business installation workflow."
+        },
+        {
+          title: "Connected to ops",
+          body: "Assigned orders flow down from Naaval ops with statuses, proofs, and live location."
+        },
+        {
+          title: "Built for the field",
+          body: "Photos, signatures, Waze, planning, and inbox in one mobile-first interface."
+        }
+      ],
+      install: "iPhone installation guide",
+      open: "See the driver workspace",
+      note: "Naaval Carrier App is a true enterprise mobile application. It is not a web shortcut. On iPhone, users may need to trust the company developer profile in Settings before opening the app."
     },
     audience: {
       label: "Audience",
@@ -616,7 +667,10 @@ const translations = {
       product: "Product",
       pricing: "Pricing",
       contact: "Contact",
-      legal: "Legal",
+      legalCgu: "Terms of Use",
+      legalCgv: "Terms of Sale",
+      legalPrivacy: "Privacy",
+      legalNotices: "Legal Notice",
       ops: "Ops Login"
     }
   }
@@ -633,10 +687,16 @@ const currentHost = window.location.hostname;
 const configuredOpsBaseUrl = normalizeBaseUrl(window.NAAVAL_OPS_BASE_URL);
 const configuredAdminBaseUrl = normalizeBaseUrl(window.NAAVAL_ADMIN_BASE_URL);
 const configuredMarketingApiBaseUrl = normalizeBaseUrl(window.NAAVAL_MARKETING_API_BASE_URL);
+const configuredCarrierBaseUrl = normalizeBaseUrl(window.NAAVAL_CARRIER_BASE_URL);
+const configuredCarrierInstallUrl = normalizeBaseUrl(window.NAAVAL_CARRIER_INSTALL_URL);
 const hostedOpsHref = configuredOpsBaseUrl || "https://ops.naaval.eu";
 const hostedAdminHref = configuredAdminBaseUrl || "https://admin.naaval.eu";
+const hostedCarrierHref = configuredCarrierBaseUrl || "https://naaval-carrier.vercel.app";
+const hostedCarrierInstallHref = configuredCarrierInstallUrl || `${hostedCarrierHref.replace(/\/+$/, "")}/install`;
 const opsHref = opsTargets.includes(currentHost) ? "/ops/" : hostedOpsHref;
 const adminHref = opsTargets.includes(currentHost) ? "/admin/?mode=saas-admin" : hostedAdminHref;
+const carrierHref = opsTargets.includes(currentHost) ? "/carrier/" : hostedCarrierHref;
+const carrierInstallHref = opsTargets.includes(currentHost) ? "/carrier/install" : hostedCarrierInstallHref;
 const marketingApiCandidates = (() => {
   const candidates = [];
   if (configuredMarketingApiBaseUrl) {
@@ -652,6 +712,8 @@ const marketingApiCandidates = (() => {
 })();
 const opsLinks = document.querySelectorAll("#footer-ops-link");
 const adminLinks = document.querySelectorAll("#footer-admin-link");
+const carrierLinks = document.querySelectorAll("#carrier-open-link");
+const carrierInstallLinks = document.querySelectorAll("#carrier-install-link");
 const languageButtons = document.querySelectorAll("[data-language]");
 const titleNode = document.querySelector("title");
 const descriptionNode = document.querySelector('meta[name="description"]');
@@ -991,6 +1053,14 @@ opsLinks.forEach((link) => {
 
 adminLinks.forEach((link) => {
   link.setAttribute("href", adminHref);
+});
+
+carrierLinks.forEach((link) => {
+  link.setAttribute("href", carrierHref);
+});
+
+carrierInstallLinks.forEach((link) => {
+  link.setAttribute("href", carrierInstallHref);
 });
 
 signupOpenButtons.forEach((button) => {

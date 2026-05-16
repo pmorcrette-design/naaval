@@ -1,11 +1,25 @@
 const CARRIER_API_BASE_CANDIDATES = (() => {
   const candidates = [];
+  const configuredApiBase = String(window.NAAVAL_API_BASE_URL || "")
+    .trim()
+    .replace(/\/+$/, "");
+  const normalizedHost = String(window.location.hostname || "")
+    .trim()
+    .toLowerCase();
+  const isLocal = ["localhost", "127.0.0.1", "192.168.1.156"].includes(normalizedHost);
+  const allowOriginFallback = !configuredApiBase || isLocal;
 
-  if (window.location.protocol.startsWith("http")) {
+  if (configuredApiBase) {
+    candidates.push(configuredApiBase);
+  }
+
+  if (allowOriginFallback && window.location.protocol.startsWith("http")) {
     candidates.push(window.location.origin);
   }
 
-  candidates.push("http://localhost:3001");
+  if (!configuredApiBase || isLocal) {
+    candidates.push("http://localhost:3001");
+  }
   return [...new Set(candidates)];
 })();
 
@@ -315,6 +329,22 @@ function showToast(message, type = "info") {
   }, 3800);
 }
 
+function setCarrierLoginStatus(message = "", tone = "info") {
+  const node = document.querySelector("#carrier-login-status");
+  if (!node) {
+    return;
+  }
+
+  if (!message) {
+    node.textContent = "";
+    node.className = "login-status hidden";
+    return;
+  }
+
+  node.textContent = message;
+  node.className = `login-status login-status--${tone}`;
+}
+
 function getMessageStableId(message) {
   return String(message?.id || `${message?.senderType || "unknown"}-${message?.threadId || "thread"}-${message?.createdAt || ""}-${message?.body || ""}`);
 }
@@ -353,20 +383,9 @@ async function showSystemNotification(title, body) {
   }
 
   try {
-    if ("serviceWorker" in navigator) {
-      const registration = await navigator.serviceWorker.ready;
-      await registration.showNotification(title, {
-        body,
-        icon: "/carrier/assets/naaval-carrier-icon-192.png",
-        badge: "/carrier/assets/naaval-carrier-icon-192.png",
-        tag: "naaval-ops-message"
-      });
-      return;
-    }
-
     new Notification(title, {
       body,
-      icon: "/carrier/assets/naaval-carrier-icon-192.png"
+      icon: "./assets/naaval-carrier-icon-192.png"
     });
   } catch (_error) {
     // Keep the in-app banner as the reliable fallback.
@@ -606,9 +625,14 @@ async function executeJsonRequest(method, path, payload) {
 
   for (const baseUrl of candidates) {
     try {
+      const headers = payload ? { "Content-Type": "application/json" } : {};
+      if (carrierState.session?.token) {
+        headers.Authorization = `Bearer ${carrierState.session.token}`;
+      }
+
       const response = await fetch(`${baseUrl}${path}`, {
         method,
-        headers: payload ? { "Content-Type": "application/json" } : undefined,
+        headers: Object.keys(headers).length ? headers : undefined,
         body: payload ? JSON.stringify(payload) : undefined
       });
 
@@ -669,10 +693,12 @@ function loginDriver(driver, provider = "password") {
   carrierState.session = {
     driverId: driver.id,
     email: driver.email,
+    token: driver.token || null,
     provider
   };
   carrierState.accountSkillDraft = [...(driver.skills ?? [])];
   carrierState.offlineQueue = restoreOfflineQueue();
+  setCarrierLoginStatus("");
   saveSession();
 }
 
@@ -702,6 +728,7 @@ function logoutDriver() {
   clearSession();
   clearOfflinePersistence();
   window.google?.accounts?.id?.disableAutoSelect?.();
+  setCarrierLoginStatus("");
   render();
 }
 
@@ -712,16 +739,27 @@ async function restoreDriverFromSession() {
   }
 
   try {
-    const drivers = await loadDrivers();
-    const driver = drivers.find((candidate) => candidate.id === session.driverId || candidate.email === session.email);
+    carrierState.session = session;
+    const sessionPayload = await fetchJson("/auth/me");
+    const driver = sessionPayload?.actor
+      ? {
+          ...sessionPayload.actor,
+          id: sessionPayload.driverId || sessionPayload.actor?.id,
+          email: sessionPayload.email || sessionPayload.actor?.email,
+          token: sessionPayload.token || session.token
+        }
+      : null;
+
     if (!driver) {
       clearSession();
+      carrierState.session = null;
       return false;
     }
 
     loginDriver(driver, session.provider ?? "password");
     return true;
   } catch (error) {
+    carrierState.session = null;
     const snapshot = restoreOfflineSnapshot();
     if (!snapshot?.driver || (snapshot.driver.id !== session.driverId && snapshot.driver.email !== session.email)) {
       clearSession();
@@ -1708,21 +1746,31 @@ function setupGoogleIdentity(retryCount = 0) {
     callback: async (response) => {
       const payload = decodeJwtPayload(response?.credential);
       if (!payload?.email) {
+        setCarrierLoginStatus("Google login failed.", "error");
         showToast("Google login failed.", "error");
         return;
       }
 
-      const drivers = await loadDrivers();
-      const driver = drivers.find((candidate) => String(candidate.email || "").toLowerCase() === payload.email.toLowerCase());
-      if (!driver) {
-        showToast("This Google account is not linked to a driver yet.", "error");
-        return;
+      try {
+        const session = await postJson("/auth/google-driver", {
+          credential: response?.credential,
+          email: payload.email
+        });
+        const driver = {
+          ...(session.actor || {}),
+          id: session.driverId || session.actor?.id,
+          email: session.email || session.actor?.email,
+          token: session.token
+        };
+        loginDriver(driver, "google");
+        await requestSystemNotificationPermission();
+        await refreshCarrier();
+        setCarrierLoginStatus("");
+        showToast(`Google login successful for ${driver.name}.`);
+      } catch (error) {
+        setCarrierLoginStatus(error.message || "Google login failed.", "error");
+        showToast(error.message || "Google login failed.", "error");
       }
-
-      loginDriver(driver, "google");
-      await requestSystemNotificationPermission();
-      await refreshCarrier();
-      showToast(`Google login successful for ${driver.name}.`);
     }
   });
 
@@ -1882,23 +1930,27 @@ async function handleCarrierLogin(event) {
   const password = form.elements.password.value.trim();
 
   if (!email || !password) {
+    setCarrierLoginStatus("Use the driver email and the app password configured in Naaval.", "error");
     showToast("Enter both email and password.", "error");
     return;
   }
 
   try {
-    const drivers = await loadDrivers();
-    const driver = drivers.find((candidate) => String(candidate.email || "").toLowerCase() === email);
-    if (!driver) {
-      showToast("This email is not linked to any driver account yet.", "error");
-      return;
-    }
+    const session = await postJson("/auth/driver-login", { email, password });
+    const driver = {
+      ...(session.actor || {}),
+      id: session.driverId || session.actor?.id,
+      email: session.email || session.actor?.email,
+      token: session.token
+    };
 
     loginDriver(driver, "password");
     await requestSystemNotificationPermission();
     await refreshCarrier();
+    setCarrierLoginStatus("");
     showToast(`Welcome back ${driver.firstName || driver.name}.`);
   } catch (error) {
+    setCarrierLoginStatus(error.message || "Unable to open the carrier app.", "error");
     showToast(`Unable to open the carrier app: ${error.message}`, "error");
   }
 }
@@ -2140,6 +2192,7 @@ function bindEvents() {
     showToast("Carrier session closed.");
   });
   document.querySelector("#carrier-google-button")?.addEventListener("click", () => {
+    setCarrierLoginStatus("Google Sign-In appears when the Google Client ID is configured and this domain is authorized.", "error");
     showToast("Google sign-in appears when a Google Client ID is configured.", "error");
   });
 
@@ -2282,24 +2335,9 @@ function bindEvents() {
   });
 }
 
-function registerServiceWorker() {
-  if (!("serviceWorker" in navigator)) {
-    return;
-  }
-
-  navigator.serviceWorker
-    .register("/carrier/sw.js", { updateViaCache: "none" })
-    .then((registration) => registration.update().catch(() => {}))
-    .catch(() => {
-      // Local iPhone installs over LAN HTTP do not always allow service workers.
-      // The app still remains installable from Safari via Add to Home Screen.
-    });
-}
-
 async function bootstrapCarrierApp() {
   bindEvents();
   setupGoogleIdentity();
-  registerServiceWorker();
 
   try {
     const restored = await restoreDriverFromSession();

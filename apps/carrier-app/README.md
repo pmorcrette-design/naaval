@@ -1,13 +1,15 @@
 # Carrier App
 
-Current prototype:
+Naaval Carrier App is specified as a true enterprise mobile application for drivers.
 
-- Mobile-first web carrier workspace served on `/carrier/`
-- iPhone install page served on `/carrier/install`
-- Demo emails: `amina@naavalpartners.com` and `noah@naavalpartners.com`
-- Google Sign-In available when `NAAVAL_GOOGLE_CLIENT_ID` is configured in `ops-config.js`
+Product intent:
 
-Current screens:
+- Native-feeling driver workspace for missions, proofs, planning, inbox, and account
+- Distributed as a private / enterprise iOS application
+- Connected directly to Naaval Ops and customer tracking flows
+- Designed for field execution with large touch targets and minimal typing
+
+Current functional scope:
 
 - Login
 - Missions
@@ -17,16 +19,30 @@ Current screens:
 - Route execution modal
 - Proof modal with photo, signature, and geolocation
 
-Current workflow:
+Enterprise distribution target:
 
-- Open an assigned route
-- Start route
-- Open Waze to the next stop
-- Mark arrival
-- Submit pickup or delivery proof
-- Chat with ops
-- Update driver profile
+- The Carrier App must not be positioned as a shortcut, bookmark, or “Add to Home Screen” flow
+- The intended production distribution is:
+  - Apple Business Manager custom app, or
+  - Apple enterprise/private app distribution
+- On iPhone, some installations may require validating the company developer profile from:
+  - `Settings > General > VPN & Device Management`
 
-Next native step:
+Technical roadmap:
 
-- Expo / React Native implementation with offline queue and device camera APIs
+- Native iOS packaging for enterprise/private distribution
+- Auth linked to Naaval tenant / driver assignment
+- Offline action queue and background-safe sync strategy
+- Device camera, signature capture, geolocation, and proof uploads
+- Modern logistics-grade UX for dispatch execution
+
+Important wording rule:
+
+- Always refer to Naaval Carrier App as an enterprise mobile application
+- Never describe it as a shortcut, simple website icon, or only a PWA
+
+Useful files:
+
+- `/carrier/` preview workspace
+- `/carrier/install` enterprise iPhone onboarding page
+- `apps/carrier-app/ENTERPRISE_DISTRIBUTION.md` detailed strategy and implementation notes

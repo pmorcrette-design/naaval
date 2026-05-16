@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Naaval Customer Portal</title>
     <meta name="theme-color" content="#129a79" />
-    <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg" />
-    <link rel="shortcut icon" href="/assets/logo-mark.svg" />
-    <link rel="apple-touch-icon" href="/assets/logo-mark.svg" />
-    <link rel="stylesheet" href="/portal/styles.css" />
-    <script src="/ops-config.js"></script>
+    <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg" />
+    <link rel="shortcut icon" href="./assets/logo-mark.svg" />
+    <link rel="apple-touch-icon" href="./assets/logo-mark.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./ops-config.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
   <body>
     <div class="portal-login" id="portal-login">
       <div class="portal-login__card">
         <section class="portal-login__brand">
-          <img class="portal-login__logo" src="/assets/logo-mark.svg" alt="Naaval" />
+          <img class="portal-login__logo" src="./assets/logo-mark.svg" alt="Naaval" />
           <p class="eyebrow portal-eyebrow">Naaval Customer Portal</p>
           <h1>Book deliveries from a dedicated client workspace.</h1>
           <p class="portal-login__subtitle">Create single-stop or multi-drop orders, then track them from the same portal your ops team uses.</p>
@@ -42,10 +42,34 @@
           <h2>Sign in to your portal</h2>
           <p class="portal-login__helper">Use the company email or contact email configured in the customer account.</p>
 
-          <form id="portal-login-form" class="stack">
+          <form id="portal-login-form" class="stack" novalidate>
             <label class="field">
               <span>Email</span>
-              <input name="email" type="email" placeholder="client@company.com" required />
+              <input
+                name="email"
+                type="email"
+                placeholder="client@company.com"
+                required
+                autocomplete="username"
+                inputmode="email"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
+              />
+            </label>
+
+            <label class="field">
+              <span>Password</span>
+              <input
+                name="password"
+                type="password"
+                placeholder=""
+                required
+                autocomplete="current-password"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
+              />
             </label>
 
             <div class="portal-login__actions">
@@ -56,10 +80,11 @@
           <div class="portal-login__divider"><span>or</span></div>
           <div class="portal-google-slot" id="portal-google-slot"></div>
           <button class="ghost-button hidden" id="portal-google-button" type="button">Continue with Google</button>
+          <div class="login-status hidden" id="portal-login-status" role="status" aria-live="polite"></div>
 
           <div class="portal-login__hint">
             <strong>Access rule</strong>
-            <p>Your email must already exist in the customer account created from the ops interface.</p>
+            <p>Your email must already exist in the customer account created from the ops interface, with the password configured for this portal account.</p>
           </div>
         </section>
       </div>
@@ -456,6 +481,6 @@
 
     <div class="toast hidden" id="portal-toast" role="status" aria-live="polite"></div>
 
-    <script src="/portal/app.js"></script>
+    <script src="./app.js"></script>
   </body>
 </html>

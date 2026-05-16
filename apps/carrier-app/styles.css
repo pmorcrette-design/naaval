@@ -315,6 +315,22 @@ button {
   font-weight: 800;
 }
 
+.login-status {
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(18, 154, 121, 0.16);
+  background: rgba(244, 247, 244, 0.96);
+  color: var(--green-deep);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.login-status--error {
+  border-color: rgba(171, 36, 52, 0.18);
+  background: rgba(255, 239, 241, 0.96);
+  color: #9d2436;
+}
+
 .carrier-frame {
   width: min(100%, 430px);
   min-height: min(100dvh - 24px, 930px);
@@ -927,7 +943,8 @@ button {
   border-radius: 999px;
   background: rgba(17, 26, 22, 0.92);
   color: #fff;
-  z-index: 50;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 .toast--error {

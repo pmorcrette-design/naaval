@@ -1,4 +1,5 @@
 import { appendEvent } from "../lib/events.js";
+import { entityBelongsToAuth, requireAuth, scopedItems } from "../lib/auth.js";
 import { badRequest, notFound, readJsonBody, sendJson } from "../lib/http.js";
 import { createId } from "../lib/ids.js";
 import { readDb, updateDb, writeDb } from "../lib/store.js";
@@ -199,6 +200,8 @@ function buildMockRoutes({ planId, shifts, orders }) {
 
       return {
         id: routeId,
+        tenantId: bucket.orders[0]?.tenantId ?? bucket.shift.tenantId ?? null,
+        companyId: bucket.orders[0]?.companyId ?? bucket.shift.companyId ?? null,
         planId,
         shiftId: bucket.shift.id,
         driverId: bucket.shift.driverId,
@@ -283,6 +286,8 @@ function hydrateGraphhopperRoutes({ planId, solution, shifts, orders }) {
 
     return {
       id: routeId,
+      tenantId: orders.find((order) => route.activities.some((activity) => activity.id === order.id))?.tenantId ?? shift.tenantId ?? null,
+      companyId: orders.find((order) => route.activities.some((activity) => activity.id === order.id))?.companyId ?? shift.companyId ?? null,
       planId,
       shiftId: shift.id,
       driverId: shift.driverId,
@@ -375,16 +380,20 @@ async function refreshPlanningJob(db, config, planningJob) {
 export function registerPlanningRoutes(router, config) {
   router.post("/planning/optimize", async (request, response) => {
     const body = await readJsonBody(request);
+    const db = readDb();
+    const auth = requireAuth(request, response, db, ["ops_user"]);
+    if (!auth) {
+      return;
+    }
 
     if (!body.hubId || !body.planDate || !Array.isArray(body.orderIds) || !Array.isArray(body.driverShiftIds)) {
       badRequest(response, "hubId, planDate, orderIds[] and driverShiftIds[] are required");
       return;
     }
 
-    const db = readDb();
-    const orders = db.orders.filter((order) => body.orderIds.includes(order.id));
-    const shifts = db.shifts.filter((shift) => body.driverShiftIds.includes(shift.id));
-    const vehicleTypes = db.vehicleTypes.filter((vehicleType) =>
+    const orders = scopedItems(db.orders, auth, "orders").filter((order) => body.orderIds.includes(order.id));
+    const shifts = scopedItems(db.shifts, auth, "shifts").filter((shift) => body.driverShiftIds.includes(shift.id));
+    const vehicleTypes = scopedItems(db.vehicleTypes, auth, "vehicleTypes").filter((vehicleType) =>
       shifts.some((shift) => shift.vehicleTypeId === vehicleType.id)
     );
 
@@ -433,6 +442,8 @@ export function registerPlanningRoutes(router, config) {
           updateDb((nextDb) => {
             nextDb.planningJobs.push({
               id: planId,
+              tenantId: auth.tenantId,
+              companyId: auth.companyId,
               hubId: body.hubId,
               planDate: body.planDate,
               orderIds: body.orderIds,
@@ -476,9 +487,11 @@ export function registerPlanningRoutes(router, config) {
         });
 
         updateDb((nextDb) => {
-          nextDb.planningJobs.push({
-            id: planId,
-            hubId: body.hubId,
+            nextDb.planningJobs.push({
+              id: planId,
+              tenantId: auth.tenantId,
+              companyId: auth.companyId,
+              hubId: body.hubId,
             planDate: body.planDate,
             orderIds: body.orderIds,
             driverShiftIds: body.driverShiftIds,
@@ -522,6 +535,8 @@ export function registerPlanningRoutes(router, config) {
       updateDb((nextDb) => {
         nextDb.planningJobs.push({
           id: planId,
+          tenantId: auth.tenantId,
+          companyId: auth.companyId,
           hubId: body.hubId,
           planDate: body.planDate,
           orderIds: body.orderIds,
@@ -560,12 +575,30 @@ export function registerPlanningRoutes(router, config) {
     }
   });
 
-  router.get("/planning/jobs/:jobId", async (_request, response, { params }) => {
+  router.get("/planning/jobs", async (request, response) => {
+    const db = readDb();
+    const auth = requireAuth(request, response, db, ["ops_user"]);
+    if (!auth) {
+      return;
+    }
+
+    const items = scopedItems(db.planningJobs, auth, "planningJobs");
+    sendJson(response, 200, {
+      items,
+      total: items.length
+    });
+  });
+
+  router.get("/planning/jobs/:jobId", async (request, response, { params }) => {
     try {
       const db = readDb();
+      const auth = requireAuth(request, response, db, ["ops_user"]);
+      if (!auth) {
+        return;
+      }
       const planningJob = db.planningJobs.find((job) => job.id === params.jobId);
 
-      if (!planningJob) {
+      if (!planningJob || !entityBelongsToAuth(planningJob, auth)) {
         notFound(response, "Planning job not found");
         return;
       }
@@ -581,11 +614,15 @@ export function registerPlanningRoutes(router, config) {
     }
   });
 
-  router.get("/plans/:planId", async (_request, response, { params }) => {
+  router.get("/plans/:planId", async (request, response, { params }) => {
     const db = readDb();
+    const auth = requireAuth(request, response, db, ["ops_user", "customer", "driver"]);
+    if (!auth) {
+      return;
+    }
     const payload = buildPlanResponse(db, params.planId);
 
-    if (!payload) {
+    if (!payload || !entityBelongsToAuth(payload.plan, auth)) {
       notFound(response, "Plan not found");
       return;
     }

@@ -98,7 +98,9 @@ export function createRouter(context) {
     patch(path, handler) {
       register("PATCH", path, handler);
     },
+    delete(path, handler) {
+      register("DELETE", path, handler);
+    },
     handle
   };
 }
-

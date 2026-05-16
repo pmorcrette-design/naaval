@@ -2,7 +2,7 @@ export function sendJson(response, statusCode, payload) {
   response.writeHead(statusCode, {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    "Access-Control-Allow-Methods": "GET, POST, PATCH, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
     "Content-Type": "application/json; charset=utf-8"
   });
   response.end(JSON.stringify(payload, null, 2));
@@ -12,7 +12,7 @@ export function sendNoContent(response, statusCode = 204) {
   response.writeHead(statusCode, {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    "Access-Control-Allow-Methods": "GET, POST, PATCH, OPTIONS"
+    "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS"
   });
   response.end();
 }
@@ -50,6 +50,33 @@ export function badRequest(response, message) {
   });
 }
 
+export function unauthorized(response, message = "Authentication is required") {
+  sendJson(response, 401, {
+    error: {
+      code: "unauthorized",
+      message
+    }
+  });
+}
+
+export function forbidden(response, message = "Access is forbidden") {
+  sendJson(response, 403, {
+    error: {
+      code: "forbidden",
+      message
+    }
+  });
+}
+
+export function conflict(response, message) {
+  sendJson(response, 409, {
+    error: {
+      code: "conflict",
+      message
+    }
+  });
+}
+
 export function notFound(response, message = "Resource not found") {
   sendJson(response, 404, {
     error: {
@@ -67,4 +94,3 @@ export function serverError(response, error) {
     }
   });
 }
-

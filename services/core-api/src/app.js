@@ -2,6 +2,7 @@ import { createRouter } from "./lib/router.js";
 import { sendJson } from "./lib/http.js";
 import { resolveDbPath } from "./lib/store.js";
 import { registerAdminRoutes } from "./runtime/admin.js";
+import { registerAuthRoutes } from "./runtime/auth.js";
 import { registerCrmRoutes } from "./runtime/crm.js";
 import { registerDemoRoutes } from "./runtime/demo.js";
 import { registerDispatchRoutes } from "./runtime/dispatch.js";
@@ -23,6 +24,7 @@ export function createApp(config) {
     });
   });
 
+  registerAuthRoutes(router, config);
   registerDemoRoutes(router);
   registerAdminRoutes(router);
   registerCrmRoutes(router);

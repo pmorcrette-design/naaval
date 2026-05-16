@@ -32,6 +32,8 @@ export function registerDemoRoutes(router) {
 
     updateDb((db) => {
       if (replace) {
+        db.tenants = [];
+        db.authSessions = [];
         db.hubs = [];
         db.vehicleTypes = [];
         db.vehicles = [];
@@ -40,13 +42,24 @@ export function registerDemoRoutes(router) {
         db.opsUsers = [];
         db.customers = [];
         db.quotes = [];
+        db.recurringRoutes = [];
+        db.graphhopperUsage = {
+          enabled: false,
+          remaining: null,
+          limit: null,
+          resetSeconds: null,
+          updatedAt: null,
+          source: "unknown"
+        };
         db.shifts = [];
         db.orders = [];
         db.planningJobs = [];
         db.routes = [];
         db.heartbeats = [];
         db.proofs = [];
+        db.inboxMessages = [];
         db.events = [];
+        db.tenantPricingConfigs = {};
       }
 
       db.pricingConfig = db.pricingConfig ?? {
@@ -173,7 +186,8 @@ export function registerDemoRoutes(router) {
           vehicleType: "van_3m3",
           carrierCompanyId: "carrier_naaval_partners",
           vehiclePhotoUrls: [],
-          status: "active"
+          status: "active",
+          temporaryPassword: "demo"
         },
         {
           id: "driver_noah",
@@ -186,7 +200,8 @@ export function registerDemoRoutes(router) {
           vehicleType: "bike",
           carrierCompanyId: "carrier_naaval_partners",
           vehiclePhotoUrls: [],
-          status: "active"
+          status: "active",
+          temporaryPassword: "demo"
         }
       );
 
@@ -197,6 +212,7 @@ export function registerDemoRoutes(router) {
         email: "pierre@naaval.app",
         role: "ops_admin",
         team: "Operations",
+        temporaryPassword: "demo",
         status: "active"
       });
 
@@ -211,6 +227,7 @@ export function registerDemoRoutes(router) {
         contactLastName: "Martin",
         contactPhone: "+33699999999",
         contactEmail: "claire@naavalretail.com",
+        portalPassword: "demo",
         revenueRange: "2m-10m",
         companySize: "mid_market"
       });

@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Install Naaval Carrier</title>
+    <title>Naaval Carrier App - Installation iPhone</title>
     <meta name="theme-color" content="#129a79" />
-    <link rel="apple-touch-icon" href="/carrier/assets/naaval-carrier-icon-512.png" />
+    <link rel="apple-touch-icon" href="./assets/naaval-carrier-icon-512.png" />
     <style>
       :root {
         color-scheme: light;
@@ -29,7 +29,7 @@
       }
 
       .card {
-        width: min(100%, 520px);
+        width: min(100%, 760px);
         padding: 28px;
         border-radius: 32px;
         background: rgba(255, 255, 255, 0.96);
@@ -96,38 +96,76 @@
         background: rgba(255, 255, 255, 0.88);
       }
 
-      .hint {
+      .hint,
+      .step-card {
         margin-top: 22px;
         padding: 16px 18px;
         border-radius: 20px;
         background: #f6faf8;
         border: 1px solid rgba(11, 89, 73, 0.12);
       }
+
+      .step-grid {
+        display: grid;
+        gap: 14px;
+        padding: 16px 18px;
+        margin-top: 10px;
+      }
+
+      .step-card strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .note {
+        margin-top: 18px;
+        font-size: 0.95rem;
+      }
+
+      @media (min-width: 760px) {
+        .step-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
     </style>
   </head>
   <body>
     <main class="card">
-      <img class="logo" src="/assets/logo-mark.svg" alt="Naaval" />
+      <img class="logo" src="./assets/logo-mark.svg" alt="Naaval" />
       <p class="eyebrow">Naaval Carrier App</p>
-      <h1>Install the driver app on iPhone.</h1>
-      <p>Open this page in Safari on the iPhone, then add the carrier workspace to the Home Screen as a work app.</p>
+      <h1>Installation iPhone de l’application chauffeur.</h1>
+      <p>Naaval Carrier App est une véritable application mobile d’entreprise. Ce n’est pas un raccourci web. L’installation iPhone suit une logique d’application privée / entreprise Apple.</p>
 
-      <ol>
-        <li>Tap <strong>Open Carrier App</strong>.</li>
-        <li>In Safari, tap the <strong>Share</strong> icon.</li>
-        <li>Choose <strong>Add to Home Screen</strong>.</li>
-        <li>Name it <strong>Naaval Carrier</strong> and confirm.</li>
-      </ol>
+      <div class="step-grid">
+        <section class="step-card">
+          <strong>1. Recevoir le lien d’installation</strong>
+          <p>L’utilisateur reçoit un lien d’installation fourni par Naaval ou par l’équipe ops de son entreprise, avec la build iPhone d’entreprise.</p>
+        </section>
+        <section class="step-card">
+          <strong>2. Lancer l’installation</strong>
+          <p>iOS télécharge l’application métier. Selon la configuration du terminal, un message peut indiquer que le développeur d’entreprise n’est pas encore approuvé.</p>
+        </section>
+        <section class="step-card">
+          <strong>3. Valider le développeur</strong>
+          <p>Sur iPhone, ouvrir <strong>Réglages &gt; Général &gt; VPN et gestion de l’appareil</strong>, sélectionner le profil développeur de l’entreprise puis cliquer sur <strong>Faire confiance</strong> ou <strong>Autoriser et redémarrer</strong> selon la version d’iOS.</p>
+        </section>
+        <section class="step-card">
+          <strong>4. Ouvrir Naaval Carrier App</strong>
+          <p>Une fois le profil approuvé, l’application peut être ouverte normalement et reliée au compte chauffeur attribué depuis Naaval Ops.</p>
+        </section>
+      </div>
 
       <div class="actions">
-        <a class="button button--solid" href="/carrier/">Open Carrier App</a>
-        <a class="button button--ghost" href="/carrier/assets/naaval-carrier-icon-512.png">Download Icon</a>
+        <a class="button button--solid" href="https://support.apple.com/fr-fr/118254" target="_blank" rel="noopener noreferrer">Guide Apple</a>
+        <a class="button button--ghost" href="mailto:hello@naaval.eu?subject=Naaval%20Carrier%20App%20iPhone">Demander le lien d’installation</a>
       </div>
 
       <div class="hint">
-        <strong>Important</strong>
-        <p>This is an installable web app. It behaves like a work app from the Home Screen, but it is not an App Store / enterprise IPA build yet.</p>
+        <strong>Message à reprendre côté admin / onboarding</strong>
+        <p>“Naaval Carrier App est une véritable application mobile d’entreprise. Ce n’est pas un raccourci web. Sur iPhone, il peut être nécessaire d’approuver le profil développeur dans les réglages avant de pouvoir ouvrir l’application.”</p>
       </div>
+
+      <p class="note">Référence Apple utilisée pour le process d’approbation du développeur d’entreprise : <a href="https://support.apple.com/fr-fr/118254" target="_blank" rel="noopener noreferrer">support.apple.com/fr-fr/118254</a>.</p>
     </main>
   </body>
 </html>
