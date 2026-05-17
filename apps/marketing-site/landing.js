@@ -151,7 +151,7 @@ const translations = {
           body: "Photos, signatures, Waze, planning et messagerie dans une interface mobile-first."
         }
       ],
-      install: "Guide d’installation iPhone",
+      install: "Guide + lien d’installation iPhone",
       open: "Voir le workspace chauffeur",
       note: "Naaval Carrier App est une véritable application mobile d’entreprise. Ce n’est pas un raccourci web. Sur iPhone, il peut être nécessaire d’approuver le profil développeur dans les réglages avant de pouvoir ouvrir l’application."
     },
@@ -215,7 +215,7 @@ const translations = {
           name: "SCALE",
           price: "449€",
           cadence: "/mois",
-          drivers: "75 chauffeurs inclus",
+          drivers: "35 chauffeurs inclus",
           summary: "Pour structurer une vraie activité multi-sites et multi-clients.",
           features: ["Portail client", "API + webhooks", "Analytics avancées", "Multi-entrepôts", "Branding personnalisé"]
         },
@@ -488,7 +488,7 @@ const translations = {
           body: "Photos, signatures, Waze, planning, and inbox in one mobile-first interface."
         }
       ],
-      install: "iPhone installation guide",
+      install: "iPhone install guide + app link",
       open: "See the driver workspace",
       note: "Naaval Carrier App is a true enterprise mobile application. It is not a web shortcut. On iPhone, users may need to trust the company developer profile in Settings before opening the app."
     },
@@ -552,7 +552,7 @@ const translations = {
           name: "SCALE",
           price: "449€",
           cadence: "/month",
-          drivers: "75 included drivers",
+          drivers: "35 included drivers",
           summary: "For operators managing multiple sites, fleets, and customer accounts.",
           features: ["Customer portal", "API + webhooks", "Advanced analytics", "Multi-warehouse", "Custom branding"]
         },

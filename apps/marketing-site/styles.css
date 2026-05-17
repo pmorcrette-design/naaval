@@ -493,9 +493,9 @@ a {
 .driver-app-copy,
 .driver-app-gallery__card {
   border: 1px solid rgba(13, 94, 77, 0.09);
-  border-radius: 26px;
-  background: white;
-  box-shadow: 0 18px 40px rgba(8, 34, 28, 0.05);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(242, 250, 246, 0.94));
+  box-shadow: 0 20px 46px rgba(8, 34, 28, 0.07);
 }
 
 .driver-app-copy {
@@ -530,32 +530,64 @@ a {
 
 .driver-app-gallery {
   display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 0.3fr);
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 0.28fr);
   grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.05rem;
 }
 
 .driver-app-gallery__card {
+  position: relative;
   overflow: hidden;
+  min-height: 250px;
+  padding: 0.55rem;
+}
+
+.driver-app-gallery__card::before {
+  content: "";
+  position: absolute;
+  inset: 0.55rem;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(22, 152, 115, 0.14), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(230, 244, 238, 0.22));
+  pointer-events: none;
 }
 
 .driver-app-gallery__card--phone {
   grid-row: 1 / span 2;
+  min-height: 540px;
+  padding: 0.7rem;
+}
+
+.driver-app-gallery__card--ops-shot {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(237, 247, 243, 0.96));
+}
+
+.driver-app-gallery__card--success {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 250, 247, 0.96));
 }
 
 .driver-app-gallery__image {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 23px;
+  box-shadow: 0 18px 34px rgba(8, 34, 28, 0.12);
 }
 
 .driver-app-gallery__image--portrait {
   object-position: 54% center;
 }
 
-.driver-app-gallery__image--product {
-  object-position: center top;
+.driver-app-gallery__image--ops {
+  object-position: center;
+}
+
+.driver-app-gallery__image--success {
+  object-position: center 22%;
 }
 
 .feature-icon {
@@ -1289,6 +1321,7 @@ a {
 
   .driver-app-gallery__card--phone {
     grid-row: auto;
+    min-height: 360px;
   }
 
   .pricing-cta {
@@ -1428,6 +1461,20 @@ a {
   .driver-app-copy,
   .driver-app-gallery__card {
     border-radius: 18px;
+  }
+
+  .driver-app-gallery__card {
+    min-height: 200px;
+    padding: 0.42rem;
+  }
+
+  .driver-app-gallery__card::before {
+    inset: 0.42rem;
+    border-radius: 15px;
+  }
+
+  .driver-app-gallery__image {
+    border-radius: 15px;
   }
 
   .showcase-card {
