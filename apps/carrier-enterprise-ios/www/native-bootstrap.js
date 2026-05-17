@@ -1,0 +1,2 @@
+window.NAAVAL_NATIVE_SHELL = true;
+window.NAAVAL_ENTERPRISE_MOBILE = true;

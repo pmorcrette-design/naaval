@@ -11,24 +11,30 @@ It is not positioned as:
 - an "Add to Home Screen" workflow
 - a Safari wrapper without proper enterprise packaging
 
-The production target is a private / enterprise iOS application distributed outside the public App Store when required by the client deployment model.
+The production target is a true iOS mobile application distributed privately when required by the client deployment model.
 
 ## Distribution targets
 
 Recommended distribution paths:
 
-1. Apple Business Manager custom app
-2. Apple enterprise / private app distribution
+1. Apple Business Manager Custom App
+2. Unlisted App distribution
+3. Apple enterprise / private app distribution only for internal employee-only deployments
 
-Both options support a professional rollout model better aligned with transport companies, managed devices, and enterprise onboarding.
+These options support a professional rollout model better aligned with transport companies, managed devices, and enterprise onboarding.
+
+Important distribution rule:
+
+- If the app is distributed to drivers working for Naaval client companies, the preferred path is generally `Custom Apps` through Apple Business Manager or a controlled `Unlisted App` strategy.
+- The Apple Developer Enterprise Program is reserved for proprietary internal-use apps distributed only to the employees of the organisation that owns that enterprise account.
 
 ## iPhone onboarding flow
 
 Expected user flow:
 
 1. The driver receives an installation link from Naaval or from the transport company admin.
-2. The iPhone downloads the enterprise/private Carrier App build.
-3. If iOS reports that the developer is not trusted, the driver opens:
+2. The iPhone downloads the Carrier App through the selected private distribution method.
+3. If the deployment uses an in-house enterprise build and iOS reports that the developer is not trusted, the driver opens:
    - `Settings > General > VPN & Device Management`
 4. The driver selects the company developer profile.
 5. The driver taps:
@@ -37,9 +43,11 @@ Expected user flow:
    depending on the iOS version and profile behavior.
 6. The driver opens Naaval Carrier App and signs in with the account assigned in Naaval Ops.
 
-Reference used for this onboarding logic:
+References used for this onboarding logic:
 
 - Apple support: `https://support.apple.com/fr-fr/118254`
+- Apple Business Manager Custom Apps: `https://support.apple.com/en-euro/guide/apple-business-manager/axm58ba3112a/web`
+- Apple Developer Custom Apps: `https://developer.apple.com/custom-apps/`
 
 ## Functional scope
 
@@ -86,7 +94,7 @@ The current `/carrier/` workspace is the functional product surface used to vali
 - state transitions
 - ops synchronization
 
-For production enterprise rollout, this experience should be packaged and delivered as a native enterprise/private iOS application.
+For production rollout, this experience should be packaged and delivered as a native iOS mobile application using one of the approved private distribution paths above.
 
 ## UX direction
 

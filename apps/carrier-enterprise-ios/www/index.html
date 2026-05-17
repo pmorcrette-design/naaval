@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Naaval Carrier App</title>
+    <meta name="theme-color" content="#129a79" />
+    <link rel="apple-touch-icon" href="./assets/naaval-carrier-icon-512.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/naaval-carrier-icon-192.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./native-bootstrap.js"></script>\n    <script src="./ops-config.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <div class="carrier-login" id="carrier-login">
+      <div class="carrier-login__card">
+        <section class="carrier-login__brand">
+          <img class="carrier-login__logo" src="./assets/logo-mark.svg" alt="Naaval" />
+          <p class="carrier-login__eyebrow">Naaval Carrier App</p>
+          <h1>Run every route from one driver cockpit.</h1>
+          <p class="carrier-login__subtitle">Start your route, open Waze, capture photos and signatures, and keep ops updated in real time.</p>
+
+          <div class="carrier-login__features">
+            <article>
+              <span class="mini-chip">Execution</span>
+              <strong>Big actions, minimal typing, stop-by-stop workflow.</strong>
+            </article>
+            <article>
+              <span class="mini-chip">Proof</span>
+              <strong>Photo, signature, recipient name, and geolocation in one flow.</strong>
+            </article>
+            <article>
+              <span class="mini-chip">Inbox</span>
+              <strong>Chat directly with Naaval ops from the same app.</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="carrier-login__form">
+          <p class="carrier-login__eyebrow carrier-login__eyebrow--dark">Driver Access</p>
+          <h2>Sign in to your carrier workspace</h2>
+          <p class="carrier-login__helper">Use your driver email from the ops workspace or connect with Google if your account is configured.</p>
+
+          <form id="carrier-login-form" class="stack" novalidate>
+            <label class="field">
+              <span>Email</span>
+              <input
+                name="email"
+                type="email"
+                placeholder=""
+                required
+                autocomplete="username"
+                inputmode="email"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
+              />
+            </label>
+
+            <label class="field">
+              <span>Password</span>
+              <input
+                name="password"
+                type="password"
+                placeholder=""
+                required
+                autocomplete="current-password"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
+              />
+            </label>
+
+            <button class="solid-button" type="submit">Open Carrier App</button>
+          </form>
+
+          <div class="carrier-login__divider"><span>or</span></div>
+          <div class="carrier-google-slot" id="carrier-google-slot"></div>
+          <button class="ghost-button hidden" id="carrier-google-button" type="button">Continue with Google</button>
+          <div class="login-status hidden" id="carrier-login-status" role="status" aria-live="polite"></div>
+
+          <div class="carrier-login__hint">
+            <strong>Demo emails</strong>
+            <p><code>amina@naavalpartners.com</code> or <code>noah@naavalpartners.com</code> with password <code>demo</code></p>
+            <p><a href="./install">iPhone enterprise install guide</a></p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="carrier-shell hidden" id="carrier-shell">
+      <div class="carrier-frame">
+        <header class="carrier-topbar">
+          <div class="carrier-topbar__copy">
+            <p class="carrier-login__eyebrow carrier-login__eyebrow--dark">Naaval Carrier App</p>
+            <h1 id="carrier-title">Hello</h1>
+            <p id="carrier-subtitle">Your routes, proofs, messages, and account in one mobile workspace.</p>
+          </div>
+
+          <div class="carrier-topbar__actions">
+            <button class="icon-button" id="carrier-refresh-button" type="button" aria-label="Refresh">↻</button>
+            <button class="ghost-button ghost-button--small" id="carrier-logout-button" type="button">Logout</button>
+          </div>
+        </header>
+
+        <section class="carrier-syncbar hidden" id="carrier-syncbar" aria-live="polite"></section>
+
+        <section class="carrier-metrics" id="carrier-metrics" aria-label="Driver summary"></section>
+
+        <main class="carrier-main" id="carrier-main"></main>
+
+        <nav class="carrier-bottom-nav" aria-label="Carrier navigation">
+          <button class="carrier-tab carrier-tab--active" type="button" data-carrier-tab="missions">
+            <span>🚚</span>
+            <strong>Missions</strong>
+          </button>
+          <button class="carrier-tab" type="button" data-carrier-tab="planning">
+            <span>📅</span>
+            <strong>Planning</strong>
+          </button>
+          <button class="carrier-tab" type="button" data-carrier-tab="inbox">
+            <span>💬</span>
+            <strong>Inbox</strong>
+          </button>
+          <button class="carrier-tab" type="button" data-carrier-tab="account">
+            <span>👤</span>
+            <strong>My Account</strong>
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="carrier-route-modal">
+      <div class="modal__backdrop" data-close-modal="carrier-route"></div>
+      <div class="modal__dialog modal__dialog--route">
+        <button class="modal__close" type="button" data-close-modal="carrier-route">Close</button>
+        <div id="carrier-route-modal-content"></div>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="carrier-proof-modal">
+      <div class="modal__backdrop" data-close-modal="carrier-proof"></div>
+      <div class="modal__dialog modal__dialog--proof">
+        <button class="modal__close" type="button" data-close-modal="carrier-proof">Close</button>
+        <div id="carrier-proof-modal-content"></div>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="carrier-day-modal">
+      <div class="modal__backdrop" data-close-modal="carrier-day"></div>
+      <div class="modal__dialog modal__dialog--small">
+        <button class="modal__close" type="button" data-close-modal="carrier-day">Close</button>
+        <div id="carrier-day-modal-content"></div>
+      </div>
+    </div>
+
+    <button class="carrier-notification hidden" id="carrier-notification" type="button" aria-live="polite">
+      <span class="carrier-notification__eyebrow">Naaval Ops</span>
+      <strong class="carrier-notification__title" id="carrier-notification-title">New message</strong>
+      <p class="carrier-notification__body" id="carrier-notification-body">A new message is waiting for you.</p>
+    </button>
+
+    <div class="toast hidden" id="carrier-toast" role="status" aria-live="polite"></div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

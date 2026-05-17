@@ -23,14 +23,16 @@ Enterprise distribution target:
 
 - The Carrier App must not be positioned as a shortcut, bookmark, or “Add to Home Screen” flow
 - The intended production distribution is:
-  - Apple Business Manager custom app, or
-  - Apple enterprise/private app distribution
+  - Apple Business Manager Custom App for customer fleets
+  - Unlisted App distribution for controlled external access
+  - Apple enterprise/private app distribution only for strictly internal employee-only deployments
 - On iPhone, some installations may require validating the company developer profile from:
   - `Settings > General > VPN & Device Management`
 
 Technical roadmap:
 
 - Native iOS packaging for enterprise/private distribution
+- Apple Business Manager packaging flow for client-owned fleets
 - Auth linked to Naaval tenant / driver assignment
 - Offline action queue and background-safe sync strategy
 - Device camera, signature capture, geolocation, and proof uploads
